@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Haley</RootNamespace>
+    <AssemblyName>Haley.LifeCycle</AssemblyName>
+    <Authors>TheHaleyProject</Authors>
+    <Company>TheHaleyProject</Company>
+    <Copyright>Haley 2025</Copyright>
+    <SignAssembly>True</SignAssembly>
+    <IsPackable>true</IsPackable>
+    <AssemblyOriginatorKeyFile>..\..\HaleyProject\HaleyProject.snk</AssemblyOriginatorKeyFile>
+    <PackageIcon>Haley.png</PackageIcon>
+    <Version>0.0.1</Version>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageReleaseNotes>Pilot release</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/TheHaleyProject/Haley.Lifecycle</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/TheHaleyProject/Haley.Lifecycle</RepositoryUrl>
+    <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
+    <Description>A Simple State Machine from Haley Libraries</Description>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\HaleyLog\Haley.png" Link="Haley.png">
+      <PackagePath></PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+  <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
+
+  <Choose>
+    <When Condition="Exists($(HaleyEvents))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyEvents)\HaleyEvents.csproj">
+          <Name>HaleyEvents</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Haley.Events" Version="2.2.14" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  
+  <Choose>
+    <When Condition="Exists($(HaleyHelpersDB))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyHelpersDB)\HaleyHelpersDB.csproj">
+          <Name>HaleyHelpersDB</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Haley.Helpers.DB" Version="0.0.35" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  
+</Project>
