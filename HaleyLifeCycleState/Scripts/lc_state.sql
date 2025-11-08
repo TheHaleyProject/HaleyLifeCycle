@@ -1,0 +1,154 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               11.8.2-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
+-- HeidiSQL Version:             12.10.0.7000
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- Dumping database structure for lifecycle_state
+CREATE DATABASE IF NOT EXISTS `lifecycle_state` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+USE `lifecycle_state`;
+
+-- Dumping structure for table lifecycle_state.definition
+CREATE TABLE IF NOT EXISTS `definition` (
+  `guid` char(36) NOT NULL DEFAULT uuid(),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `display_name` varchar(200) NOT NULL,
+  `name` varchar(200) GENERATED ALWAYS AS (lcase(`display_name`)) STORED,
+  `description` text DEFAULT NULL,
+  `created` datetime NOT NULL DEFAULT utc_timestamp(),
+  `env` int(11) NOT NULL DEFAULT 0 COMMENT 'environment code\nCOMMENT ''0=Dev,1=Test,2=UAT,3=Prod''',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1998 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table lifecycle_state.def_version
+CREATE TABLE IF NOT EXISTS `def_version` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent` int(11) NOT NULL,
+  `guid` char(36) NOT NULL DEFAULT uuid(),
+  `version` int(11) NOT NULL DEFAULT 1,
+  `created` datetime NOT NULL DEFAULT utc_timestamp(),
+  `modified` datetime NOT NULL DEFAULT utc_timestamp(),
+  `data` longtext NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_def_version_0` (`guid`),
+  KEY `fk_def_version_definition` (`parent`),
+  CONSTRAINT `fk_def_version_definition` FOREIGN KEY (`parent`) REFERENCES `definition` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `cns_def_version` CHECK (`version` > 0),
+  CONSTRAINT `cns_def_version_0` CHECK (json_valid(`data`))
+) ENGINE=InnoDB AUTO_INCREMENT=1990 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table lifecycle_state.events
+CREATE TABLE IF NOT EXISTS `events` (
+  `id` int(11) NOT NULL,
+  `display_name` varchar(120) NOT NULL,
+  `name` varchar(120) GENERATED ALWAYS AS (lcase(`display_name`)) STORED,
+  `def_version` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_events` (`def_version`,`name`),
+  CONSTRAINT `fk_events_def_version` FOREIGN KEY (`def_version`) REFERENCES `def_version` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table lifecycle_state.instance
+CREATE TABLE IF NOT EXISTS `instance` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `guid` char(36) NOT NULL DEFAULT uuid(),
+  `last_event` int(11) NOT NULL,
+  `current_state` int(11) NOT NULL,
+  `external_ref` varchar(120) DEFAULT NULL COMMENT 'like external workflow id or submission id or transmittal id.. Like wf-182, dabc-0203, etc,',
+  `external_type` varchar(120) DEFAULT NULL COMMENT 'workflow, submission',
+  `flags` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'active =1,\nsuspended =2 ,\ncompleted = 4,\nfailed = 8, \narchive = 16',
+  `created` datetime NOT NULL DEFAULT utc_timestamp(),
+  `modified` datetime NOT NULL DEFAULT utc_timestamp(),
+  `def_version` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_instance` (`guid`),
+  KEY `fk_instance_state` (`current_state`),
+  KEY `fk_instance_events` (`last_event`),
+  KEY `fk_instance_def_version` (`def_version`),
+  CONSTRAINT `fk_instance_def_version` FOREIGN KEY (`def_version`) REFERENCES `def_version` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_instance_events` FOREIGN KEY (`last_event`) REFERENCES `events` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_instance_state` FOREIGN KEY (`current_state`) REFERENCES `state` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table lifecycle_state.state
+CREATE TABLE IF NOT EXISTS `state` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `display_name` varchar(200) NOT NULL,
+  `name` varchar(200) GENERATED ALWAYS AS (lcase(`display_name`)) STORED,
+  `flags` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'is_initial = 1\nis_final = 2\nis_system = 4\nis_error = 8',
+  `created` datetime NOT NULL DEFAULT utc_timestamp(),
+  `category` varchar(120) DEFAULT NULL,
+  `def_version` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_state` (`def_version`,`name`),
+  CONSTRAINT `fk_state_def_version` FOREIGN KEY (`def_version`) REFERENCES `def_version` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2014 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table lifecycle_state.transition
+CREATE TABLE IF NOT EXISTS `transition` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_state` int(11) NOT NULL,
+  `to_state` int(11) NOT NULL,
+  `event` int(11) NOT NULL,
+  `flags` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'is_auto = 1\nneeds_approval = 2\ncan_retry = 4\nis_critical = 8',
+  `guard_condition` text DEFAULT NULL,
+  `created` datetime DEFAULT utc_timestamp(),
+  `def_version` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unq_transition` (`def_version`,`from_state`,`to_state`,`event`),
+  KEY `fk_transition_state` (`from_state`),
+  KEY `fk_transition_state_0` (`to_state`),
+  KEY `fk_transition_events` (`event`),
+  CONSTRAINT `fk_transition_def_version` FOREIGN KEY (`def_version`) REFERENCES `def_version` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transition_events` FOREIGN KEY (`event`) REFERENCES `events` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transition_state` FOREIGN KEY (`from_state`) REFERENCES `state` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transition_state_0` FOREIGN KEY (`to_state`) REFERENCES `state` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table lifecycle_state.transition_log
+CREATE TABLE IF NOT EXISTS `transition_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `instance_id` bigint(20) NOT NULL,
+  `from_state` int(11) NOT NULL,
+  `to_state` int(11) NOT NULL,
+  `event` int(11) NOT NULL,
+  `actor` varchar(255) DEFAULT NULL,
+  `flags` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'is_system = 1,\nis_manual = 2,\nis_retry = 4,\nis_rollback = 8',
+  `metadata` longtext DEFAULT NULL COMMENT 'JSON',
+  `created` datetime NOT NULL DEFAULT utc_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `fk_transition_log_instance` (`instance_id`),
+  CONSTRAINT `fk_transition_log_instance` FOREIGN KEY (`instance_id`) REFERENCES `instance` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `cns_transition_log` CHECK (json_valid(`metadata`))
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Data exporting was unselected.
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
