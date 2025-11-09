@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
-    public partial class StateMachineMariaRepo {
+    public partial class LifeCycleStateMariaDB {
 
         // ----------------------------------------------------------
         // DEFINITION & VERSION MANAGEMENT

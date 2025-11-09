@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\HaleyProject\HaleyVersion.Props" />
   <PropertyGroup>
     <TargetFrameworks>net8.0</TargetFrameworks>
     <Nullable>enable</Nullable>
@@ -13,7 +14,7 @@
     <IsPackable>true</IsPackable>
     <AssemblyOriginatorKeyFile>..\..\HaleyProject\HaleyProject.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>Haley.png</PackageIcon>
-    <Version>0.0.1</Version>
+    <Version>$(HaleyLCStateVersion)</Version>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -50,7 +51,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Events" Version="2.2.14" />
+        <PackageReference Include="Haley.Events" Version="$(HaleyEventsVersion)" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -65,7 +66,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Helpers.DB" Version="0.0.35" />
+        <PackageReference Include="Haley.Helpers.DB" Version="$(HaleyHelpersDBVersion)" />
       </ItemGroup>
     </Otherwise>
   </Choose>

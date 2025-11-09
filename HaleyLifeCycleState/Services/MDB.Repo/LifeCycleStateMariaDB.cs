@@ -13,7 +13,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
-    public partial class StateMachineMariaRepo : IStateMachineRepository {
+    public partial class LifeCycleStateMariaDB : ILifeCycleStateRepository {
         readonly IAdapterGateway _agw;
         readonly ILogger _logger;
         readonly string _key;
@@ -22,7 +22,7 @@ namespace Haley.Services {
 
         public bool ThrowExceptions => _throwExceptions;
 
-        public StateMachineMariaRepo(IAdapterGateway agw, string key, ILogger logger, bool throwExceptions = false) {
+        public LifeCycleStateMariaDB(IAdapterGateway agw, string key, ILogger logger, bool throwExceptions = false) {
             _agw = agw;
             _key = key;
             _logger = logger;
