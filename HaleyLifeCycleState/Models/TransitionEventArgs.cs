@@ -9,12 +9,9 @@ namespace Haley.Models {
         public LifeCycleTransitionLog? Log { get; }
         public Exception? Exception { get; }
         public string? Context { get; }
-
-        public TransitionEventArgs(LifeCycleTransitionLog? log, Exception? ex = null, string? ctx = null) {
-            Log = log;
-            Exception = ex;
-            Context = ctx;
+        public string? MessageId { get; }           // <— add
+        public TransitionEventArgs(LifeCycleTransitionLog? log, Exception? ex = null, string? ctx = null, string? messageId = null) {
+            Log = log; Exception = ex; Context = ctx; MessageId = messageId;
         }
     }
-
 }

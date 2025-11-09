@@ -24,7 +24,7 @@ namespace Haley.Services {
                     (TO_STATE, toState),
                     (EVENT, eventId),
                     (FLAGS, (int)flags),
-                    (GUARD_CONDITION, guardCondition ?? string.Empty),
+                    (GUARD_KEY, guardCondition ?? string.Empty),
                     (DEF_VERSION, defVersion));
 
                 if (result == null || !long.TryParse(result.ToString(), out var id))

@@ -82,5 +82,14 @@ namespace Haley.Abstractions {
         Task<IFeedback<int>> PurgeOldLogs(int daysToKeep);
         Task<IFeedback<int>> CountInstances(int defVersion, int flagsFilter = 0);
         Task<IFeedback> RebuildIndexes();
+
+        // ----------------------------------------------------------
+        // ACKNOLWEDGEMENT LOG
+        // ----------------------------------------------------------
+
+        Task<IFeedback<long>> Ack_Insert(string messageId, long transitionLogId);
+        Task<IFeedback<bool>> Ack_MarkReceived(string messageId);
+        Task<IFeedback<List<Dictionary<string, object>>>> Ack_GetPending(int retryAfterMinutes);
+        Task<IFeedback<bool>> Ack_Bump(long ackId);
     }
 }

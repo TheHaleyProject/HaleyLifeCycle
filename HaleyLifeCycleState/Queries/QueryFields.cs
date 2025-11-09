@@ -26,7 +26,7 @@ namespace Haley.Internal {
         public const string TO_STATE = "@TO_STATE";
         public const string EVENT = "@EVENT";
         public const string FLAGS = "@FLAGS";
-        public const string GUARD_CONDITION = "@GUARD_CONDITION";
+        public const string GUARD_KEY = "@GUARD_KEY";
 
         // Instance Fields
         public const string CURRENT_STATE = "@CURRENT_STATE";
@@ -41,5 +41,8 @@ namespace Haley.Internal {
         // Audit / Timestamp Fields
         public const string CREATED = "@CREATED";
         public const string MODIFIED = "@MODIFIED";
+        public const string TRANSITION_LOG = "@TRANSITION_LOG";
+        public const string MESSAGE_ID = "@MESSAGE_ID";
+        public const string RETRY_AFTER_MIN = "@RETRY_AFTER_MIN";
     }
 }
