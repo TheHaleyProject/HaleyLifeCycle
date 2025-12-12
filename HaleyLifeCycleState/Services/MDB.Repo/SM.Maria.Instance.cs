@@ -50,5 +50,8 @@ namespace Haley.Services {
 
         public Task<IFeedback<bool>> DeleteInstanceByGuid(string guid) =>
             _agw.NonQueryAsync(_key, QRY_INSTANCE.DELETE_BY_GUID, (GUID, guid));
+
+        public Task<IFeedback<List<Dictionary<string, object>>>> GetInstancesWithExpiredTimeouts(int maxBatchSize) => _agw.ReadAsync(_key, QRY_INSTANCE.GET_INSTANCES_WITH_EXPIRED_TIMEOUTS, (MAX_BATCH, maxBatchSize));
+
     }
 }

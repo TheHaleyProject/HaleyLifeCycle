@@ -14,5 +14,7 @@ namespace Haley.Services {
         public Task<IFeedback<List<Dictionary<string, object>>>> GetLogsByStateChange(int fromState, int toState) => _agw.ReadAsync(_key, QRY_TRANSITION_LOG.GET_BY_STATE_CHANGE, (FROM_STATE, fromState), (TO_STATE, toState));
         public Task<IFeedback<List<Dictionary<string, object>>>> GetLogsByDateRange(DateTime from, DateTime to) => _agw.ReadAsync(_key, QRY_TRANSITION_LOG.GET_BY_DATE_RANGE, (CREATED, from), (MODIFIED, to));
         public Task<IFeedback<Dictionary<string, object>>> GetLatestLogForInstance(long instanceId) => _agw.ReadSingleAsync(_key, QRY_TRANSITION_LOG.GET_LATEST_FOR_INSTANCE, (INSTANCE_ID, instanceId));
+        public Task<IFeedback<Dictionary<string, object>>> GetLogById(long logId) => _agw.ReadSingleAsync(_key, QRY_TRANSITION_LOG.GET_BY_ID, (ID, logId));
+
     }
 }

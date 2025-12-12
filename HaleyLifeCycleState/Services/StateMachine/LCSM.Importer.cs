@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Haley.Utils;
 
 namespace Haley.Services {
     public partial class LifeCycleStateMachine {
@@ -49,10 +50,10 @@ namespace Haley.Services {
                 EnsureSuccess(defsFb, "GetAllDefinitions");
                 var defRows = defsFb.Result ?? new List<Dictionary<string, object>>();
 
-                var defRow = defRows.FirstOrDefault(r => string.Equals(GetString(r, "display_name"), displayName, StringComparison.OrdinalIgnoreCase));
+                var defRow = defRows.FirstOrDefault(r => string.Equals(r.GetString("display_name"), displayName, StringComparison.OrdinalIgnoreCase));
                 if (defRow == null) throw new InvalidOperationException($"Definition '{displayName}' not found after registration.");
 
-                var defId = GetLong(defRow, "id");
+                var defId = defRow.GetLong("id");
 
                 var versionString = spec.Definition.Version;
                 if (!int.TryParse(versionString, out var versionNumber)) versionNumber = 1;
@@ -63,7 +64,7 @@ namespace Haley.Services {
                 var latestFb = await Repository.GetLatestDefinitionVersion(defId).ConfigureAwait(false);
                 EnsureSuccess(latestFb, "GetLatestDefinitionVersion");
                 var verRow = latestFb.Result ?? throw new InvalidOperationException("Latest definition version row is null.");
-                var defVersionId = (int)GetLong(verRow, "id");
+                var defVersionId = (int)verRow.GetLong("id");
 
                 var catFb = await Repository.GetAllCategoriesAsync().ConfigureAwait(false);
                 EnsureSuccess(catFb, "GetAllCategoriesAsync");
@@ -71,9 +72,9 @@ namespace Haley.Services {
 
                 var categoryByName = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
                 foreach (var c in catRows) {
-                    var name = GetString(c, "display_name") ?? GetString(c, "name") ?? string.Empty;
+                    var name = c.GetString("display_name") ?? c.GetString("name") ?? string.Empty;
                     if (string.IsNullOrWhiteSpace(name)) continue;
-                    categoryByName[name] = GetInt(c, "id");
+                    categoryByName[name] = c.GetInt("id");
                 }
 
                 int ResolveCategoryId(string? category) {
@@ -82,7 +83,7 @@ namespace Haley.Services {
                     var insertFb = Repository.InsertCategoryAsync(name).GetAwaiter().GetResult();
                     EnsureSuccess(insertFb, "InsertCategoryAsync");
                     var row = insertFb.Result ?? throw new InvalidOperationException("InsertCategoryAsync returned null row.");
-                    var newId = GetInt(row, "id");
+                    var newId = row.GetInt("id");
                     categoryByName[name] = newId;
                     return newId;
                 }
@@ -98,7 +99,7 @@ namespace Haley.Services {
                     var stateFb = await Repository.RegisterState(s.Name, defVersionId, flags, categoryId).ConfigureAwait(false);
                     EnsureSuccess(stateFb, "RegisterState");
                     var row = stateFb.Result ?? throw new InvalidOperationException("RegisterState returned null row.");
-                    var stateId = GetInt(row, "id");
+                    var stateId = row.GetInt("id");
                     stateIdByName[s.Name] = stateId;
                 }
 
@@ -107,7 +108,7 @@ namespace Haley.Services {
                     var evFb = await Repository.RegisterEvent(display,e.Code, defVersionId).ConfigureAwait(false);
                     EnsureSuccess(evFb, "RegisterEvent");
                     var row = evFb.Result ?? throw new InvalidOperationException("RegisterEvent returned null row.");
-                    var eventId = GetInt(row, "id");
+                    var eventId = row.GetInt("id");
                     var code = e.Code != 0 ? e.Code : eventId;
                     eventIdByCode[code] = eventId;
                     eventCodeById[eventId] = code;

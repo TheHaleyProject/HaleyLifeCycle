@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Haley.Enums;
 using Haley.Models;
+using Haley.Utils;
 
 namespace Haley.Services {
     public partial class LifeCycleStateMachine {
@@ -17,7 +18,7 @@ namespace Haley.Services {
             EnsureSuccess(statesFb, "GetStatesByVersion");
             var states = statesFb.Result ?? new List<Dictionary<string, object>>();
 
-            var row = states.FirstOrDefault(r => GetInt(r, "id") == instance.CurrentState);
+            var row = states.FirstOrDefault(r => r.GetInt("id") == instance.CurrentState);
             if (row == null) throw new InvalidOperationException($"State id={instance.CurrentState} not found for def_version={definitionVersion}.");
 
             return MapState(row);
@@ -40,11 +41,11 @@ namespace Haley.Services {
             var list = new List<LifeCycleTransitionLog>();
             foreach (var r in rows) {
                 var log = new LifeCycleTransitionLog {
-                    Id = GetLong(r, "id"),
-                    InstanceId = GetLong(r, "instance_id"),
-                    FromState = GetInt(r, "from_state"),
-                    ToState = GetInt(r, "to_state"),
-                    Event = GetInt(r, "event"),
+                    Id = r.GetLong("id"),
+                    InstanceId = r.GetLong("instance_id"),
+                    FromState = r.GetInt("from_state"),
+                    ToState = r.GetInt("to_state"),
+                    Event = r.GetInt("event"),
                     Created = DateTime.UtcNow
                 };
                 list.Add(log);
@@ -86,10 +87,10 @@ namespace Haley.Services {
             EnsureSuccess(statesFb, "GetStatesByVersion");
             var states = statesFb.Result ?? new List<Dictionary<string, object>>();
 
-            var row = states.FirstOrDefault(r => GetInt(r, "id") == stateId);
+            var row = states.FirstOrDefault(r => r.GetInt("id") == stateId);
             if (row == null) return false;
 
-            var flags = (LifeCycleStateFlag)GetInt(row, "flags");
+            var flags = (LifeCycleStateFlag)row.GetInt("flags");
             return flags.HasFlag(LifeCycleStateFlag.IsFinal);
         }
 
@@ -101,10 +102,10 @@ namespace Haley.Services {
             EnsureSuccess(statesFb, "GetStatesByVersion");
             var states = statesFb.Result ?? new List<Dictionary<string, object>>();
 
-            var row = states.FirstOrDefault(r => GetInt(r, "id") == stateId);
+            var row = states.FirstOrDefault(r => r.GetInt("id") == stateId);
             if (row == null) return false;
 
-            var flags = (LifeCycleStateFlag)GetInt(row, "flags");
+            var flags = (LifeCycleStateFlag)row.GetInt("flags");
             return flags.HasFlag(LifeCycleStateFlag.IsInitial);
         }
     }

@@ -80,6 +80,7 @@ namespace Haley.Abstractions {
         Task<IFeedback<List<Dictionary<string, object>>>> GetLogsByStateChange(int fromState, int toState);
         Task<IFeedback<List<Dictionary<string, object>>>> GetLogsByDateRange(DateTime from, DateTime to);
         Task<IFeedback<Dictionary<string, object>>> GetLatestLogForInstance(long instanceId);
+        Task<IFeedback<Dictionary<string, object>>> GetLogById(long logId);
 
         // ----------------------------------------------------------
         // MAINTENANCE / UTILITIES
@@ -101,6 +102,7 @@ namespace Haley.Abstractions {
         Task<IFeedback<bool>> Ack_MarkFailed(long transitionLogId, int consumer);
         Task<IFeedback<List<Dictionary<string, object>>>> Ack_GetDueForRetry(int maxRetry, int retryAfterMinutes);
         Task<IFeedback<bool>> Ack_BumpRetry(long ackId);
+        Task<IFeedback<List<Dictionary<string, object>>>> GetInstancesWithExpiredTimeouts(int maxBatchSize);
 
         // ----------------------------------------------------------
         // CATEGORY

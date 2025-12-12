@@ -39,5 +39,6 @@ namespace Haley.Internal {
         public const string CREATED = "@CREATED";
         public const string MODIFIED = "@MODIFIED";
         public const string RETENTION_DAYS = "@RETENTION_DAYS";
+        public const string MAX_BATCH = "@MAX_BATCH";
     }
 }

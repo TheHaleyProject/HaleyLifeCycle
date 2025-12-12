@@ -20,5 +20,7 @@ namespace Haley.Internal {
         public const string MARK_COMPLETED_BY_GUID = $@"UPDATE instance SET flags = (flags | 4), modified = utc_timestamp() WHERE guid = {GUID};";
         public const string DELETE = $@"DELETE FROM instance WHERE id = {ID};";
         public const string DELETE_BY_GUID = $@"DELETE FROM instance WHERE guid = {GUID};";
+        public const string GET_INSTANCES_WITH_EXPIRED_TIMEOUTS = $@"SELECT i.def_version, i.external_ref, s.timeout_event AS event_code FROM instance i INNER JOIN state s ON s.id = i.current_state WHERE s.timeout_seconds IS NOT NULL AND s.timeout_seconds > 0 AND (i.flags & 4) = 0 AND (i.flags & 8) = 0 AND TIMESTAMPADD(SECOND, s.timeout_seconds, i.modified) <= utc_timestamp() LIMIT {MAX_BATCH};";
+
     }
 }
