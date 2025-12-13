@@ -126,7 +126,6 @@ namespace Haley.Services {
             }
         }
 
-
         public void Dispose() {
             Stop();
             _timer?.Dispose();
