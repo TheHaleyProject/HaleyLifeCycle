@@ -1,6 +1,95 @@
 ﻿using Haley;
+using Haley.Abstractions;
+using Haley.Enums;
+using Haley.Models;
+using Haley.Services;
+using Haley.Log;
 using Haley.Utils;
+using Microsoft.Extensions.Logging;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
-Console.WriteLine("Hello, World!");
-var response = await LifeCycleInitializer.InitializeAsync(new AdapterGateway(), "lcstate");
-Console.ReadKey();
+
+var constring = $"server=127.0.0.1;port=3306;user=root;password=admin@456$;database=testlcs;Allow User Variables=true;";
+//var response = await LifeCycleInitializer.InitializeAsync(new AdapterGateway(), "lcstate");
+var agw = new AdapterGateway();
+var response = await LifeCycleInitializer.InitializeAsyncWithConString(agw, constring);
+if (!response.Status) throw new ArgumentException("Unable to initialize the database for the lifecycle state machine");
+
+var logger = LogStore.GetOrAddFileLogger("lcstatelogger", "Lifecycle state logger");
+ILifeCycleStateRepository repo = new LifeCycleStateMariaDB(agw, key: response.Result, logger: logger, throwExceptions: true);
+ILifeCycleStateMachine sm = new LifeCycleStateMachine(repo, throwExceptions: true);
+var monitorOptions = new LifeCycleMonitorOptions {
+    PollIntervalSeconds = 10,       // demo: fast ticks
+    AckRetryAfterMinutes = 0,      // demo: pick immediately
+    AckMaxRetry = 5,
+    AckBatchSize = 200,
+    TimeoutBatchSize = 200,
+    ConsumerId = 0                // this console app is consumer #10
+};
+
+Func<AckWorkItem, Task> ackHandler = async work => {
+    Console.WriteLine($"[ACK] consumer={monitorOptions.ConsumerId} msg={work.MessageId} ext={work.ExternalRef} event={work.EventCode} {work.EventName}");
+    // TODO: do real work here (call your app service / coordinator)
+    await Task.Delay(100);
+};
+
+var monitor = new LifeCycleStateMonitor(sm, repo, monitorOptions, ackHandler);
+
+sm.TransitionRaised += async occurred => {
+    Console.WriteLine($"[TRN] ext={occurred.ExternalRef} {occurred.FromStateId}->{occurred.ToStateId} event={occurred.EventCode} {occurred.EventName}");
+
+    // Each consumer creates its own ack row (unique by transition_log + consumer)
+    var ackInsert = await sm.InsertAck(occurred.TransitionLogId, consumer: monitorOptions.ConsumerId, ackStatus: 1, messageId: Guid.NewGuid().ToString("D"));
+    if (!ackInsert.Status) Console.WriteLine($"[ACK-INSERT] failed: {ackInsert.Message}");
+};
+
+var envName = "preq-general-dev";
+var jsonPath = Path.Combine(AppContext.BaseDirectory, "vendor_registration.json");
+if (!File.Exists(jsonPath)) jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "vendor_registration.json");
+
+var json = await File.ReadAllTextAsync(jsonPath);
+
+// If you updated the importer to accept envName, call that overload.
+// Otherwise call the 1-param method.
+var import = await sm.ImportDefinitionFromJsonAsync(json /*, envName */);
+if (!import.Status) {
+    Console.WriteLine(import.Message);
+    return;
+}
+
+var defVersionId = import.Result!.DefinitionVersionId;
+Console.WriteLine($"Imported def_version={defVersionId} (states={import.Result.StateCount}, events={import.Result.EventCount}, transitions={import.Result.TransitionCount})");
+
+//Trigger sample workflow.
+var externalRef = Guid.NewGuid();
+var instanceKey = new LifeCycleKey(LifeCycleKeyType.Name, externalRef);
+
+await sm.InitializeAsync(defVersionId, instanceKey, LifeCycleInstanceFlag.Active);
+
+// Start monitor AFTER listener is attached
+monitor.Start();
+Console.WriteLine("Monitor started.");
+
+// Trigger vendor registration path:
+await sm.TriggerAsync(defVersionId, instanceKey, 1000, actor: "console", comment: "Submit");          // RegistrationStarted -> Submitted
+await sm.TriggerAsync(defVersionId, instanceKey, 1001, actor: "console", comment: "CheckDuplicate");  // Submitted -> DuplicateCheck
+await sm.TriggerAsync(defVersionId, instanceKey, 1003, actor: "console", comment: "NotRegistered");   // DuplicateCheck -> PendingValidation
+await sm.TriggerAsync(defVersionId, instanceKey, 1005, actor: "console", comment: "ValidateCompany"); // PendingValidation -> CompanyValidation
+await sm.TriggerAsync(defVersionId, instanceKey, 1007, actor: "console", comment: "ValidCompany");    // CompanyValidation -> Registered
+
+// -------------------------
+// 7) Interactive loop
+// -------------------------
+Console.WriteLine("Type an event code (e.g., 1000) and press Enter. Type 'q' to quit.");
+while (true) {
+    var line = Console.ReadLine();
+    if (string.Equals(line, "q", StringComparison.OrdinalIgnoreCase)) break;
+    if (!int.TryParse(line, out var code)) continue;
+
+    await sm.TriggerAsync(defVersionId, instanceKey, code, actor: "console", comment: $"Manual trigger {code}");
+}
+
+monitor.Dispose();
+Console.WriteLine("Done.");

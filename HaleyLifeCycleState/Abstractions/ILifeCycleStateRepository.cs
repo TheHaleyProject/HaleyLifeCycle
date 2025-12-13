@@ -32,7 +32,7 @@ namespace Haley.Abstractions {
         #endregion
 
         #region Core (State, Event, Transition)
-        Task<IFeedback<Dictionary<string, object>>> UpsertState(string displayName, int defVersion, LifeCycleStateFlag flags, int category = 0, int? timeoutMinutes = null, int timeoutMode = 0, int timeoutEventId = 0);
+        Task<IFeedback<Dictionary<string, object>>> UpsertState(string displayName, int defVersion, LifeCycleStateFlag flags, int category = 0, int? timeoutMinutes = null, int timeoutMode = 0, int? timeoutEventId = null);
 
         // requiredFlags=IsInitial => single=true (LIMIT 1)
         // requiredFlags=IsFinal/IsSystem/IsError => single=false

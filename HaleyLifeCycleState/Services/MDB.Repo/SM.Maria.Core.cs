@@ -9,7 +9,7 @@ using static Haley.Internal.QueryFields;
 namespace Haley.Services {
     public partial class LifeCycleStateMariaDB {
 
-        public async Task<IFeedback<Dictionary<string, object>>> UpsertState(string displayName, int defVersion, LifeCycleStateFlag flags, int category = 0, int? timeoutMinutes = null, int timeoutMode = 0, int timeoutEventId = 0) {
+        public async Task<IFeedback<Dictionary<string, object>>> UpsertState(string displayName, int defVersion, LifeCycleStateFlag flags, int category = 0, int? timeoutMinutes = null, int timeoutMode = 0, int ?timeoutEventId = null) {
             var existing = await _agw.ReadSingleAsync(_key, QRY_STATE.GET_BY_NAME, (DEF_VERSION, defVersion), (NAME, displayName));
 
             if (existing.Status && existing.Result != null && existing.Result.Count > 0) {
@@ -21,7 +21,7 @@ namespace Haley.Services {
                     (CATEGORY, category),
                     (TIMEOUT, DbNull(timeoutMinutes)),
                     (TIMEOUT_MODE, timeoutMode),
-                    (TIMEOUT_EVENT, timeoutEventId)
+                    (TIMEOUT_EVENT, DbNull(timeoutEventId))
                 );
 
                 if (!upd.Status) throw new ArgumentException("Failed to update existing state.");

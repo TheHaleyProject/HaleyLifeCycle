@@ -45,9 +45,8 @@ namespace Haley.Services {
 
         private static void NormalizeDefinitionJson(LifeCycleDefinitionJson spec) {
             spec.Definition.Name = (spec.Definition.Name ?? string.Empty).Trim();
-            spec.Definition.Version = (spec.Definition.Version ?? "1").Trim();
             spec.Definition.Description = (spec.Definition.Description ?? string.Empty).Trim();
-            if (spec.Events != null) foreach (var e in spec.Events) { e.Name = (e.Name ?? string.Empty).Trim(); e.DisplayName = (e.DisplayName ?? e.Name).Trim(); }
+            if (spec.Events != null) foreach (var e in spec.Events) { e.Name = (e.Name ?? string.Empty).Trim();  }
             if (spec.States != null) foreach (var s in spec.States) { s.Name = (s.Name ?? string.Empty).Trim(); s.Category = (s.Category ?? "business").Trim(); s.Timeout = (s.Timeout ?? string.Empty).Trim(); s.TimeoutMode = (s.TimeoutMode ?? string.Empty).Trim(); }
             if (spec.Transitions != null) foreach (var t in spec.Transitions) { t.From = (t.From ?? string.Empty).Trim(); t.To = (t.To ?? string.Empty).Trim(); }
         }

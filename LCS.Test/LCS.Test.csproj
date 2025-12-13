@@ -24,5 +24,29 @@
     </Otherwise>
   </Choose>
 
+  <Choose>
+    <When Condition="Exists($(HaleyLog))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyLog)\HaleyLog.csproj">
+          <Name>HaleyLog</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Haley.Log" Version="0.0.1" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
+  <ItemGroup>
+    <None Remove="vendor_registration.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="vendor_registration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   
 </Project>

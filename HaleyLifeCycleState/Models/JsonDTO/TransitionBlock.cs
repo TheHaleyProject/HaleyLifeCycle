@@ -10,5 +10,8 @@ namespace Haley.Models {
         public string From { get; set; } = "";
         public string To { get; set; } = "";
         public string? Guard { get; set; }      // optional (if you keep future branching)
+        public override string ToString() {
+            return $@"{From} --({Event})-> {To}";
+        }
     }
 }

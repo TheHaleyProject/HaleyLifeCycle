@@ -401,17 +401,17 @@ is_error = 8]]></comment>
 		</table>
 	</schema>
 	<layout name="Default Diagram" id="18212873-6564-437d-a8a1-bcd5f7f6492f" confirmed="y" joined_routing="y" show_relation="cascade" >
-		<entity schema="lcstate" name="transition_log" color="FFFF00" x="57" y="418" />
 		<entity schema="lcstate" name="transition_data" color="FFFF00" x="57" y="266" />
 		<entity schema="lcstate" name="category" color="0000FF" x="722" y="95" />
-		<entity schema="lcstate" name="instance" color="FFFF00" x="247" y="437" />
 		<entity schema="lcstate" name="transition" color="0000FF" x="760" y="228" />
 		<entity schema="lcstate" name="def_version" color="0000FF" x="475" y="532" />
 		<entity schema="lcstate" name="events" color="0000FF" x="760" y="456" />
 		<entity schema="lcstate" name="definition" color="0000FF" x="627" y="627" />
 		<entity schema="lcstate" name="environment" color="0000FF" x="798" y="646" />
-		<entity schema="lcstate" name="state" color="0000FF" x="475" y="228" />
 		<entity schema="lcstate" name="ack_log" color="FFFF00" x="247" y="190" />
+		<entity schema="lcstate" name="transition_log" color="FFFF00" x="57" y="418" />
+		<entity schema="lcstate" name="instance" color="FFFF00" x="247" y="437" />
+		<entity schema="lcstate" name="state" color="0000FF" x="475" y="228" />
 		<group name="BluePrint" color="0000FF" >
 			<entity schema="lcstate" name="category" />
 			<entity schema="lcstate" name="transition" />
@@ -422,10 +422,10 @@ is_error = 8]]></comment>
 			<entity schema="lcstate" name="state" />
 		</group>
 		<group name="State Info" color="FFFF00" >
-			<entity schema="lcstate" name="transition_log" />
 			<entity schema="lcstate" name="transition_data" />
-			<entity schema="lcstate" name="instance" />
 			<entity schema="lcstate" name="ack_log" />
+			<entity schema="lcstate" name="transition_log" />
+			<entity schema="lcstate" name="instance" />
 		</group>
 	</layout>
 </project>

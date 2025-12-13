@@ -14,5 +14,8 @@ namespace Haley.Models {
         public string? TimeoutMode { get; set; } // "once" or "repeat"
         public int? TimeoutEvent { get; set; } // event code (ex: 1002)
         public List<string>? Flags { get; set; } // optional, only if you still want state flags in JSON
+        public override string ToString() {
+            return $@"{Name} - {Category}";
+        }
     }
 }
