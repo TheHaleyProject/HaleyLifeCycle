@@ -163,10 +163,6 @@ COMMENT '0=Dev,1=Test,2=UAT,3=Prod']]></comment>
 				<column name="code" />
 				<column name="name" />
 			</index>
-			<index name="unq_events_0" unique="UNIQUE_KEY" >
-				<column name="def_version" />
-				<column name="code" />
-			</index>
 			<fk name="fk_events_def_version" to_schema="lifecycle_state" to_table="def_version" >
 				<fk_column name="def_version" pk="id" />
 			</fk>
@@ -370,29 +366,29 @@ is_error = 8]]></comment>
 		</table>
 	</schema>
 	<layout name="Default Diagram" id="18212873-6564-437d-a8a1-bcd5f7f6492f" confirmed="y" joined_routing="y" show_relation="cascade" >
+		<entity schema="lifecycle_state" name="instance" color="FFFF00" x="247" y="437" />
 		<entity schema="lifecycle_state" name="ack_log" color="FFFF00" x="247" y="190" />
 		<entity schema="lifecycle_state" name="transition_log" color="FFFF00" x="57" y="418" />
 		<entity schema="lifecycle_state" name="transition_data" color="FFFF00" x="57" y="266" />
 		<entity schema="lifecycle_state" name="definition" color="0000FF" x="741" y="627" />
 		<entity schema="lifecycle_state" name="def_version" color="0000FF" x="532" y="551" />
+		<entity schema="lifecycle_state" name="events" color="0000FF" x="760" y="456" />
+		<entity schema="lifecycle_state" name="transition" color="0000FF" x="760" y="228" />
 		<entity schema="lifecycle_state" name="category" color="0000FF" x="722" y="95" />
 		<entity schema="lifecycle_state" name="state" color="0000FF" x="494" y="228" />
-		<entity schema="lifecycle_state" name="instance" color="FFFF00" x="247" y="437" />
-		<entity schema="lifecycle_state" name="transition" color="0000FF" x="760" y="228" />
-		<entity schema="lifecycle_state" name="events" color="0000FF" x="760" y="456" />
 		<group name="BluePrint" color="0000FF" >
 			<entity schema="lifecycle_state" name="definition" />
 			<entity schema="lifecycle_state" name="def_version" />
+			<entity schema="lifecycle_state" name="events" />
+			<entity schema="lifecycle_state" name="transition" />
 			<entity schema="lifecycle_state" name="category" />
 			<entity schema="lifecycle_state" name="state" />
-			<entity schema="lifecycle_state" name="transition" />
-			<entity schema="lifecycle_state" name="events" />
 		</group>
 		<group name="State Info" color="FFFF00" >
+			<entity schema="lifecycle_state" name="instance" />
 			<entity schema="lifecycle_state" name="ack_log" />
 			<entity schema="lifecycle_state" name="transition_log" />
 			<entity schema="lifecycle_state" name="transition_data" />
-			<entity schema="lifecycle_state" name="instance" />
 		</group>
 	</layout>
 </project>

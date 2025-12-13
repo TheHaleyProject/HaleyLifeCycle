@@ -96,12 +96,54 @@ namespace Haley.Services {
                 foreach (var s in spec.States) {
                     var flags = BuildStateFlags(s);
                     var categoryId = ResolveCategoryId(s.Category);
-                    var stateFb = await Repository.RegisterState(s.Name, defVersionId, flags, categoryId).ConfigureAwait(false);
+
+                    // 1) timeout minutes (ISO -> int minutes)
+                    int? timeoutMinutes = null;
+                    if (!string.IsNullOrWhiteSpace(s.Timeout)) {
+                        if (!ISODurationUtils.TryToMinutes(s.Timeout, out var mins, roundUp: true)) {
+                            throw new InvalidOperationException($"Invalid ISO timeout '{s.Timeout}' for state '{s.Name}'.");
+                        }
+                        timeoutMinutes = mins;
+                    }
+
+                    // 2) timeout mode
+                    var timeoutMode = 0; // once
+                    if (!string.IsNullOrWhiteSpace(s.TimeoutMode)) {
+                        var tm = s.TimeoutMode.Trim();
+                        if (tm.Equals("repeat", StringComparison.OrdinalIgnoreCase)) timeoutMode = 1;
+                        else if (tm.Equals("once", StringComparison.OrdinalIgnoreCase)) timeoutMode = 0;
+                        else throw new InvalidOperationException($"Invalid TimeoutMode '{s.TimeoutMode}' for state '{s.Name}'. Use 'once' or 'repeat'.");
+                    }
+
+                    // 3) timeout event id (JSON gives event CODE)
+                    var timeoutEventId = 0;
+                    if (s.TimeoutEvent.HasValue && s.TimeoutEvent.Value > 0) {
+                        if (!eventIdByCode.TryGetValue(s.TimeoutEvent.Value, out timeoutEventId)) {
+                            throw new InvalidOperationException($"Unknown TimeoutEvent code '{s.TimeoutEvent}' for state '{s.Name}'.");
+                        }
+                    }
+
+                    // If timeoutMinutes is null, you may want to force timeoutEventId=0 and mode=0
+                    if (timeoutMinutes is null) {
+                        timeoutEventId = 0;
+                        timeoutMode = 0;
+                    }
+
+                    var stateFb = await Repository.RegisterState(
+                        s.Name,
+                        defVersionId,
+                        flags,
+                        categoryId,
+                        timeoutMinutes,
+                        timeoutMode,
+                        timeoutEventId
+                    ).ConfigureAwait(false);
+
                     EnsureSuccess(stateFb, "RegisterState");
                     var row = stateFb.Result ?? throw new InvalidOperationException("RegisterState returned null row.");
-                    var stateId = row.GetInt("id");
-                    stateIdByName[s.Name] = stateId;
+                    stateIdByName[s.Name] = row.GetInt("id");
                 }
+
 
                 foreach (var e in spec.Events) {
                     var display = string.IsNullOrWhiteSpace(e.DisplayName) ? e.Name : e.DisplayName;

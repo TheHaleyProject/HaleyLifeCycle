@@ -30,7 +30,7 @@ namespace Haley.Abstractions {
         // ----------------------------------------------------------
         // STATE MANAGEMENT
         // ----------------------------------------------------------
-        Task<IFeedback<Dictionary<string, object>>> RegisterState(string displayName, int defVersion, LifeCycleStateFlag flags, int category = 0, string? timeout = null, int timeoutMode = 0, int timeoutEventId = 0);
+        Task<IFeedback<Dictionary<string, object>>> RegisterState(string displayName, int defVersion, LifeCycleStateFlag flags, int category = 0, int? timeoutMinutes = null, int timeoutMode = 0, int timeoutEventId = 0);
         Task<IFeedback<List<Dictionary<string, object>>>> GetStatesByVersion(int defVersion);
         Task<IFeedback<Dictionary<string, object>>> GetStateByName(int defVersion, string name);
         Task<IFeedback<Dictionary<string, object>>> GetInitialState(int defVersion);

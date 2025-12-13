@@ -8,7 +8,7 @@ using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
     public partial class LifeCycleStateMariaDB {
-        public Task<IFeedback<Dictionary<string, object>>> RegisterState(string displayName, int defVersion, LifeCycleStateFlag flags, int category = 0, string? timeout = null, int timeoutMode = 0, int timeoutEventId = 0) => _agw.ReadSingleAsync(_key, QRY_STATE.INSERT, (DISPLAY_NAME, displayName), (FLAGS, (int)flags), (CATEGORY, category), (DEF_VERSION, defVersion), (TIMEOUT, timeout ?? string.Empty), (TIMEOUT_MODE, timeoutMode), (TIMEOUT_EVENT, timeoutEventId));
+        public Task<IFeedback<Dictionary<string, object>>> RegisterState(string displayName, int defVersion, LifeCycleStateFlag flags, int category = 0, int? timeoutMinutes = null, int timeoutMode = 0, int timeoutEventId = 0) => _agw.ReadSingleAsync(_key, QRY_STATE.INSERT, (DISPLAY_NAME, displayName), (FLAGS, (int)flags), (CATEGORY, category), (DEF_VERSION, defVersion), (TIMEOUT_MINUTES, timeoutMinutes), (TIMEOUT_MODE, timeoutMode), (TIMEOUT_EVENT, timeoutEventId));
         public Task<IFeedback<List<Dictionary<string, object>>>> GetStatesByVersion(int defVersion) => _agw.ReadAsync(_key, QRY_STATE.GET_BY_VERSION, (DEF_VERSION, defVersion));
         public Task<IFeedback<Dictionary<string, object>>> GetStateByName(int defVersion, string name) => _agw.ReadSingleAsync(_key, QRY_STATE.GET_BY_NAME, (DEF_VERSION, defVersion), (NAME, name));
         public Task<IFeedback<Dictionary<string, object>>> GetInitialState(int defVersion) => _agw.ReadSingleAsync(_key, QRY_STATE.GET_INITIAL, (DEF_VERSION, defVersion));
