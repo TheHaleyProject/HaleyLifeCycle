@@ -9,14 +9,13 @@ using static Haley.Internal.QueryFields;
 namespace Haley.Services {
     public partial class LifeCycleStateMariaDB {
 
-        public async Task<IFeedback<Dictionary<string, object>>> UpsertInstance(int defVersion, int currentState, int lastEvent, string externalRef, LifeCycleInstanceFlag flags) {
+        public async Task<IFeedback<Dictionary<string, object>>> UpsertInstance(int defVersion, int currentState, int? lastEvent, string externalRef, LifeCycleInstanceFlag flags) {
             var existing = await _agw.ReadSingleAsync(_key, QRY_INSTANCE.GET_BY_REF, (DEF_VERSION, defVersion), (EXTERNAL_REF, externalRef));
             if (existing.Status && existing.Result != null && existing.Result.Count > 0) return existing;
-
             return await _agw.ReadSingleAsync(_key, QRY_INSTANCE.INSERT,
                 (DEF_VERSION, defVersion),
                 (CURRENT_STATE, currentState),
-                (EVENT, lastEvent),
+                (EVENT, AssertNull(lastEvent)), //For initialization, lastevent could be null as this is the starting event.
                 (EXTERNAL_REF, externalRef),
                 (FLAGS, (int)flags)
             );
@@ -43,7 +42,7 @@ namespace Haley.Services {
             if (logId <= 0) return fb.SetStatus(false).SetMessage("Failed to read log id.");
 
             if (!string.IsNullOrWhiteSpace(actor) || !string.IsNullOrWhiteSpace(metadata)) {
-                var dataRes = await _agw.NonQueryAsync(_key, QRY_TRANSITION_DATA.UPSERT, (TRANSITION_LOG, logId), (ACTOR, DbNull(actor)), (METADATA, DbNull(metadata)));
+                var dataRes = await _agw.NonQueryAsync(_key, QRY_TRANSITION_DATA.UPSERT, (TRANSITION_LOG, logId), (ACTOR, AssertNull(actor)), (METADATA, AssertNull(metadata)));
                 if (!dataRes.Status) return fb.SetStatus(false).SetMessage(dataRes.Message);
             }
 

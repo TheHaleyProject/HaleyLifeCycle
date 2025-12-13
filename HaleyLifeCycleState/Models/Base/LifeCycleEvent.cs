@@ -7,7 +7,5 @@ namespace Haley.Models {
         public int Code { get; set; }              // stable
         public string DisplayName { get; set; } = "";
         public string Name { get; set; } = "";     // lower(display_name) from generated column
-        public DateTime Created { get; set; }
-        public DateTime Modified { get; set; }
     }
 }

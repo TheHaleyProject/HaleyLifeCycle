@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `events` (
 -- Dumping structure for table lcstate.instance
 CREATE TABLE IF NOT EXISTS `instance` (
   `current_state` int(11) NOT NULL,
-  `last_event` int(11) NOT NULL,
+  `last_event` int(11) DEFAULT NULL,
   `guid` char(36) NOT NULL DEFAULT uuid(),
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `flags` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'active =1,\nsuspended =2 ,\ncompleted = 4,\nfailed = 8, \narchive = 16',
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `state` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `display_name` varchar(200) NOT NULL,
   `name` varchar(200) GENERATED ALWAYS AS (lcase(trim(`display_name`))) STORED,
-  `flags` int(10) unsigned NOT NULL DEFAULT 1 COMMENT 'is_initial = 1\nis_final = 2\nis_system = 4\nis_error = 8',
+  `flags` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'none = 0\nis_initial = 1\nis_final = 2\nis_system = 4\nis_error = 8',
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `def_version` int(11) NOT NULL,
   `timeout_minutes` int(11) DEFAULT NULL COMMENT 'in minutes',

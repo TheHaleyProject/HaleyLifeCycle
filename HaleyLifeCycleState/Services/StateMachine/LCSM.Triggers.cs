@@ -60,8 +60,8 @@ namespace Haley.Services {
                 var updFb = await Repository.UpdateInstanceState(new LifeCycleKey(LifeCycleKeyType.Id, instance.Id), trResult.ToState, evResult.Id, instance.Flags);
                 EnsureSuccess(updFb, "Instance_UpdateState");
 
-                var msgId = Guid.NewGuid().ToString("N");
-                var ackFb = await Repository.InsertAck(logId, consumer: 1, ackStatus: 1, messageId: msgId);
+                //var msgId = Guid.NewGuid().ToString(); //Let the database create the unique message Id.
+                var ackFb = await Repository.InsertAck(logId, consumer: 0, ackStatus: (int) LifeCycleAckStatus.Pending);
                 EnsureSuccess(ackFb, "Ack_Insert");
 
                 var occurred = new TransitionOccurred {

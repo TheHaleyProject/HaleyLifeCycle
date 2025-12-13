@@ -20,8 +20,12 @@ namespace Haley.Services {
         private void EnsureSuccess<T>(IFeedback<T> feedback, string context) {
             if (feedback == null) throw new InvalidOperationException($"{context} returned null feedback.");
             if (feedback.Status) return;
-            var message = string.IsNullOrWhiteSpace(feedback.Message) ? $"Operation '{context}' failed." : feedback.Message;
-            if (ThrowExceptions || Repository.ThrowExceptions) throw new InvalidOperationException(message);
+            var message = $"Operation '{context}' failed. Reason : {feedback.Message}";
+            if (ThrowExceptions || Repository.ThrowExceptions) {
+                throw new InvalidOperationException(message);
+            } else {
+                Console.WriteLine(message);
+            }
         }
 
         private static string NormalizeRef(string s) => (s ?? string.Empty).Trim().ToLowerInvariant();

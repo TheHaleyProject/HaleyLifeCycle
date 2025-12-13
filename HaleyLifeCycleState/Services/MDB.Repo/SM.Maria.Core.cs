@@ -19,9 +19,9 @@ namespace Haley.Services {
                     (DISPLAY_NAME, displayName),
                     (FLAGS, (int)flags),
                     (CATEGORY, category),
-                    (TIMEOUT, DbNull(timeoutMinutes)),
+                    (TIMEOUT, AssertNull(timeoutMinutes)),
                     (TIMEOUT_MODE, timeoutMode),
-                    (TIMEOUT_EVENT, DbNull(timeoutEventId))
+                    (TIMEOUT_EVENT, AssertNull(timeoutEventId))
                 );
 
                 if (!upd.Status) throw new ArgumentException("Failed to update existing state.");
@@ -33,7 +33,7 @@ namespace Haley.Services {
                 (DISPLAY_NAME, displayName),
                 (FLAGS, (int)flags),
                 (CATEGORY, category),
-                (TIMEOUT, DbNull(timeoutMinutes)),
+                (TIMEOUT, AssertNull(timeoutMinutes)),
                 (TIMEOUT_MODE, timeoutMode),
                 (TIMEOUT_EVENT, timeoutEventId)
             );

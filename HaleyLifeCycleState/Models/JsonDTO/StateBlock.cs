@@ -9,6 +9,8 @@ namespace Haley.Models {
         public string Name { get; set; } = string.Empty;
         public bool IsInitial { get; set; }
         public bool IsFinal { get; set; }
+        public bool IsSystem { get; set; }
+        public bool IsError { get; set; }
         public string Category { get; set; } = "business";
         public string? Timeout { get; set; } // "P7D" etc
         public string? TimeoutMode { get; set; } // "once" or "repeat"

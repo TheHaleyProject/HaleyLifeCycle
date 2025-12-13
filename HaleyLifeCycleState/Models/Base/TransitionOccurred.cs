@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Haley.Models {
     public sealed class TransitionOccurred {
+        public string MessageId { get; set; }
         public long TransitionLogId { get; set; }
         public long InstanceId { get; set; }
         public int DefinitionVersion { get; set; }

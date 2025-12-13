@@ -45,7 +45,7 @@ namespace Haley.Abstractions {
         #endregion
 
         #region Instance
-        Task<IFeedback<Dictionary<string, object>>> UpsertInstance(int defVersion, int currentState, int lastEvent, string externalRef, LifeCycleInstanceFlag flags);
+        Task<IFeedback<Dictionary<string, object>>> UpsertInstance(int defVersion, int currentState, int? lastEvent, string externalRef, LifeCycleInstanceFlag flags);
 
         // key: LifeCycleKey(Id, instanceId) OR LifeCycleKey(Guid, instanceGuid)
         Task<IFeedback<bool>> UpdateInstanceState(LifeCycleKey key, int newState, int lastEvent, LifeCycleInstanceFlag flags);

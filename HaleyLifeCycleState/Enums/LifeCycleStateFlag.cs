@@ -5,10 +5,10 @@ using System.Text;
 namespace Haley.Enums {
     [Flags]
     public enum LifeCycleStateFlag : int {
-        None = 0,
-        IsInitial = 1 << 0,
-        IsFinal = 1 << 1,
-        IsSystem = 1 << 2,
-        IsError = 1 << 3
+        None =0,
+        IsInitial = 1 << 0, //1
+        IsFinal = 1 << 1, //2
+        IsSystem = 1 << 2, //4
+        IsError = 1 << 3 //8
     }
 }

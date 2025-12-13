@@ -5,13 +5,13 @@
     "description": "Lifecycle definition for new vendor registration, validation, and vendor ID generation."
   },
   "states": [
-    { "name": "RegistrationStarted", "is_initial": true, "category": "system" },
+    { "name": "RegistrationStarted", "isinitial": true, "category": "system" },
     { "name": "Submitted", "category": "business" },
     { "name": "DuplicateCheck", "category": "system" },
     { "name": "PendingValidation", "category": "business" },
     { "name": "CompanyValidation", "category": "business" },
-    { "name": "Rejected", "is_final": true, "category": "error" },
-    { "name": "Registered", "is_final": true, "category": "system" }
+    { "name": "Rejected", "isfinal": true, "category": "error" },
+    { "name": "Registered", "isfinal": true, "category": "system" }
   ],
   "events": [
     { "code": 1000, "name": "Submit" },

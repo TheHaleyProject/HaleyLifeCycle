@@ -31,7 +31,8 @@ namespace Haley.Services {
             ExternalRef = row.GetString("external_ref") ?? string.Empty,
             Flags = (LifeCycleInstanceFlag)row.GetInt("flags"),
             Created = row.GetDateTime("created") ?? DateTime.UtcNow,
-            Modified = row.GetDateTime("modified") ?? DateTime.UtcNow
+            Modified = row.GetDateTime("modified") ?? DateTime.UtcNow,
+            Guid = row.GetGuid("guid") ?? Guid.Empty
         };
 
         private static LifeCycleEvent MapEvent(IDictionary<string, object> row) => new() {
@@ -39,7 +40,6 @@ namespace Haley.Services {
             DefinitionVersion = row.GetInt("def_version"),
             DisplayName = row.GetString("display_name") ?? string.Empty,
             Code = row.GetInt("code"),
-            Created = row.GetDateTime("created") ?? DateTime.UtcNow,
         };
 
         private static LifeCycleTransition MapTransition(IDictionary<string, object> row) => new() {

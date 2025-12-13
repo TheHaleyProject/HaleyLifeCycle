@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 var constring = $"server=127.0.0.1;port=3306;user=root;password=admin@456$;database=testlcs;Allow User Variables=true;";
 //var response = await LifeCycleInitializer.InitializeAsync(new AdapterGateway(), "lcstate");
-var agw = new AdapterGateway();
+var agw = new AdapterGateway() { LogQueryInConsole = true };
 var response = await LifeCycleInitializer.InitializeAsyncWithConString(agw, constring);
 if (!response.Status) throw new ArgumentException("Unable to initialize the database for the lifecycle state machine");
 
@@ -63,13 +63,13 @@ var defVersionId = import.Result!.DefinitionVersionId;
 Console.WriteLine($"Imported def_version={defVersionId} (states={import.Result.StateCount}, events={import.Result.EventCount}, transitions={import.Result.TransitionCount})");
 
 //Trigger sample workflow.
-var externalRef = Guid.NewGuid();
+var externalRef = Guid.NewGuid().ToString();
 var instanceKey = new LifeCycleKey(LifeCycleKeyType.Name, externalRef);
 
 await sm.InitializeAsync(defVersionId, instanceKey, LifeCycleInstanceFlag.Active);
 
 // Start monitor AFTER listener is attached
-monitor.Start();
+//monitor.Start();
 Console.WriteLine("Monitor started.");
 
 // Trigger vendor registration path:

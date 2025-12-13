@@ -31,7 +31,8 @@ namespace Haley.Services {
             var initialStateId = initRow.GetInt("id");
             var externalRef = InstanceKeyToExternalRef(instanceKey);
 
-            var insFb = await Repository.UpsertInstance(definitionVersion, initialStateId, 0, externalRef, flags);
+            //During initialization , last_event is always null
+            var insFb = await Repository.UpsertInstance(definitionVersion, initialStateId,null, externalRef, flags);
             EnsureSuccess(insFb, "Instance_Upsert");
             return true;
         }
