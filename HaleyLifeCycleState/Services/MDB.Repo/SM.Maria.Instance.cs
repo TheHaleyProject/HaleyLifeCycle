@@ -23,13 +23,13 @@ namespace Haley.Services {
 
         public Task<IFeedback<bool>> UpdateInstanceState(LifeCycleKey key, int newState, int lastEvent, LifeCycleInstanceFlag flags) =>
             key.Type == LifeCycleKeyType.Guid
-                ? _agw.NonQueryAsync(_key, QRY_INSTANCE.UPDATE_STATE_BY_GUID, (GUID, key.A), (CURRENT_STATE, newState), (EVENT, lastEvent), (FLAGS, (int)flags))
-                : _agw.NonQueryAsync(_key, QRY_INSTANCE.UPDATE_STATE, (ID, Convert.ToInt64(key.A)), (CURRENT_STATE, newState), (EVENT, lastEvent), (FLAGS, (int)flags));
+                ? _agw.NonQueryAsync(_key, QRY_INSTANCE.UPDATE_STATE_BY_GUID, (GUID, key.keys[0]), (CURRENT_STATE, newState), (EVENT, lastEvent), (FLAGS, (int)flags))
+                : _agw.NonQueryAsync(_key, QRY_INSTANCE.UPDATE_STATE, (ID, Convert.ToInt64(key.keys[0])), (CURRENT_STATE, newState), (EVENT, lastEvent), (FLAGS, (int)flags));
 
         public Task<IFeedback<bool>> MarkInstanceCompleted(LifeCycleKey key) =>
             key.Type == LifeCycleKeyType.Guid
-                ? _agw.NonQueryAsync(_key, QRY_INSTANCE.MARK_COMPLETED_BY_GUID, (GUID, key.A))
-                : _agw.NonQueryAsync(_key, QRY_INSTANCE.MARK_COMPLETED, (ID, Convert.ToInt64(key.A)));
+                ? _agw.NonQueryAsync(_key, QRY_INSTANCE.MARK_COMPLETED_BY_GUID, (GUID, key.keys[0]))
+                : _agw.NonQueryAsync(_key, QRY_INSTANCE.MARK_COMPLETED, (ID, Convert.ToInt64(key.keys[0])));
 
         public async Task<IFeedback<long>> AppendTransitionLog(long instanceId, int fromState, int toState, int eventId, string? actor = null, string? metadata = null) {
             var fb = new Feedback<long>();
@@ -50,25 +50,25 @@ namespace Haley.Services {
         }
 
         public Task<IFeedback<Dictionary<string, object>>> GetTransitionLog(LifeCycleKey key) =>
-            _agw.ReadSingleAsync(_key, QRY_TRANSITION_LOG.GET_BY_ID, (ID, Convert.ToInt64(key.A)));
+            _agw.ReadSingleAsync(_key, QRY_TRANSITION_LOG.GET_BY_ID, (ID, Convert.ToInt64(key.keys[0])));
 
         public Task<IFeedback<Dictionary<string, object>>> GetLatestTransitionLog(long instanceId) =>
             _agw.ReadSingleAsync(_key, QRY_TRANSITION_LOG.GET_LATEST_FOR_INSTANCE, (INSTANCE_ID, instanceId));
 
-        public Task<IFeedback<List<Dictionary<string, object>>>> GetTransitionLogList(LifeCycleKey filter, int skip = 0, int limit = 200) {
-            var sql = filter.Type switch {
+        public Task<IFeedback<List<Dictionary<string, object>>>> GetTransitionLogList(LifeCycleKey key, int skip = 0, int limit = 200) {
+            var sql = key.Type switch {
                 LifeCycleKeyType.Id => QRY_TRANSITION_LOG.GET_BY_INSTANCE,
-                LifeCycleKeyType.Composite when filter.A is object[] a && a.Length >= 2 && (a[0] is DateTime || a[1] is DateTime) => QRY_TRANSITION_LOG.GET_BY_DATE_RANGE,
-                LifeCycleKeyType.Composite when filter.A is object[] b && b.Length >= 2 => QRY_TRANSITION_LOG.GET_BY_STATE_CHANGE,
+                LifeCycleKeyType.Composite when key.keys[0] is object[] a && a.Length >= 2 && (a[0] is DateTime || a[1] is DateTime) => QRY_TRANSITION_LOG.GET_BY_DATE_RANGE,
+                LifeCycleKeyType.Composite when key.keys[0] is object[] b && b.Length >= 2 => QRY_TRANSITION_LOG.GET_BY_STATE_CHANGE,
                 _ => throw new NotSupportedException("Invalid TransitionLog_List filter.")
             };
 
             if (!sql.Contains(LIMIT, StringComparison.OrdinalIgnoreCase)) sql = sql.TrimEnd().TrimEnd(';') + $" LIMIT {SKIP}, {LIMIT};";
 
-            return filter.Type switch {
-                LifeCycleKeyType.Id => _agw.ReadAsync(_key, sql, (INSTANCE_ID, Convert.ToInt64(filter.A)), (SKIP, skip), (LIMIT, limit)),
-                LifeCycleKeyType.Composite when filter.A is object[] a && a.Length >= 2 && (a[0] is DateTime || a[1] is DateTime) => _agw.ReadAsync(_key, sql, (CREATED, a[0]), (MODIFIED, a[1]), (SKIP, skip), (LIMIT, limit)),
-                LifeCycleKeyType.Composite when filter.A is object[] b && b.Length >= 2 => _agw.ReadAsync(_key, sql, (FROM_STATE, Convert.ToInt32(b[0])), (TO_STATE, Convert.ToInt32(b[1])), (SKIP, skip), (LIMIT, limit)),
+            return key.Type switch {
+                LifeCycleKeyType.Id => _agw.ReadAsync(_key, sql, (INSTANCE_ID, Convert.ToInt64(key.keys[0])), (SKIP, skip), (LIMIT, limit)),
+                LifeCycleKeyType.Composite when key.keys[0] is object[] a && a.Length >= 2 && (a[0] is DateTime || a[1] is DateTime) => _agw.ReadAsync(_key, sql, (CREATED, a[0]), (MODIFIED, a[1]), (SKIP, skip), (LIMIT, limit)),
+                LifeCycleKeyType.Composite when key.keys[0] is object[] b && b.Length >= 2 => _agw.ReadAsync(_key, sql, (FROM_STATE, Convert.ToInt32(b[0])), (TO_STATE, Convert.ToInt32(b[1])), (SKIP, skip), (LIMIT, limit)),
                 _ => throw new NotSupportedException("Invalid TransitionLog_List filter.")
             };
         }

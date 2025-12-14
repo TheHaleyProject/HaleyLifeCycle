@@ -2,6 +2,7 @@ using Haley.Abstractions;
 using Haley.Enums;
 using Haley.Internal;
 using Haley.Models;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,86 +10,86 @@ using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
     public partial class LifeCycleStateMariaDB {
-        private static (string sql, (string, object)[] args) BuildExists(LifeCycleEntity entity, LifeCycleKey key) {
+        private  (string sql, (string, object)[] args) BuildExists(LifeCycleEntity entity, LifeCycleKey key) {
             switch (entity) {
                 case LifeCycleEntity.Environment:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_ENVIRONMENT.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Code => (QRY_ENVIRONMENT.EXISTS_BY_CODE, new (string,object)[] { (CODE, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Name => (QRY_ENVIRONMENT.EXISTS_BY_NAME, new (string,object)[] { (NAME, ToObj<string>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_ENVIRONMENT.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Code => (QRY_ENVIRONMENT.EXISTS_BY_CODE, new (string,object)[] { (CODE, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Name => (QRY_ENVIRONMENT.EXISTS_BY_NAME, new (string,object)[] { (NAME, ToObj<string>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"ENV Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Category:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_CATEGORY.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Name => (QRY_CATEGORY.EXISTS_BY_NAME, new (string,object)[] { (NAME, ToObj<string>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_CATEGORY.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Name => (QRY_CATEGORY.EXISTS_BY_NAME, new (string,object)[] { (NAME, ToObj<string>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"CATEGORY Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Definition:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_DEFINITION.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Guid => (QRY_DEFINITION.EXISTS_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_DEFINITION.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Guid => (QRY_DEFINITION.EXISTS_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.keys[0])) }),
                         LifeCycleKeyType.Composite => BuildDefinitionExistsComposite(key),
                         _ => throw new NotSupportedException($"DEFINITION Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.DefinitionVersion:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_DEF_VERSION.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Guid => (QRY_DEF_VERSION.EXISTS_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.A)) }),
-                        LifeCycleKeyType.Composite => (QRY_DEF_VERSION.EXISTS_BY_PARENT_AND_VERSION, new (string,object)[] { (PARENT, ToObj<int>(key.A)), (VERSION, ToObj<int>(key.B!)) }),
+                        LifeCycleKeyType.Id => (QRY_DEF_VERSION.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Guid => (QRY_DEF_VERSION.EXISTS_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.keys[0])) }),
+                        LifeCycleKeyType.Composite => (QRY_DEF_VERSION.EXISTS_BY_PARENT_AND_VERSION, new (string,object)[] { (PARENT, ToObj<int>(key.keys[0])), (VERSION, ToObj<int>(key.keys[1]!)) }),
                         _ => throw new NotSupportedException($"DEF_VERSION Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.State:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_STATE.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Composite => (QRY_STATE.EXISTS_BY_VERSION_AND_NAME, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.A)), (NAME, ToObj<string>(key.B!)) }),
+                        LifeCycleKeyType.Id => (QRY_STATE.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Composite => (QRY_STATE.EXISTS_BY_VERSION_AND_NAME, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (NAME, ToObj<string>(key.keys[1]!)) }),
                         _ => throw new NotSupportedException($"STATE Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Event:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_EVENT.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_EVENT.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         LifeCycleKeyType.Composite => BuildEventExistsComposite(key),
                         _ => throw new NotSupportedException($"EVENT Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Transition:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_TRANSITION.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_TRANSITION.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         LifeCycleKeyType.Composite => BuildTransitionExistsComposite(key),
                         _ => throw new NotSupportedException($"TRANSITION Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Instance:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_INSTANCE.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.A)) }),
-                        LifeCycleKeyType.Guid => (QRY_INSTANCE.EXISTS_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.A)) }),
-                        LifeCycleKeyType.Composite => (QRY_INSTANCE.EXISTS_BY_VERSION_AND_REF, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.A)), (EXTERNAL_REF, ToObj<string>(key.B!)) }),
+                        LifeCycleKeyType.Id => (QRY_INSTANCE.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.keys[0])) }),
+                        LifeCycleKeyType.Guid => (QRY_INSTANCE.EXISTS_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.keys[0])) }),
+                        LifeCycleKeyType.Composite => (QRY_INSTANCE.EXISTS_BY_VERSION_AND_REF, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (EXTERNAL_REF, ToObj<string>(key.keys[1]!)) }),
                         _ => throw new NotSupportedException($"INSTANCE Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.TransitionLog:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_TRANSITION_LOG.EXISTS_LOG_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_TRANSITION_LOG.EXISTS_LOG_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"TRANSITION_LOG Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.TransitionData:
                     return key.Type switch {
-                        LifeCycleKeyType.Composite => (QRY_TRANSITION_DATA.EXISTS_BY_TRANSITION_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.A)) }),
-                        LifeCycleKeyType.Id => (QRY_TRANSITION_DATA.EXISTS_BY_TRANSITION_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.A)) }),
+                        LifeCycleKeyType.Composite => (QRY_TRANSITION_DATA.EXISTS_BY_TRANSITION_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.keys[0])) }),
+                        LifeCycleKeyType.Id => (QRY_TRANSITION_DATA.EXISTS_BY_TRANSITION_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"TRANSITION_DATA Exists unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.AckLog:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_ACK_LOG.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.A)) }),
-                        LifeCycleKeyType.Name => (QRY_ACK_LOG.EXISTS_BY_MESSAGE_ID, new (string,object)[] { (MESSAGE_ID, ToObj<string>(key.A)) }),
-                        LifeCycleKeyType.Composite => (QRY_ACK_LOG.EXISTS_BY_CONSUMER_AND_TRANSITION_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.A)), (CONSUMER, ToObj<int>(key.B!)) }),
+                        LifeCycleKeyType.Id => (QRY_ACK_LOG.EXISTS_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.keys[0])) }),
+                        LifeCycleKeyType.Name => (QRY_ACK_LOG.EXISTS_BY_MESSAGE_ID, new (string,object)[] { (MESSAGE_ID, ToObj<string>(key.keys[0])) }),
+                        LifeCycleKeyType.Composite => (QRY_ACK_LOG.EXISTS_BY_CONSUMER_AND_TRANSITION_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.keys[0])), (CONSUMER, ToObj<int>(key.keys[1]!)) }),
                         _ => throw new NotSupportedException($"ACK_LOG Exists unsupported key: {key.Type}")
                     };
 
@@ -97,142 +98,148 @@ namespace Haley.Services {
             }
         }
 
-        private static (string sql, (string, object)[] args) BuildDelete(LifeCycleEntity entity, LifeCycleKey key) {
+        private  (string sql, (string, object)[] args) BuildDelete(LifeCycleEntity entity, LifeCycleKey key) {
             switch (entity) {
                 case LifeCycleEntity.Environment:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_ENVIRONMENT.DELETE_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Code => (QRY_ENVIRONMENT.DELETE_BY_CODE, new (string,object)[] { (CODE, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_ENVIRONMENT.DELETE_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Code => (QRY_ENVIRONMENT.DELETE_BY_CODE, new (string,object)[] { (CODE, ToObj<int>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"ENV Delete unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Category:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_CATEGORY.DELETE_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_CATEGORY.DELETE_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"CATEGORY Delete unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Definition:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_DEFINITION.DELETE, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_DEFINITION.DELETE, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"DEFINITION Delete unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.DefinitionVersion:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_DEF_VERSION.DELETE, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_DEF_VERSION.DELETE, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"DEF_VERSION Delete unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.State:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_STATE.DELETE, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_STATE.DELETE, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"STATE Delete unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Event:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_EVENT.DELETE, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_EVENT.DELETE, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"EVENT Delete unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Transition:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_TRANSITION.DELETE, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_TRANSITION.DELETE, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"TRANSITION Delete unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Instance:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_INSTANCE.DELETE, new (string,object)[] { (ID, ToObj<long>(key.A)) }),
-                        LifeCycleKeyType.Guid => (QRY_INSTANCE.DELETE_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_INSTANCE.DELETE, new (string,object)[] { (ID, ToObj<long>(key.keys[0])) }),
+                        LifeCycleKeyType.Guid => (QRY_INSTANCE.DELETE_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"INSTANCE Delete unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.TransitionData:
-                    return (QRY_TRANSITION_DATA.DELETE_BY_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.A)) });
+                    return (QRY_TRANSITION_DATA.DELETE_BY_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.keys[0])) });
 
                 default:
                     throw new NotSupportedException($"Delete unsupported entity: {entity}");
             }
         }
 
-        private static (string sql, (string, object)[] args) BuildGet(LifeCycleEntity entity, LifeCycleKey key) {
+        private  (string sql, (string, object)[] args) BuildGet(LifeCycleEntity entity, LifeCycleKey key) {
             switch (entity) {
                 case LifeCycleEntity.Environment:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_ENVIRONMENT.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Code => (QRY_ENVIRONMENT.GET_BY_CODE, new (string,object)[] { (CODE, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Name => (QRY_ENVIRONMENT.GET_BY_NAME, new (string,object)[] { (NAME, ToObj<string>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_ENVIRONMENT.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Code => (QRY_ENVIRONMENT.GET_BY_CODE, new (string,object)[] { (CODE, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Name => (QRY_ENVIRONMENT.GET_BY_NAME, new (string,object)[] { (NAME, ToObj<string>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"ENV Get unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Category:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_CATEGORY.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Name => (QRY_CATEGORY.GET_BY_NAME, new (string,object)[] { (NAME, ToObj<string>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_CATEGORY.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Name => (QRY_CATEGORY.GET_BY_NAME, new (string,object)[] { (NAME, ToObj<string>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"CATEGORY Get unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Definition:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_DEFINITION.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Guid => (QRY_DEFINITION.GET_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.A)) }),
-                        LifeCycleKeyType.Composite => (QRY_DEFINITION.GET_BY_NAME, new (string,object)[] { (ENV, ToObj<int>(key.A)), (NAME, ToObj<string>(key.B!)) }), // env_id + def_name
+                        LifeCycleKeyType.Id => (QRY_DEFINITION.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Guid => (QRY_DEFINITION.GET_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.keys[0])) }),
+                        LifeCycleKeyType.Composite => (QRY_DEFINITION.GET_BY_NAME, new (string,object)[] { (ENV, ToObj<int>(key.keys[0])), (NAME, ToObj<string>(key.keys[1]!)) }), // env_id + def_name
                         _ => throw new NotSupportedException($"DEFINITION Get unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.DefinitionVersion:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_DEF_VERSION.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Guid => (QRY_DEF_VERSION.GET_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_DEF_VERSION.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Guid => (QRY_DEF_VERSION.GET_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"DEF_VERSION Get unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.State:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_STATE.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
-                        LifeCycleKeyType.Composite => (QRY_STATE.GET_BY_NAME, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.A)), (NAME, ToObj<string>(key.B!)) }),
+                        LifeCycleKeyType.Id => (QRY_STATE.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
+                        LifeCycleKeyType.Composite => (QRY_STATE.GET_BY_NAME, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (NAME, ToObj<string>(key.keys[1]!)) }),
                         _ => throw new NotSupportedException($"STATE Get unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Event:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_EVENT.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_EVENT.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         LifeCycleKeyType.Composite => BuildEventGetComposite(key),
                         _ => throw new NotSupportedException($"EVENT Get unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Transition:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_TRANSITION.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_TRANSITION.GET_BY_ID, new (string,object)[] { (ID, ToObj<int>(key.keys[0])) }),
                         LifeCycleKeyType.Composite => BuildTransitionGetComposite(key),
                         _ => throw new NotSupportedException($"TRANSITION Get unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.Instance:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_INSTANCE.GET_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.A)) }),
-                        LifeCycleKeyType.Guid => (QRY_INSTANCE.GET_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.A)) }),
-                        LifeCycleKeyType.Composite => (QRY_INSTANCE.GET_BY_REF, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.A)), (EXTERNAL_REF, ToObj<string>(key.B!)) }),
+                        LifeCycleKeyType.Id => (QRY_INSTANCE.GET_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.keys[0])) }),
+                        LifeCycleKeyType.Guid => (QRY_INSTANCE.GET_BY_GUID, new (string,object)[] { (GUID, ToObj<Guid>(key.keys[0])) }),
+                        LifeCycleKeyType.Parent => BuildParentInstanceQuery(key),
+                        LifeCycleKeyType.Composite => (QRY_INSTANCE.GET_BY_REF, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (EXTERNAL_REF, ToObj<string>(key.keys[1]!)) }),
                         _ => throw new NotSupportedException($"INSTANCE Get unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.TransitionLog:
                     return key.Type switch {
-                        LifeCycleKeyType.Id => (QRY_TRANSITION_LOG.GET_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.A)) }),
+                        LifeCycleKeyType.Id => (QRY_TRANSITION_LOG.GET_BY_ID, new (string,object)[] { (ID, ToObj<long>(key.keys[0])) }),
                         _ => throw new NotSupportedException($"TRANSITION_LOG Get unsupported key: {key.Type}")
                     };
 
                 case LifeCycleEntity.TransitionData:
-                    return (QRY_TRANSITION_DATA.GET_BY_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.A)) });
+                    return (QRY_TRANSITION_DATA.GET_BY_LOG, new (string,object)[] { (TRANSITION_LOG, ToObj<long>(key.keys[0])) });
 
                 default:
                     throw new NotSupportedException($"Get unsupported entity: {entity}");
             }
         }
 
-        private static (string sql, (string, object)[] args) BuildList(LifeCycleEntity entity, LifeCycleKey? scope) {
+        private (string sql, (string, object)[] args) BuildParentInstanceQuery(LifeCycleKey key) {
+            var instKeys = key.ParseInstanceKey(_agw, _key);
+            return (QRY_INSTANCE.GET_BY_REF, new (string, object)[] { (DEF_VERSION, instKeys.definitionVersion), (EXTERNAL_REF, instKeys.externalRef) });
+        }
+
+        private  (string sql, (string, object)[] args) BuildList(LifeCycleEntity entity, LifeCycleKey? key) {
             switch (entity) {
                 case LifeCycleEntity.Environment:
                     return (QRY_ENVIRONMENT.GET_ALL, Array.Empty<(string, object)>());
@@ -244,42 +251,42 @@ namespace Haley.Services {
                     return (QRY_DEFINITION.GET_ALL, Array.Empty<(string, object)>());
 
                 case LifeCycleEntity.DefinitionVersion:
-                    if (scope == null) throw new ArgumentNullException(nameof(scope), "DEF_VERSION List needs scope=LifeCycleKey(Id,parentDefinitionId).");
-                    return scope.Value.Type switch {
-                        LifeCycleKeyType.Id => (QRY_DEF_VERSION.GET_BY_PARENT, new (string,object)[] { (PARENT, ToObj<int>(scope.Value.A)) }),
-                        _ => throw new NotSupportedException($"DEF_VERSION List unsupported scope key: {scope.Value.Type}")
+                    if (key == null) throw new ArgumentNullException(nameof(key), "DEF_VERSION List needs scope=LifeCycleKey(Id,parentDefinitionId).");
+                    return key.Value.Type switch {
+                        LifeCycleKeyType.Id => (QRY_DEF_VERSION.GET_BY_PARENT, new (string,object)[] { (PARENT, ToObj<int>(key.Value.keys[0])) }),
+                        _ => throw new NotSupportedException($"DEF_VERSION List unsupported scope key: {key.Value.Type}")
                     };
 
                 case LifeCycleEntity.State:
-                    if (scope == null) throw new ArgumentNullException(nameof(scope), "STATE List needs scope=LifeCycleKey(Id,defVersion).");
-                    return (QRY_STATE.GET_BY_VERSION_WITH_CATEGORY, new (string,object)[] { (DEF_VERSION, ToObj<int>(scope.Value.A)) });
+                    if (key == null) throw new ArgumentNullException(nameof(key), "STATE List needs scope=LifeCycleKey(Id,defVersion).");
+                    return (QRY_STATE.GET_BY_VERSION_WITH_CATEGORY, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.Value.keys[0])) });
 
                 case LifeCycleEntity.Event:
-                    if (scope == null) throw new ArgumentNullException(nameof(scope), "EVENT List needs scope=LifeCycleKey(Id,defVersion).");
-                    return (QRY_EVENT.GET_BY_VERSION, new (string,object)[] { (DEF_VERSION, ToObj<int>(scope.Value.A)) });
+                    if (key == null) throw new ArgumentNullException(nameof(key), "EVENT List needs scope=LifeCycleKey(Id,defVersion).");
+                    return (QRY_EVENT.GET_BY_VERSION, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.Value.keys[0])) });
 
                 case LifeCycleEntity.Transition:
-                    if (scope == null) throw new ArgumentNullException(nameof(scope), "TRANSITION List needs scope=LifeCycleKey(Id,defVersion) OR scope=LifeCycleKey(Composite,defVersion,fromState).");
-                    return scope.Value.Type switch {
-                        LifeCycleKeyType.Id => (QRY_TRANSITION.GET_BY_VERSION, new (string,object)[] { (DEF_VERSION, ToObj<int>(scope.Value.A)) }),
-                        LifeCycleKeyType.Composite => (QRY_TRANSITION.GET_OUTGOING, new (string,object)[] { (DEF_VERSION, ToObj<int>(scope.Value.A)), (FROM_STATE, ToObj<int>(scope.Value.B!)) }),
-                        _ => throw new NotSupportedException($"TRANSITION List unsupported scope key: {scope.Value.Type}")
+                    if (key == null) throw new ArgumentNullException(nameof(key), "TRANSITION List needs scope=LifeCycleKey(Id,defVersion) OR scope=LifeCycleKey(Composite,defVersion,fromState).");
+                    return key.Value.Type switch {
+                        LifeCycleKeyType.Id => (QRY_TRANSITION.GET_BY_VERSION, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.Value.keys[0])) }),
+                        LifeCycleKeyType.Composite => (QRY_TRANSITION.GET_OUTGOING, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.Value.keys[0])), (FROM_STATE, ToObj<int>(key.Value.keys[1]!)) }),
+                        _ => throw new NotSupportedException($"TRANSITION List unsupported scope key: {key.Value.Type}")
                     };
 
                 case LifeCycleEntity.Instance:
-                    if (scope == null) throw new ArgumentNullException(nameof(scope), "INSTANCE List needs scope=Name(externalRef) or Composite(defVersion, stateId|flags).");
-                    return scope.Value.Type switch {
-                        LifeCycleKeyType.Name => (QRY_INSTANCE.GET_BY_REF_ANY_VERSION, new (string,object)[] { (EXTERNAL_REF, ToObj<string>(scope.Value.A)) }),
-                        LifeCycleKeyType.Composite => BuildInstanceListComposite(scope.Value),
-                        _ => throw new NotSupportedException($"INSTANCE List unsupported scope key: {scope.Value.Type}")
+                    if (key == null) throw new ArgumentNullException(nameof(key), "INSTANCE List needs scope=Name(externalRef) or Composite(defVersion, stateId|flags).");
+                    return key.Value.Type switch {
+                        LifeCycleKeyType.Name => (QRY_INSTANCE.GET_BY_REF_ANY_VERSION, new (string,object)[] { (EXTERNAL_REF, ToObj<string>(key.Value.keys[0])) }),
+                        LifeCycleKeyType.Composite => BuildInstanceListComposite(key.Value),
+                        _ => throw new NotSupportedException($"INSTANCE List unsupported scope key: {key.Value.Type}")
                     };
 
                 case LifeCycleEntity.TransitionLog:
-                    if (scope == null) throw new ArgumentNullException(nameof(scope), "TRANSITION_LOG List needs scope=Id(instanceId) or Composite(from,to) or Composite(createdFrom,createdTo).");
-                    return scope.Value.Type switch {
-                        LifeCycleKeyType.Id => (QRY_TRANSITION_LOG.GET_BY_INSTANCE, new (string,object)[] { (INSTANCE_ID, ToObj<long>(scope.Value.A)) }),
-                        LifeCycleKeyType.Composite => BuildTransitionLogListComposite(scope.Value),
-                        _ => throw new NotSupportedException($"TRANSITION_LOG List unsupported scope key: {scope.Value.Type}")
+                    if (key == null) throw new ArgumentNullException(nameof(key), "TRANSITION_LOG List needs scope=Id(instanceId) or Composite(from,to) or Composite(createdFrom,createdTo).");
+                    return key.Value.Type switch {
+                        LifeCycleKeyType.Id => (QRY_TRANSITION_LOG.GET_BY_INSTANCE, new (string,object)[] { (INSTANCE_ID, ToObj<long>(key.Value.keys[0])) }),
+                        LifeCycleKeyType.Composite => BuildTransitionLogListComposite(key.Value),
+                        _ => throw new NotSupportedException($"TRANSITION_LOG List unsupported scope key: {key.Value.Type}")
                     };
 
                 default:
@@ -288,80 +295,80 @@ namespace Haley.Services {
         }
 
         // composite helpers
-        private static (string sql, (string, object)[] args) BuildDefinitionExistsComposite(LifeCycleKey key) {
+        private  (string sql, (string, object)[] args) BuildDefinitionExistsComposite(LifeCycleKey key) {
             // Supported:
             //  1) (env_code:int, def_name:string)  -> EXISTS_BY_ENV_CODE_AND_NAME
             //  2) (env_id:long, def_name:string)   -> EXISTS_BY_ENV_AND_NAME
-            if (key.B is null) throw new ArgumentException("Definition Exists composite needs (A,B).");
-            if (key.A is long) return (QRY_DEFINITION.EXISTS_BY_ENV_AND_NAME, new (string,object)[] { (ENV, ToObj<int>(key.A)), (NAME, ToObj<string>(key.B)) });
-            return (QRY_DEFINITION.EXISTS_BY_ENV_CODE_AND_NAME, new (string,object)[] { (CODE, ToObj<int>(key.A)), (NAME, ToObj<string>(key.B)) });
+            if (key.keys[1] is null) throw new ArgumentException("Definition Exists composite needs (A,B).");
+            if (key.keys[0] is long) return (QRY_DEFINITION.EXISTS_BY_ENV_AND_NAME, new (string,object)[] { (ENV, ToObj<int>(key.keys[0])), (NAME, ToObj<string>(key.keys[1])) });
+            return (QRY_DEFINITION.EXISTS_BY_ENV_CODE_AND_NAME, new (string,object)[] { (CODE, ToObj<int>(key.keys[0])), (NAME, ToObj<string>(key.keys[1])) });
         }
 
-        private static (string sql, (string, object)[] args) BuildEventExistsComposite(LifeCycleKey key) {
+        private  (string sql, (string, object)[] args) BuildEventExistsComposite(LifeCycleKey key) {
             // Supported:
             //  (defVersion:int, code:int) OR (defVersion:int, name:string)
-            if (key.B is null) throw new ArgumentException("Event Exists composite needs (defVersion, code|name).");
-            return key.B switch {
-                int => (QRY_EVENT.EXISTS_BY_VERSION_AND_CODE, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.A)), (CODE, ToObj<int>(key.B)) }),
-                string => (QRY_EVENT.EXISTS_BY_VERSION_AND_NAME, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.A)), (NAME, ToObj<string>(key.B)) }),
+            if (key.keys[1] is null) throw new ArgumentException("Event Exists composite needs (defVersion, code|name).");
+            return key.keys[1] switch {
+                int => (QRY_EVENT.EXISTS_BY_VERSION_AND_CODE, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (CODE, ToObj<int>(key.keys[1])) }),
+                string => (QRY_EVENT.EXISTS_BY_VERSION_AND_NAME, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (NAME, ToObj<string>(key.keys[1])) }),
                 _ => throw new NotSupportedException("Event Exists composite supports B as int(code) or string(name).")
             };
         }
 
-        private static (string sql, (string, object)[] args) BuildEventGetComposite(LifeCycleKey key) {
+        private  (string sql, (string, object)[] args) BuildEventGetComposite(LifeCycleKey key) {
             // Supported:
             //  (defVersion:int, code:int) OR (defVersion:int, name:string)
-            if (key.B is null) throw new ArgumentException("Event Get composite needs (defVersion, code|name).");
-            return key.B switch {
-                int => (QRY_EVENT.GET_BY_CODE, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.A)), (CODE, ToObj<int>(key.B)) }),
-                string => (QRY_EVENT.GET_BY_NAME, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.A)), (NAME, ToObj<string>(key.B)) }),
+            if (key.keys[1] is null) throw new ArgumentException("Event Get composite needs (defVersion, code|name).");
+            return key.keys[1] switch {
+                int => (QRY_EVENT.GET_BY_CODE, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (CODE, ToObj<int>(key.keys[1])) }),
+                string => (QRY_EVENT.GET_BY_NAME, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (NAME, ToObj<string>(key.keys[1])) }),
                 _ => throw new NotSupportedException("Event Get composite supports B as int(code) or string(name).")
             };
         }
 
-        private static (string sql, (string, object)[] args) BuildTransitionExistsComposite(LifeCycleKey key) {
+        private  (string sql, (string, object)[] args) BuildTransitionExistsComposite(LifeCycleKey key) {
             // Supported:
             //  A = object[] { defVersion, fromState, toState, eventId }
-            if (key.A is object[] a && a.Length >= 4)
+            if (key.keys[0] is object[] a && a.Length >= 4)
                 return (QRY_TRANSITION.EXISTS_BY_UNQ, new (string,object)[] { (DEF_VERSION, ToObj<int>(a[0])), (FROM_STATE, ToObj<int>(a[1])), (TO_STATE, ToObj<int>(a[2])), (EVENT, ToObj<int>(a[3])) });
 
             // Fallback: (defVersion, fromState) + (eventId in B) is NOT unique -> not supported for Exists.
             throw new NotSupportedException("Transition Exists composite requires A=object[]{defVersion,fromState,toState,eventId}.");
         }
 
-        private static (string sql, (string, object)[] args) BuildTransitionGetComposite(LifeCycleKey key) {
+        private  (string sql, (string, object)[] args) BuildTransitionGetComposite(LifeCycleKey key) {
             // Supported:
             //  A = object[] { defVersion, fromState, eventId } -> GET_TRANSITION
-            if (key.A is object[] a && a.Length >= 3)
+            if (key.keys[0] is object[] a && a.Length >= 3)
                 return (QRY_TRANSITION.GET_TRANSITION, new (string,object)[] { (DEF_VERSION, ToObj<int>(a[0])), (FROM_STATE, ToObj<int>(a[1])), (EVENT, ToObj<int>(a[2])) });
 
             // Supported:
             //  (defVersion:int, fromState:int) -> GET_OUTGOING (single row not guaranteed, but caller asked Get)
-            if (key.B is not null)
-                return (QRY_TRANSITION.GET_OUTGOING, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.A)), (FROM_STATE, ToObj<int>(key.B)) });
+            if (key.keys[1] is not null)
+                return (QRY_TRANSITION.GET_OUTGOING, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (FROM_STATE, ToObj<int>(key.keys[1])) });
 
             throw new NotSupportedException("Transition Get composite requires A=object[]{defVersion,fromState,eventId} OR (A=defVersion,B=fromState).");
         }
 
-        private static (string sql, (string, object)[] args) BuildInstanceListComposite(LifeCycleKey scope) {
+        private  (string sql, (string, object)[] args) BuildInstanceListComposite(LifeCycleKey key) {
             // Supported:
             //  (defVersion:int, stateId:int) -> GET_BY_STATE_IN_VERSION
             //  (defVersion:int, flags:int|enum) -> GET_BY_FLAGS_IN_VERSION
-            if (scope.B is null) throw new ArgumentException("Instance List composite needs (defVersion, stateId|flags).");
+            if (key.keys[1] is null) throw new ArgumentException("Instance List composite needs (defVersion, stateId|flags).");
 
-            if (scope.B is int bInt) {
-                return (QRY_INSTANCE.GET_BY_STATE_IN_VERSION, new (string,object)[] { (DEF_VERSION, ToObj<int>(scope.A)), (CURRENT_STATE, bInt) });
+            if (key.keys[1] is int bInt) {
+                return (QRY_INSTANCE.GET_BY_STATE_IN_VERSION, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (CURRENT_STATE, bInt) });
             }
 
             // flags (int/enum)
-            return (QRY_INSTANCE.GET_BY_FLAGS_IN_VERSION, new (string,object)[] { (DEF_VERSION, ToObj<int>(scope.A)), (FLAGS, ToObj<int>(scope.B)) });
+            return (QRY_INSTANCE.GET_BY_FLAGS_IN_VERSION, new (string,object)[] { (DEF_VERSION, ToObj<int>(key.keys[0])), (FLAGS, ToObj<int>(key.keys[1])) });
         }
 
-        private static (string sql, (string, object)[] args) BuildTransitionLogListComposite(LifeCycleKey scope) {
+        private  (string sql, (string, object)[] args) BuildTransitionLogListComposite(LifeCycleKey key) {
             // Supported:
             //  A = object[] { fromState:int, toState:int } -> GET_BY_STATE_CHANGE
             //  A = object[] { createdFrom:DateTime, createdTo:DateTime } -> GET_BY_DATE_RANGE
-            if (scope.A is object[] a && a.Length >= 2) {
+            if (key.keys[0] is object[] a && a.Length >= 2) {
                 if (a[0] is DateTime || a[1] is DateTime) {
                     return (QRY_TRANSITION_LOG.GET_BY_DATE_RANGE, new (string,object)[] { (CREATED, a[0]), (MODIFIED, a[1]) });
                 }
@@ -372,7 +379,7 @@ namespace Haley.Services {
         }
 
         // pagination helper
-        private static string ApplyPaginationIfMissing(string sql) {
+        private  string ApplyPaginationIfMissing(string sql) {
             if (string.IsNullOrWhiteSpace(sql)) return sql;
             var s = sql.Trim();
             if (s.Contains(SKIP, StringComparison.Ordinal) || s.Contains(LIMIT, StringComparison.Ordinal)) return s; // already parameterized
@@ -381,12 +388,12 @@ namespace Haley.Services {
             return $"{s} LIMIT {SKIP}, {LIMIT};";
         }
 
-        private static bool HasArg(List<(string, object)> args, string name) {
+        private  bool HasArg(List<(string, object)> args, string name) {
             for (int i = 0; i < args.Count; i++) if (args[i].Item1 == name) return true;
             return false;
         }
 
-        private static T ToObj<T>(object? v) {
+        private  T ToObj<T>(object? v) {
             if (v is null) throw new ArgumentNullException(nameof(v));
             if (v is T t) return t;
             return (T)Convert.ChangeType(v, typeof(T));

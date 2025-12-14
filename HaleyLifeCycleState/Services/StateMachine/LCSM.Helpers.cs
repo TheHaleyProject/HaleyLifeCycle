@@ -11,12 +11,6 @@ namespace Haley.Services {
 
         private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
 
-        static (int definitionVersion, string externalRef) ParseInstanceKey(LifeCycleKey key) {
-            var defVersion = key.A is int dv ? dv : int.Parse(key.A?.ToString() ?? "0");
-            var externalRef = key.B?.ToString() ?? string.Empty;
-            return (defVersion, externalRef);
-        }
-
         private static string BuildMetadata(string? comment, object? context) {
             if (comment == null && context == null) return string.Empty;
             var payload = new Dictionary<string, object?> { ["comment"] = comment, ["context"] = context };

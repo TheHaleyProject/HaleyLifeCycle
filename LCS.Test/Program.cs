@@ -75,7 +75,8 @@ Console.WriteLine($"Imported def_version={defVersionId} (states={import.Result.S
 
 //Trigger sample workflow.
 var externalRef = Guid.NewGuid().ToString();
-var instanceKey = LifeCycleKeys.Instance(defVersionId, externalRef);
+//var instanceKey = LifeCycleKeys.Instance(defVersionId, externalRef);
+var instanceKey = LifeCycleKeys.Instance("VendorRegStates", externalRef,0);
 
 await sm.InitializeAsync(instanceKey, LifeCycleInstanceFlag.Active);
 

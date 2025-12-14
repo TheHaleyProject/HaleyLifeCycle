@@ -54,7 +54,7 @@ namespace Haley.Services {
 
         public Task<IFeedback<Dictionary<string, object>>> GetLatestDefinitionVersion(LifeCycleKey key) =>
             key.Type == LifeCycleKeyType.Parent
-                ? _agw.ReadSingleAsync(_key, QRY_DEF_VERSION.GET_LATEST, (PARENT, Convert.ToInt64(key.A)))
-                : _agw.ReadSingleAsync(_key, QRY_DEF_VERSION.GET_LATEST_BY_ENV, (CODE, Convert.ToInt32(key.A)), (NAME, Convert.ToString(key.B!)!));
+                ? _agw.ReadSingleAsync(_key, QRY_DEF_VERSION.GET_LATEST, (PARENT, Convert.ToInt64(key.keys[0])))
+                : _agw.ReadSingleAsync(_key, QRY_DEF_VERSION.GET_LATEST_BY_ENV, (CODE, Convert.ToInt32(key.keys[0])), (NAME, Convert.ToString(key.keys[1]!)!));
     }
 }

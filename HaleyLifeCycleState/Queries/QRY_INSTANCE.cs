@@ -12,6 +12,7 @@ namespace Haley.Internal {
         public const string GET_BY_ID = $@"SELECT * FROM instance WHERE id = {ID} LIMIT 1;";
         public const string GET_BY_GUID = $@"SELECT * FROM instance WHERE guid = {GUID} LIMIT 1;";
         public const string GET_BY_REF = $@"SELECT * FROM instance WHERE def_version = {DEF_VERSION} AND external_ref = lower({EXTERNAL_REF}) LIMIT 1;";
+        public const string GET_LATEST_DEF = $@"SELECT * FROM instance WHERE def_version = {DEF_VERSION} AND external_ref = lower({EXTERNAL_REF}) LIMIT 1;";
         public const string GET_BY_REF_ANY_VERSION = $@"SELECT * FROM instance WHERE external_ref = lower({EXTERNAL_REF}) ORDER BY id DESC;";
         public const string GET_BY_STATE_IN_VERSION = $@"SELECT * FROM instance WHERE def_version = {DEF_VERSION} AND current_state = {CURRENT_STATE};";
         public const string GET_BY_FLAGS_IN_VERSION = $@"SELECT * FROM instance WHERE def_version = {DEF_VERSION} AND ((flags & {FLAGS}) = {FLAGS});";

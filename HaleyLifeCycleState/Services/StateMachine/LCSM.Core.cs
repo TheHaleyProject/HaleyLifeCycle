@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 namespace Haley.Services {
     public partial class LifeCycleStateMachine {
 
-        public async Task<LifeCycleInstance?> GetInstanceWithTransitionAsync(LifeCycleKey instanceKey) {
-            if (instanceKey.A == null || !int.TryParse(instanceKey.A.ToString(), out var definitionVersion)) throw new ArgumentException("Instance key A must be a valid integer value (definitionVersionId).");
-            if (definitionVersion <= 0) throw new ArgumentOutOfRangeException(nameof(definitionVersion));
-            return await GetInstanceAsync(instanceKey);
+        public async Task<LifeCycleInstance?> GetInstanceWithTransitionAsync(LifeCycleKey key) {
+            if (key.Type != LifeCycleKeyType.Parent) {
+                if (key.keys[0] == null || !int.TryParse(key.keys[0].ToString(), out var definitionVersion)) throw new ArgumentException("Instance key A must be a valid integer value (definitionVersionId).");
+                if (definitionVersion <= 0) throw new ArgumentOutOfRangeException(nameof(definitionVersion));
+            }
+            return await GetInstanceAsync(key);
         }
 
         public async Task<LifeCycleInstance?> GetInstanceAsync(LifeCycleKey instanceKey) {
@@ -27,7 +29,7 @@ namespace Haley.Services {
                 var existing = await GetInstanceWithTransitionAsync(instanceKey);
                 if (existing != null) return true;
 
-                var input = ParseInstanceKey(instanceKey);
+                var input = instanceKey.ParseInstanceKey();
                 var initFb = await Repository.GetStateByFlags(input.definitionVersion, LifeCycleStateFlag.IsInitial);
                 EnsureSuccess(initFb, "State_GetByFlags(IsInitial)");
                 var initRow = (initFb.Result != null && initFb.Result.Count > 0) ? initFb.Result[0] : null;
