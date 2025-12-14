@@ -1,19 +1,19 @@
 using Haley.Enums;
+using Haley.Events;
 using Haley.Models;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Threading.Tasks;
-using Haley.Utils;
 
 namespace Haley.Services {
     public partial class LifeCycleStateMachine {
 
-        public async Task<LifeCycleInstance> GetInstanceWithTransitionAsync(LifeCycleKey instanceKey) {
+        public async Task<LifeCycleInstance?> GetInstanceWithTransitionAsync(LifeCycleKey instanceKey) {
             if (instanceKey.A == null || !int.TryParse(instanceKey.A.ToString(), out var definitionVersion)) throw new ArgumentException("Instance key A must be a valid integer value (definitionVersionId).");
             if (definitionVersion <= 0) throw new ArgumentOutOfRangeException(nameof(definitionVersion));
-            var instance = await GetInstanceAsync(instanceKey);
-            if (instance == null) throw new InvalidOperationException("Instance not found.");
-            return instance;
+            return await GetInstanceAsync(instanceKey);
         }
 
         public async Task<LifeCycleInstance?> GetInstanceAsync(LifeCycleKey instanceKey) {
@@ -23,21 +23,30 @@ namespace Haley.Services {
         }
 
         public async Task<bool> InitializeAsync(LifeCycleKey instanceKey, LifeCycleInstanceFlag flags = LifeCycleInstanceFlag.Active) {
-            var existing = await GetInstanceWithTransitionAsync(instanceKey);
-            if (existing != null) return true;
-            
-            var input = ParseInstanceKey(instanceKey);
-            var initFb = await Repository.GetStateByFlags(input.definitionVersion, LifeCycleStateFlag.IsInitial);
-            EnsureSuccess(initFb, "State_GetByFlags(IsInitial)");
-            var initRow = (initFb.Result != null && initFb.Result.Count > 0) ? initFb.Result[0] : null;
-            if (initRow == null) throw new InvalidOperationException($"No initial state found for def_version={input.definitionVersion}.");
+            try {
+                var existing = await GetInstanceWithTransitionAsync(instanceKey);
+                if (existing != null) return true;
 
-            var initialStateId = initRow.GetInt("id");
+                var input = ParseInstanceKey(instanceKey);
+                var initFb = await Repository.GetStateByFlags(input.definitionVersion, LifeCycleStateFlag.IsInitial);
+                EnsureSuccess(initFb, "State_GetByFlags(IsInitial)");
+                var initRow = (initFb.Result != null && initFb.Result.Count > 0) ? initFb.Result[0] : null;
+                if (initRow == null) throw new InvalidOperationException($"No initial state found for def_version={input.definitionVersion}.");
 
-            //During initialization , last_event is always null
-            var insFb = await Repository.UpsertInstance(input.definitionVersion, initialStateId,null, input.externalRef, flags);
-            EnsureSuccess(insFb, "Instance_Upsert");
-            return true;
+                var initialStateId = initRow.GetInt("id");
+
+                //During initialization , last_event is always null
+                var insFb = await Repository.UpsertInstance(input.definitionVersion, initialStateId, null, input.externalRef, flags);
+                EnsureSuccess(insFb, "Instance_Upsert");
+                return true;
+            } catch (Exception ex) {
+                NotifyError(new StateMachineError() {
+                    Exception = ex,
+                    Reference = instanceKey,
+                    Operation = "InitializeAsync"
+                });
+                return false;
+            }
         }
 
         public async Task<IReadOnlyList<LifeCycleTransitionLog>> GetTransitionHistoryAsync(LifeCycleKey instanceKey, int skip = 0, int limit = 200) {

@@ -23,15 +23,20 @@ namespace Haley.Services {
             return JsonSerializer.Serialize(payload, JsonOptions);
         }
 
-        private void EnsureSuccess<T>(IFeedback<T> feedback, string context) {
-            if (feedback == null) throw new InvalidOperationException($"{context} returned null feedback.");
-            if (feedback.Status) return;
-            var message = $"Operation '{context}' failed. Reason : {feedback.Message}";
-            if (ThrowExceptions || Repository.ThrowExceptions) {
-                throw new InvalidOperationException(message);
-            } else {
-                Console.WriteLine(message);
-            }
+        private bool EnsureSuccess<T>(IFeedback<T> feedback, string context, bool throwError = true) {
+            string errorMessage = string.Empty;
+            do {
+                if (feedback == null) {
+                    errorMessage =$"{context} returned null feedback.";
+                    break; 
+                }
+                if (feedback.Status) return true; //On successfull status.
+                errorMessage = $"Operation '{context}' failed. Reason : {feedback.Message}";
+            } while (false);
+
+            if (throwError) throw new InvalidOperationException(errorMessage);
+            Console.WriteLine(errorMessage);
+            return false;
         }
 
         private static void NormalizeDefinitionJson(LifeCycleDefinitionJson spec) {

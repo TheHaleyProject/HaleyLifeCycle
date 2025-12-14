@@ -8,7 +8,7 @@
     { "name": "RegistrationStarted", "isinitial": true, "category": "system" },
     { "name": "Submitted", "category": "business" },
     { "name": "DuplicateCheck", "category": "system" },
-    { "name": "PendingValidation", "category": "business" },
+    { "name": "PendingValidation", "category": "business", "timeout": "P7D" },
     { "name": "CompanyValidation", "category": "business" },
     { "name": "Rejected", "isfinal": true, "category": "error" },
     { "name": "Registered", "isfinal": true, "category": "system" }

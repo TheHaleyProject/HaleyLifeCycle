@@ -11,15 +11,15 @@ using System.IO;
 using System.Threading.Tasks;
 
 
-var constring = $"server=127.0.0.1;port=3306;user=root;password=admin@456$;database=testlcs;Allow User Variables=true;";
+var constring = $"server=127.0.0.1;port=4307;user=root;password=admin@456$;database=testlcs;Allow User Variables=true;";
 //var response = await LifeCycleInitializer.InitializeAsync(new AdapterGateway(), "lcstate");
 var agw = new AdapterGateway() { LogQueryInConsole = true };
 var response = await LifeCycleInitializer.InitializeAsyncWithConString(agw, constring);
 if (!response.Status) throw new ArgumentException("Unable to initialize the database for the lifecycle state machine");
 
 var logger = LogStore.GetOrAddFileLogger("lcstatelogger", "Lifecycle state logger");
-ILifeCycleStateRepository repo = new LifeCycleStateMariaDB(agw, key: response.Result, logger: logger, throwExceptions: true);
-ILifeCycleStateMachine sm = new LifeCycleStateMachine(repo, throwExceptions: true);
+ILifeCycleStateRepository repo = new LifeCycleStateMariaDB(agw, key: response.Result, logger: logger);
+ILifeCycleStateMachine sm = new LifeCycleStateMachine(repo);
 var monitorOptions = new LifeCycleMonitorOptions {
     PollIntervalSeconds = 10,       // demo: fast ticks
     AckRetryAfterMinutes = 0,      // demo: pick immediately
@@ -74,6 +74,7 @@ Console.WriteLine("Monitor started.");
 
 // Trigger vendor registration path:
 await sm.TriggerAsync(instanceKey, 1000, actor: "console", comment: "Submit");          // RegistrationStarted -> Submitted
+await sm.TriggerAsync(instanceKey, 1001, actor: "console", comment: "CheckDuplicate");  // Submitted -> DuplicateCheck
 await sm.TriggerAsync(instanceKey, 1001, actor: "console", comment: "CheckDuplicate");  // Submitted -> DuplicateCheck
 await sm.TriggerAsync(instanceKey, 1003, actor: "console", comment: "NotRegistered");   // DuplicateCheck -> PendingValidation
 await sm.TriggerAsync(instanceKey, 1005, actor: "console", comment: "ValidateCompany"); // PendingValidation -> CompanyValidation

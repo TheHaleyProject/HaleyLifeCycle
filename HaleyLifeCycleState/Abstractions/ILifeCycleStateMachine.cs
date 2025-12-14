@@ -7,13 +7,15 @@ using Haley.Models;
 namespace Haley.Abstractions {
     public interface ILifeCycleStateMachine {
         event Func<TransitionOccurred, Task>? TransitionRaised;
+        event Func<StateMachineError, Task>? TransitionErrorRaised;
+        event Func<TimeoutNotification, Task>? TimeoutRaised;
 
         Task<bool> TriggerAsync(LifeCycleKey instanceKey, int eventCode, string? actor = null, string? comment = null, object? context = null);
         Task<bool> TriggerAsync(LifeCycleKey instanceKey, string eventName, string? actor = null, string? comment = null, object? context = null);
 
 
         // Instance lifecycle
-        Task<LifeCycleInstance> GetInstanceWithTransitionAsync(LifeCycleKey instanceKey);
+        Task<LifeCycleInstance?> GetInstanceWithTransitionAsync(LifeCycleKey instanceKey);
         Task<LifeCycleInstance?> GetInstanceAsync(LifeCycleKey instanceKey);
         Task<bool> InitializeAsync(LifeCycleKey instanceKey, LifeCycleInstanceFlag flags = LifeCycleInstanceFlag.Active);
         Task<LifeCycleState> GetCurrentStateAsync(LifeCycleKey instanceKey);

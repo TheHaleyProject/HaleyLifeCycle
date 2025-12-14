@@ -8,8 +8,6 @@ namespace Haley.Abstractions {
 
     public interface ILifeCycleStateRepository {
 
-        bool ThrowExceptions { get; }
-
         #region Primitives
         Task<IFeedback<bool>> Exists(LifeCycleEntity entity, LifeCycleKey key);
         Task<IFeedback<bool>> Delete(LifeCycleEntity entity, LifeCycleKey key);

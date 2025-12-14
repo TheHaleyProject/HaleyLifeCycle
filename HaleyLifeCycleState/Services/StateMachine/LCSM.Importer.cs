@@ -128,7 +128,7 @@ namespace Haley.Services {
                 });
             } catch (Exception ex) {
                 fb.SetMessage(ex.Message).SetTrace(ex.StackTrace);
-                if (ThrowExceptions || Repository.ThrowExceptions) throw;
+                throw;
             }
 
             return fb;

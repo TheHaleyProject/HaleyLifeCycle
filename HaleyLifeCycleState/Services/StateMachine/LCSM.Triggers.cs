@@ -3,22 +3,11 @@ using Haley.Models;
 using Haley.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Threading.Tasks;
 
 namespace Haley.Services {
     public partial class LifeCycleStateMachine {
-
-        private async Task RaiseTransitionAsync(TransitionOccurred occurred) {
-            var handler = TransitionRaised;
-            if (handler == null) return;
-            foreach (var d in handler.GetInvocationList()) {
-                try {
-                    if (d is Func<TransitionOccurred, Task> asyncHandler) await asyncHandler(occurred);
-                    else d.DynamicInvoke(occurred);
-                } catch { }
-            }
-        }
-
         public async Task<bool> TriggerAsync(LifeCycleKey instanceKey, int eventCode, string? actor = null, string? comment = null, object? context = null) {
             try {
                 var instance = await GetInstanceWithTransitionAsync(instanceKey);
@@ -65,11 +54,15 @@ namespace Haley.Services {
                     Metadata = metadata,
                     Created = DateTime.UtcNow
                 };
-
-                await RaiseTransitionAsync(occurred);
+                NotifyTransition(occurred);
                 return true;
-            } catch {
-                if (ThrowExceptions || Repository.ThrowExceptions) throw;
+            } catch (Exception ex) {
+                NotifyError(new StateMachineError() {
+                    Exception = ex,
+                    Reference = instanceKey,
+                    Data = new { eventCode, actor},
+                    Operation = "TriggerAsync"
+                });
                 return false;
             }
         }
@@ -85,8 +78,13 @@ namespace Haley.Services {
                 var code = fb.Result.GetInt("code");
                 if (code <= 0) throw new ArgumentException("Invalid event code retrieved. Code needs to be a valid positive number");
                 return await TriggerAsync(instanceKey, code, actor, comment, context);
-            } catch {
-                if (ThrowExceptions || Repository.ThrowExceptions) throw;
+            } catch (Exception ex) {
+                NotifyError(new StateMachineError() {
+                    Exception = ex,
+                    Reference = instanceKey,
+                    Data = new { eventName, actor },
+                    Operation = "TriggerAsync"
+                });
                 return false;
             }
         }

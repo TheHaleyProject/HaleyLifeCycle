@@ -66,7 +66,7 @@ namespace Haley.Services {
                 LastRunUtc = DateTime.UtcNow;
             } catch (Exception ex) {
                 LastError = ex;
-                if (_repo.ThrowExceptions) throw;
+                throw;
             } finally {
                 Interlocked.Exchange(ref _running, 0);
             }
@@ -87,7 +87,7 @@ namespace Haley.Services {
                     var instanceKey = LifeCycleKeys.Instance(defVersion, externalRef);
                     await _sm.TriggerAsync(instanceKey, eventCode, "system_timeout", "Timeout event", null);
                 } catch {
-                    if (_repo.ThrowExceptions) throw;
+                    throw;
                 }
             }
         }
@@ -124,7 +124,7 @@ namespace Haley.Services {
                     try {
                         await _failedAckHandler!(work);
                     } catch {
-                        if (_repo.ThrowExceptions) throw;
+                        throw;
                     }
                 }
 
@@ -158,7 +158,7 @@ namespace Haley.Services {
                 if (retryCount + 1 >= maxRetry)
                     await _sm.MarkAck(messageId, LifeCycleAckStatus.Failed);
 
-                if (_repo.ThrowExceptions) throw;
+                throw;
             }
         }
 

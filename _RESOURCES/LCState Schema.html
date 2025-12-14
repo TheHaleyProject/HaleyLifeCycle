@@ -43,7 +43,7 @@ input::placeholder {
 <a name='layout1' style='position:sticky; top:0;'/><h4>Default Diagram</h4>
 <input type='text' placeholder='Highlight in Diagram' oninput='searchSVG(this.value)' class='text-start my-2'/>
 <div class='svgContainer'>
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   width='950' height='1022' viewBox='0 0 950 1022' >
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   width='988' height='1022' viewBox='0 0 988 1022' >
   <script type='text/ecmascript'>
   <![CDATA[
   function hghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','highlight');  }  }
@@ -300,7 +300,7 @@ input::placeholder {
 
 <!-- == Shape Colors == -->
 <!-- == Desktop == -->
-<rect x='0' y='0' width='950' height='1022' rx='10' ry='10' style='fill:url(#layoutBgA); stroke:#ccc; stroke-width:.7px; cursor:move;' />
+<rect x='0' y='0' width='988' height='1022' rx='10' ry='10' style='fill:url(#layoutBgA); stroke:#ccc; stroke-width:.7px; cursor:move;' />
 
 <!-- == Legend == -->
 <g transform='translate(10,10)'>
@@ -309,106 +309,34 @@ input::placeholder {
 Zoom with CTRL+whell mouse button, pan by dragging the diagram with the right-mouse button</title></use>
   <use x='20' y='40' xlink:href='#logo'><title>DbSchema Database Designer </title></use>  <text x='20' y='30' class='legendTitle' >Lifecycle State</text> 
   <text x='57' y='47' class='legendSubTitle'><tspan>Read schema comments as mouse-over tooltips</tspan></text>
-  <a xlink:href='https://dbschema.com'><text x='57' y='61' class='legendSubTitle'><tspan>DbSchema.com © 2025-12-13 Wise Coders<title>DbSchema.com © 2025-12-13 Wise Coders</title></tspan></text></a> 
+  <a xlink:href='https://dbschema.com'><text x='57' y='61' class='legendSubTitle'><tspan>DbSchema.com © 2025-12-14 Wise Coders<title>DbSchema.com © 2025-12-14 Wise Coders</title></tspan></text></a> 
 </g>
 
 <g transform='translate(0,110)'>
 <!-- == Group 'BluePrint' == -->
-<rect class='grp' style='fill:#FDFDFF;stroke:#AEAEE2' x='478' y='31' width='431' height='802' rx='8' ry='8' />
-<text x='492' y='50' style='fill:#9090C5;'>BluePrint</text>
+<rect class='grp' style='fill:#FDFDFF;stroke:#AEAEE2' x='459' y='31' width='488' height='802' rx='8' ry='8' />
+<text x='473' y='50' style='fill:#9090C5;'>BluePrint</text>
 <!-- == Group 'State Info' == -->
 <rect class='grp' style='fill:#FFFFFD;stroke:#E2E2AE' x='41' y='126' width='355' height='555' rx='8' ry='8' />
 <text x='55' y='145' style='fill:#C5C590;'>State Info</text>
-<!-- == Fk 'ack_log_fk_ack_log_transition_log' == -->
-<path id='ack_log_fk_ack_log_transition_log'  onmouseover="hghl(['ack_log_fk_ack_log_transition_log','lifecycle_state.ack_log.transition_log','lifecycle_state.transition_log.id'])" onmouseout="uhghl(['ack_log_fk_ack_log_transition_log','lifecycle_state.ack_log.transition_log','lifecycle_state.transition_log.id'])" transform='translate(10,0)' class='unhighlight' d='M 228,361L 219,361Q 209,361 209,371L 209,447Q 209,456 200,456L 190,456' >
-	<title>&#x1F517;  Foreign Key fk_ack_log_transition_log
-ack_log ref transition_log ( transition_log -&gt; id )</title>
-</path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 228,361L 219,361Q 209,361 209,371L 209,447Q 209,456 200,456L 190,456' ><title>&#x1F517;  Foreign Key fk_ack_log_transition_log
-ack_log ref transition_log ( transition_log -&gt; id )</title></path>
-<text x='237' y='355' transform='rotate(0 237,355)' class='relName'></text>
-<!-- == Fk 'transition_log_fk_transition_log_instance' == -->
-<path id='transition_log_fk_transition_log_instance'  onmouseover="hghl(['transition_log_fk_transition_log_instance','lifecycle_state.transition_log.instance_id','lifecycle_state.instance.id'])" onmouseout="uhghl(['transition_log_fk_transition_log_instance','lifecycle_state.transition_log.instance_id','lifecycle_state.instance.id'])" transform='translate(10,0)' class='unhighlight' d='M 190,475L 200,475Q 209,475 209,485L 209,523Q 209,532 219,532L 228,532' >
-	<title>&#x1F517;  Foreign Key fk_transition_log_instance
-transition_log ref instance ( instance_id -&gt; id )</title>
-</path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 190,475L 200,475Q 209,475 209,485L 209,523Q 209,532 219,532L 228,532' ><title>&#x1F517;  Foreign Key fk_transition_log_instance
-transition_log ref instance ( instance_id -&gt; id )</title></path>
-<text x='199' y='469' transform='rotate(0 199,469)' class='relName'></text>
 <!-- == Fk 'transition_data_fk_transition_data_transition_log' == -->
-<path id='transition_data_fk_transition_data_transition_log'  onmouseover="hghl(['transition_data_fk_transition_data_transition_log','lifecycle_state.transition_data.transition_log','lifecycle_state.transition_log.id'])" onmouseout="uhghl(['transition_data_fk_transition_data_transition_log','lifecycle_state.transition_data.transition_log','lifecycle_state.transition_log.id'])" transform='translate(10,0)' class='unhighlight' d='M 190,304L 200,304Q 209,304 209,314L 209,380' >
+<path id='transition_data_fk_transition_data_transition_log'  onmouseover="hghl(['transition_data_fk_transition_data_transition_log','lcstate.transition_data.transition_log','lcstate.transition_log.id'])" onmouseout="uhghl(['transition_data_fk_transition_data_transition_log','lcstate.transition_data.transition_log','lcstate.transition_log.id'])" transform='translate(10,0)' class='unhighlight' d='M 190,304L 200,304Q 209,304 209,314L 209,380' >
 	<title>&#x1F517;  Foreign Key fk_transition_data_transition_log
 transition_data ref transition_log ( transition_log -&gt; id )</title>
 </path>
 <path transform='translate(10,0)' marker-start='url(#One)'     d='M 190,304L 200,304Q 209,304 209,314L 209,380' ><title>&#x1F517;  Foreign Key fk_transition_data_transition_log
 transition_data ref transition_log ( transition_log -&gt; id )</title></path>
 <text x='199' y='298' transform='rotate(0 199,298)' class='relName'></text>
-<!-- == Fk 'def_version_fk_def_version_definition' == -->
-<path id='def_version_fk_def_version_definition'  onmouseover="hghl(['def_version_fk_def_version_definition','lifecycle_state.def_version.parent','lifecycle_state.definition.id'])" onmouseout="uhghl(['def_version_fk_def_version_definition','lifecycle_state.def_version.parent','lifecycle_state.definition.id'])" transform='translate(10,0)' class='unhighlight' d='M 646,684L 694,684Q 703,684 703,675L 703,675Q 703,665 713,665L 722,665' >
-	<title>&#x1F517;  Foreign Key fk_def_version_definition
-def_version ref definition ( parent -&gt; id )</title>
-</path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 646,684L 694,684Q 703,684 703,675L 703,675Q 703,665 713,665L 722,665' ><title>&#x1F517;  Foreign Key fk_def_version_definition
-def_version ref definition ( parent -&gt; id )</title></path>
-<text x='655' y='678' transform='rotate(0 655,678)' class='relName'></text>
-<!-- == Fk 'state_fk_state_def_version' == -->
-<path id='state_fk_state_def_version'  onmouseover="hghl(['state_fk_state_def_version','lifecycle_state.state.def_version','lifecycle_state.def_version.id'])" onmouseout="uhghl(['state_fk_state_def_version','lifecycle_state.state.def_version','lifecycle_state.def_version.id'])" transform='translate(10,0)' class='unhighlight' d='M 646,380L 656,380Q 665,380 665,390L 665,399' >
-	<title>&#x1F517;  Foreign Key fk_state_def_version
-state ref def_version ( def_version -&gt; id )</title>
-</path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)'     d='M 646,380L 656,380Q 665,380 665,390L 665,399' ><title>&#x1F517;  Foreign Key fk_state_def_version
-state ref def_version ( def_version -&gt; id )</title></path>
-<text x='655' y='374' transform='rotate(0 655,374)' class='relName'></text>
-<!-- == Fk 'state_fk_state_category' == -->
-<path id='state_fk_state_category'  onmouseover="hghl(['state_fk_state_category','lifecycle_state.state.category','lifecycle_state.category.id'])" onmouseout="uhghl(['state_fk_state_category','lifecycle_state.state.category','lifecycle_state.category.id'])" transform='translate(10,0)' class='unhighlight' d='M 646,266L 675,266Q 684,266 684,257L 684,143Q 684,133 694,133L 703,133' >
-	<title>&#x1F517;  Foreign Key fk_state_category
-state ref category ( category -&gt; id )</title>
-</path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 646,266L 675,266Q 684,266 684,257L 684,143Q 684,133 694,133L 703,133' ><title>&#x1F517;  Foreign Key fk_state_category
-state ref category ( category -&gt; id )</title></path>
-<text x='655' y='260' transform='rotate(0 655,260)' class='relName'></text>
-<!-- == Fk 'state_fk_state_events' == -->
-<path id='state_fk_state_events'  onmouseover="hghl(['state_fk_state_events','lifecycle_state.state.timeout_event','lifecycle_state.events.id'])" onmouseout="uhghl(['state_fk_state_events','lifecycle_state.state.timeout_event','lifecycle_state.events.id'])" transform='translate(10,0)' class='unhighlight' d='M 646,437L 713,437Q 722,437 722,447L 722,456' >
-	<title>&#x1F517;  Foreign Key fk_state_events
-state ref events ( timeout_event -&gt; id )</title>
-</path>
-<path transform='translate(10,0)' marker-start='url(#ZeroMore)'   class='dotted '  d='M 646,437L 713,437Q 722,437 722,447L 722,456' ><title>&#x1F517;  Foreign Key fk_state_events
-state ref events ( timeout_event -&gt; id )</title></path>
-<text x='655' y='431' transform='rotate(0 655,431)' class='relName'></text>
-<!-- == Fk 'instance_fk_instance_def_version' == -->
-<path id='instance_fk_instance_def_version'  onmouseover="hghl(['instance_fk_instance_def_version','lifecycle_state.instance.def_version','lifecycle_state.def_version.id'])" onmouseout="uhghl(['instance_fk_instance_def_version','lifecycle_state.instance.def_version','lifecycle_state.def_version.id'])" transform='translate(10,0)' class='unhighlight' d='M 380,570L 485,570Q 494,570 494,580L 494,580Q 494,589 504,589L 513,589' >
-	<title>&#x1F517;  Foreign Key fk_instance_def_version
-instance ref def_version ( def_version -&gt; id )</title>
-</path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 380,570L 485,570Q 494,570 494,580L 494,580Q 494,589 504,589L 513,589' ><title>&#x1F517;  Foreign Key fk_instance_def_version
-instance ref def_version ( def_version -&gt; id )</title></path>
-<text x='389' y='564' transform='rotate(0 389,564)' class='relName'></text>
-<!-- == Fk 'instance_fk_instance_state' == -->
-<path id='instance_fk_instance_state'  onmouseover="hghl(['instance_fk_instance_state','lifecycle_state.instance.current_state','lifecycle_state.state.id'])" onmouseout="uhghl(['instance_fk_instance_state','lifecycle_state.instance.current_state','lifecycle_state.state.id'])" transform='translate(10,0)' class='unhighlight' d='M 380,475L 447,475Q 456,475 456,466L 456,295Q 456,285 466,285L 475,285' >
-	<title>&#x1F517;  Foreign Key fk_instance_state
-instance ref state ( current_state -&gt; id )</title>
-</path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 380,475L 447,475Q 456,475 456,466L 456,295Q 456,285 466,285L 475,285' ><title>&#x1F517;  Foreign Key fk_instance_state
-instance ref state ( current_state -&gt; id )</title></path>
-<text x='389' y='469' transform='rotate(0 389,469)' class='relName'></text>
-<!-- == Fk 'instance_fk_instance_events' == -->
-<path id='instance_fk_instance_events'  onmouseover="hghl(['instance_fk_instance_events','lifecycle_state.instance.last_event','lifecycle_state.events.id'])" onmouseout="uhghl(['instance_fk_instance_events','lifecycle_state.instance.last_event','lifecycle_state.events.id'])" transform='translate(10,0)' class='unhighlight' d='M 380,494L 741,494' >
-	<title>&#x1F517;  Foreign Key fk_instance_events
-instance ref events ( last_event -&gt; id )</title>
-</path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)'     d='M 380,494L 741,494' ><title>&#x1F517;  Foreign Key fk_instance_events
-instance ref events ( last_event -&gt; id )</title></path>
-<text x='389' y='488' transform='rotate(0 389,488)' class='relName'></text>
 <!-- == Fk 'transition_fk_transition_state' == -->
-<path id='transition_fk_transition_state'  onmouseover="hghl(['transition_fk_transition_state','lifecycle_state.transition.from_state','lifecycle_state.state.id'])" onmouseout="uhghl(['transition_fk_transition_state','lifecycle_state.transition.from_state','lifecycle_state.state.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,285L 646,285' >
+<path id='transition_fk_transition_state'  onmouseover="hghl(['transition_fk_transition_state','lcstate.transition.from_state','lcstate.state.id'])" onmouseout="uhghl(['transition_fk_transition_state','lcstate.transition.from_state','lcstate.state.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,285L 627,285' >
 	<title>&#x1F517;  Foreign Key fk_transition_state
 transition ref state ( from_state -&gt; id )</title>
 </path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 741,285L 646,285' ><title>&#x1F517;  Foreign Key fk_transition_state
+<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 741,285L 627,285' ><title>&#x1F517;  Foreign Key fk_transition_state
 transition ref state ( from_state -&gt; id )</title></path>
 <text x='750' y='279' transform='rotate(0 750,279)' class='relName'></text>
 <!-- == Fk 'transition_fk_transition_state_0' == -->
-<path id='transition_fk_transition_state_0'  onmouseover="hghl(['transition_fk_transition_state_0','lifecycle_state.transition.to_state','lifecycle_state.state.id'])" onmouseout="uhghl(['transition_fk_transition_state_0','lifecycle_state.transition.to_state','lifecycle_state.state.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,304L 732,304Q 722,304 722,295L 722,295Q 722,285 713,285L 703,285' >
+<path id='transition_fk_transition_state_0'  onmouseover="hghl(['transition_fk_transition_state_0','lcstate.transition.to_state','lcstate.state.id'])" onmouseout="uhghl(['transition_fk_transition_state_0','lcstate.transition.to_state','lcstate.state.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,304L 732,304Q 722,304 722,295L 722,295Q 722,285 713,285L 703,285' >
 	<title>&#x1F517;  Foreign Key fk_transition_state_0
 transition ref state ( to_state -&gt; id )</title>
 </path>
@@ -416,242 +344,397 @@ transition ref state ( to_state -&gt; id )</title>
 transition ref state ( to_state -&gt; id )</title></path>
 <text x='750' y='298' transform='rotate(0 750,298)' class='relName'></text>
 <!-- == Fk 'transition_fk_transition_def_version' == -->
-<path id='transition_fk_transition_def_version'  onmouseover="hghl(['transition_fk_transition_def_version','lifecycle_state.transition.def_version','lifecycle_state.def_version.id'])" onmouseout="uhghl(['transition_fk_transition_def_version','lifecycle_state.transition.def_version','lifecycle_state.def_version.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,342L 675,342Q 665,342 665,352L 665,580Q 665,589 656,589L 646,589' >
+<path id='transition_fk_transition_def_version'  onmouseover="hghl(['transition_fk_transition_def_version','lcstate.transition.def_version','lcstate.def_version.id'])" onmouseout="uhghl(['transition_fk_transition_def_version','lcstate.transition.def_version','lcstate.def_version.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,342L 656,342Q 646,342 646,352L 646,561Q 646,570 637,570L 589,570' >
 	<title>&#x1F517;  Foreign Key fk_transition_def_version
 transition ref def_version ( def_version -&gt; id )</title>
 </path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 741,342L 675,342Q 665,342 665,352L 665,580Q 665,589 656,589L 646,589' ><title>&#x1F517;  Foreign Key fk_transition_def_version
+<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 741,342L 656,342Q 646,342 646,352L 646,561Q 646,570 637,570L 589,570' ><title>&#x1F517;  Foreign Key fk_transition_def_version
 transition ref def_version ( def_version -&gt; id )</title></path>
 <text x='750' y='336' transform='rotate(0 750,336)' class='relName'></text>
 <!-- == Fk 'transition_fk_transition_events' == -->
-<path id='transition_fk_transition_events'  onmouseover="hghl(['transition_fk_transition_events','lifecycle_state.transition.event','lifecycle_state.events.id'])" onmouseout="uhghl(['transition_fk_transition_events','lifecycle_state.transition.event','lifecycle_state.events.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,361L 732,361Q 722,361 722,371L 722,485Q 722,494 732,494L 741,494' >
+<path id='transition_fk_transition_events'  onmouseover="hghl(['transition_fk_transition_events','lcstate.transition.event','lcstate.events.id'])" onmouseout="uhghl(['transition_fk_transition_events','lcstate.transition.event','lcstate.events.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,361L 732,361Q 722,361 722,371L 722,485Q 722,494 732,494L 741,494' >
 	<title>&#x1F517;  Foreign Key fk_transition_events
 transition ref events ( event -&gt; id )</title>
 </path>
 <path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 741,361L 732,361Q 722,361 722,371L 722,485Q 722,494 732,494L 741,494' ><title>&#x1F517;  Foreign Key fk_transition_events
 transition ref events ( event -&gt; id )</title></path>
 <text x='750' y='355' transform='rotate(0 750,355)' class='relName'></text>
+<!-- == Fk 'def_version_fk_def_version_definition' == -->
+<path id='def_version_fk_def_version_definition'  onmouseover="hghl(['def_version_fk_def_version_definition','lcstate.def_version.parent','lcstate.definition.id'])" onmouseout="uhghl(['def_version_fk_def_version_definition','lcstate.def_version.parent','lcstate.definition.id'])" transform='translate(10,0)' class='unhighlight' d='M 589,665L 608,665' >
+	<title>&#x1F517;  Foreign Key fk_def_version_definition
+def_version ref definition ( parent -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 589,665L 608,665' ><title>&#x1F517;  Foreign Key fk_def_version_definition
+def_version ref definition ( parent -&gt; id )</title></path>
+<text x='598' y='659' transform='rotate(0 598,659)' class='relName'></text>
 <!-- == Fk 'events_fk_events_def_version' == -->
-<path id='events_fk_events_def_version'  onmouseover="hghl(['events_fk_events_def_version','lifecycle_state.events.def_version','lifecycle_state.def_version.id'])" onmouseout="uhghl(['events_fk_events_def_version','lifecycle_state.events.def_version','lifecycle_state.def_version.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,570L 675,570Q 665,570 665,580L 665,589' >
+<path id='events_fk_events_def_version'  onmouseover="hghl(['events_fk_events_def_version','lcstate.events.def_version','lcstate.def_version.id'])" onmouseout="uhghl(['events_fk_events_def_version','lcstate.events.def_version','lcstate.def_version.id'])" transform='translate(10,0)' class='unhighlight' d='M 741,570L 627,570' >
 	<title>&#x1F517;  Foreign Key fk_events_def_version
 events ref def_version ( def_version -&gt; id )</title>
 </path>
-<path transform='translate(10,0)' marker-start='url(#OneMore)'     d='M 741,570L 675,570Q 665,570 665,580L 665,589' ><title>&#x1F517;  Foreign Key fk_events_def_version
+<path transform='translate(10,0)' marker-start='url(#OneMore)'     d='M 741,570L 627,570' ><title>&#x1F517;  Foreign Key fk_events_def_version
 events ref def_version ( def_version -&gt; id )</title></path>
 <text x='750' y='564' transform='rotate(0 750,564)' class='relName'></text>
-<!-- == Table 'ack_log' == -->
-<rect id='depict_lifecycle&#95;state&#46;ack&#95;log' class='entity' style='stroke:#FCFCF9' x='247' y='181' width='133' height='228' rx='4' ry='4' />
-<rect x='247' y='181' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_FFFF00);'/>
-<rect x='247' y='185' width='133' height='29' style='stroke-width:0;fill:url(#tbg_FFFF00);'/>
-<a xlink:href='#lifecycle_state.ack_log'><text id='depict&#45;lifecycle&#95;state&#46;ack&#95;log' x='286' y='203' class='tableHeader' style='fill:#484841;'>ack&#95;log</text><title>Table lifecycle_state.ack_log</title></a>
-  <use x='248' y='224' xlink:href='#nn'/><use x='249' y='223' xlink:href='#pk'><title>&#x1F511;  Pk pk_ack_log ( id ) </title></use><a xlink:href='#lifecycle_state.ack_log.id'><text id='lifecycle&#95;state&#46;ack&#95;log&#46;id' x='270' y='237' class='colPk'>id</text><title>&#10697;  id
-     * bigint</title></a>
-<text x='376' y='233' text-anchor='end' class='colType'>&#35;</text>  <use x='248' y='243' xlink:href='#nn'/><a xlink:href='#lifecycle_state.ack_log.ack_status'><text id='lifecycle&#95;state&#46;ack&#95;log&#46;ack&#95;status' x='270' y='256'>ack&#95;status</text><title>&#10697;  ack_status
-     * int default 1
- ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-      Flag:
-      1 = Pending
-      2 = Delivered
-      3 = Processed (Idempotent)
-      4 = Failed</title></a>
-<text x='376' y='252' text-anchor='end' class='colType'>&#35;</text>  <use x='248' y='262' xlink:href='#nn'/><a xlink:href='#lifecycle_state.ack_log.last_retry'><text id='lifecycle&#95;state&#46;ack&#95;log&#46;last&#95;retry' x='270' y='275'>last&#95;retry</text><title>&#10697;  last_retry
-     * datetime default utc_timestamp()</title></a>
-  <use x='248' y='281' xlink:href='#nn'/><a xlink:href='#lifecycle_state.ack_log.retry_count'><text id='lifecycle&#95;state&#46;ack&#95;log&#46;retry&#95;count' x='270' y='294'>retry&#95;count</text><title>&#10697;  retry_count
-     * int default 0</title></a>
-<text x='376' y='290' text-anchor='end' class='colType'>&#35;</text>  <use x='248' y='300' xlink:href='#nn'/><a xlink:href='#lifecycle_state.ack_log.created'><text id='lifecycle&#95;state&#46;ack&#95;log&#46;created' x='270' y='313'>created</text><title>&#10697;  created
-     * datetime default utc_timestamp()</title></a>
-  <use x='248' y='319' xlink:href='#nn'/><a xlink:href='#lifecycle_state.ack_log.modified'><text id='lifecycle&#95;state&#46;ack&#95;log&#46;modified' x='270' y='332'>modified</text><title>&#10697;  modified
-     * datetime default utc_timestamp()</title></a>
-  <use x='248' y='338' xlink:href='#nn'/><use x='249' y='337' xlink:href='#unq'><title>&#x1F50D;  Unq unq_ack_log_0 ( message_id ) </title></use><a xlink:href='#lifecycle_state.ack_log.message_id'><text id='lifecycle&#95;state&#46;ack&#95;log&#46;message&#95;id' x='270' y='351'>message&#95;id</text><title>&#10697;  message_id
-     * char(36) default uuid()
- ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-      Each consumer can have its own message id. When a transition happens, we can easily track what each consumer is doing with that transition.</title></a>
-<text x='376' y='347' text-anchor='end' class='colType'>c</text>  <use x='248' y='357' xlink:href='#nn'/><use x='249' y='356' xlink:href='#unq'><title>&#x1F50D;  fk_ack_log_transition_log ( transition_log ) &#x1F50D;  Unq unq_ack_log ( consumer, transition_log ) </title></use><a xlink:href='#lifecycle_state.ack_log.transition_log'><text id='lifecycle&#95;state&#46;ack&#95;log&#46;transition&#95;log' x='270' y='370' onmouseover="hghl(['ack_log_fk_ack_log_transition_log','lifecycle_state.transition_log.id'])" onmouseout="uhghl(['ack_log_fk_ack_log_transition_log','lifecycle_state.transition_log.id'])">transition&#95;log</text><title>&#10697;  transition_log
-     * bigint
- &#8599; transition_log( id )</title></a>
-<a xlink:href='#lifecycle_state.ack_log.transition_log'><use x='366' y='356' xlink:href='#fk'/><title>&#x1F517;  References transition_log ( transition_log -&gt; id ) </title></a>
-  <use x='248' y='376' xlink:href='#nn'/><use x='249' y='375' xlink:href='#unq'><title>&#x1F50D;  Unq unq_ack_log ( consumer, transition_log ) </title></use><a xlink:href='#lifecycle_state.ack_log.consumer'><text id='lifecycle&#95;state&#46;ack&#95;log&#46;consumer' x='270' y='389'>consumer</text><title>&#10697;  consumer
-     * int default 0
- ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-      consumer of this acknowledgement</title></a>
-<text x='376' y='385' text-anchor='end' class='colType'>&#35;</text>
-<!-- == Table 'transition_log' == -->
-<rect id='depict_lifecycle&#95;state&#46;transition&#95;log' class='entity' style='stroke:#FCFCF9' x='57' y='409' width='133' height='171' rx='4' ry='4' />
-<rect x='57' y='409' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_FFFF00);'/>
-<rect x='57' y='413' width='133' height='29' style='stroke-width:0;fill:url(#tbg_FFFF00);'/>
-<a xlink:href='#lifecycle_state.transition_log'><text id='depict&#45;lifecycle&#95;state&#46;transition&#95;log' x='78' y='431' class='tableHeader' style='fill:#484841;'>transition&#95;log</text><title>Table lifecycle_state.transition_log</title></a>
-  <use x='58' y='452' xlink:href='#nn'/><use x='59' y='451' xlink:href='#pk'><title>&#x1F511;  Pk pk_transition_log ( id ) </title></use><a xlink:href='#lifecycle_state.transition_log.id'><text id='lifecycle&#95;state&#46;transition&#95;log&#46;id' x='80' y='465' onmouseover="hghl(['ack_log_fk_ack_log_transition_log','lifecycle_state.ack_log.transition_log','transition_data_fk_transition_data_transition_log','lifecycle_state.transition_data.transition_log'])" onmouseout="uhghl(['ack_log_fk_ack_log_transition_log','lifecycle_state.ack_log.transition_log','transition_data_fk_transition_data_transition_log','lifecycle_state.transition_data.transition_log'])" class='colPk'>id</text><title>&#10697;  id
-     * bigint
- &#8601; ack_log( transition_log )
- &#8601; transition_data( transition_log )</title></a>
-<a xlink:href='#lifecycle_state.transition_log.id'><use x='176' y='451' xlink:href='#ref'/><title>&#x1F517;  Referred by ack_log ( transition_log -&gt; id ) 
-Referred by transition_data ( transition_log -&gt; id ) </title></a>
-  <use x='58' y='471' xlink:href='#nn'/><use x='59' y='470' xlink:href='#idx'><title>&#x1F50D;  fk_transition_log_instance ( instance_id ) </title></use><a xlink:href='#lifecycle_state.transition_log.instance_id'><text id='lifecycle&#95;state&#46;transition&#95;log&#46;instance&#95;id' x='80' y='484' onmouseover="hghl(['transition_log_fk_transition_log_instance','lifecycle_state.instance.id'])" onmouseout="uhghl(['transition_log_fk_transition_log_instance','lifecycle_state.instance.id'])">instance&#95;id</text><title>&#10697;  instance_id
-     * bigint
- &#8599; instance( id )</title></a>
-<a xlink:href='#lifecycle_state.transition_log.instance_id'><use x='176' y='470' xlink:href='#fk'/><title>&#x1F517;  References instance ( instance_id -&gt; id ) </title></a>
-  <use x='58' y='490' xlink:href='#nn'/><a xlink:href='#lifecycle_state.transition_log.from_state'><text id='lifecycle&#95;state&#46;transition&#95;log&#46;from&#95;state' x='80' y='503'>from&#95;state</text><title>&#10697;  from_state
-     * int</title></a>
-<text x='186' y='499' text-anchor='end' class='colType'>&#35;</text>  <use x='58' y='509' xlink:href='#nn'/><a xlink:href='#lifecycle_state.transition_log.to_state'><text id='lifecycle&#95;state&#46;transition&#95;log&#46;to&#95;state' x='80' y='522'>to&#95;state</text><title>&#10697;  to_state
-     * int</title></a>
-<text x='186' y='518' text-anchor='end' class='colType'>&#35;</text>  <use x='58' y='528' xlink:href='#nn'/><a xlink:href='#lifecycle_state.transition_log.event'><text id='lifecycle&#95;state&#46;transition&#95;log&#46;event' x='80' y='541'>event</text><title>&#10697;  event
-     * int</title></a>
-<text x='186' y='537' text-anchor='end' class='colType'>&#35;</text>  <use x='58' y='547' xlink:href='#nn'/><a xlink:href='#lifecycle_state.transition_log.created'><text id='lifecycle&#95;state&#46;transition&#95;log&#46;created' x='80' y='560'>created</text><title>&#10697;  created
-     * datetime default utc_timestamp()</title></a>
-
+<!-- == Fk 'definition_fk_definition_environment' == -->
+<path id='definition_fk_definition_environment'  onmouseover="hghl(['definition_fk_definition_environment','lcstate.definition.env','lcstate.environment.id'])" onmouseout="uhghl(['definition_fk_definition_environment','lcstate.definition.env','lcstate.environment.id'])" transform='translate(10,0)' class='unhighlight' d='M 760,684L 779,684' >
+	<title>&#x1F517;  Foreign Key fk_definition_environment
+definition ref environment ( env -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 760,684L 779,684' ><title>&#x1F517;  Foreign Key fk_definition_environment
+definition ref environment ( env -&gt; id )</title></path>
+<text x='769' y='678' transform='rotate(0 769,678)' class='relName'></text>
+<!-- == Fk 'transition_log_fk_transition_log_instance' == -->
+<path id='transition_log_fk_transition_log_instance'  onmouseover="hghl(['transition_log_fk_transition_log_instance','lcstate.transition_log.instance_id','lcstate.instance.id'])" onmouseout="uhghl(['transition_log_fk_transition_log_instance','lcstate.transition_log.instance_id','lcstate.instance.id'])" transform='translate(10,0)' class='unhighlight' d='M 190,475L 200,475Q 209,475 209,485L 209,523Q 209,532 219,532L 228,532' >
+	<title>&#x1F517;  Foreign Key fk_transition_log_instance
+transition_log ref instance ( instance_id -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 190,475L 200,475Q 209,475 209,485L 209,523Q 209,532 219,532L 228,532' ><title>&#x1F517;  Foreign Key fk_transition_log_instance
+transition_log ref instance ( instance_id -&gt; id )</title></path>
+<text x='199' y='469' transform='rotate(0 199,469)' class='relName'></text>
+<!-- == Fk 'state_fk_state_def_version' == -->
+<path id='state_fk_state_def_version'  onmouseover="hghl(['state_fk_state_def_version','lcstate.state.def_version','lcstate.def_version.id'])" onmouseout="uhghl(['state_fk_state_def_version','lcstate.state.def_version','lcstate.def_version.id'])" transform='translate(10,0)' class='unhighlight' d='M 627,380L 637,380Q 646,380 646,390L 646,399' >
+	<title>&#x1F517;  Foreign Key fk_state_def_version
+state ref def_version ( def_version -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#OneMore)'     d='M 627,380L 637,380Q 646,380 646,390L 646,399' ><title>&#x1F517;  Foreign Key fk_state_def_version
+state ref def_version ( def_version -&gt; id )</title></path>
+<text x='636' y='374' transform='rotate(0 636,374)' class='relName'></text>
+<!-- == Fk 'state_fk_state_category' == -->
+<path id='state_fk_state_category'  onmouseover="hghl(['state_fk_state_category','lcstate.state.category','lcstate.category.id'])" onmouseout="uhghl(['state_fk_state_category','lcstate.state.category','lcstate.category.id'])" transform='translate(10,0)' class='unhighlight' d='M 627,266L 675,266Q 684,266 684,257L 684,143Q 684,133 694,133L 703,133' >
+	<title>&#x1F517;  Foreign Key fk_state_category
+state ref category ( category -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 627,266L 675,266Q 684,266 684,257L 684,143Q 684,133 694,133L 703,133' ><title>&#x1F517;  Foreign Key fk_state_category
+state ref category ( category -&gt; id )</title></path>
+<text x='636' y='260' transform='rotate(0 636,260)' class='relName'></text>
+<!-- == Fk 'state_fk_state_events' == -->
+<path id='state_fk_state_events'  onmouseover="hghl(['state_fk_state_events','lcstate.state.timeout_event','lcstate.events.id'])" onmouseout="uhghl(['state_fk_state_events','lcstate.state.timeout_event','lcstate.events.id'])" transform='translate(10,0)' class='unhighlight' d='M 627,437L 713,437Q 722,437 722,447L 722,456' >
+	<title>&#x1F517;  Foreign Key fk_state_events
+state ref events ( timeout_event -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#ZeroMore)'   class='dotted '  d='M 627,437L 713,437Q 722,437 722,447L 722,456' ><title>&#x1F517;  Foreign Key fk_state_events
+state ref events ( timeout_event -&gt; id )</title></path>
+<text x='636' y='431' transform='rotate(0 636,431)' class='relName'></text>
+<!-- == Fk 'ack_log_fk_ack_log_transition_log' == -->
+<path id='ack_log_fk_ack_log_transition_log'  onmouseover="hghl(['ack_log_fk_ack_log_transition_log','lcstate.ack_log.transition_log','lcstate.transition_log.id'])" onmouseout="uhghl(['ack_log_fk_ack_log_transition_log','lcstate.ack_log.transition_log','lcstate.transition_log.id'])" transform='translate(10,0)' class='unhighlight' d='M 228,361L 219,361Q 209,361 209,371L 209,447Q 209,456 200,456L 190,456' >
+	<title>&#x1F517;  Foreign Key fk_ack_log_transition_log
+ack_log ref transition_log ( transition_log -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 228,361L 219,361Q 209,361 209,371L 209,447Q 209,456 200,456L 190,456' ><title>&#x1F517;  Foreign Key fk_ack_log_transition_log
+ack_log ref transition_log ( transition_log -&gt; id )</title></path>
+<text x='237' y='355' transform='rotate(0 237,355)' class='relName'></text>
+<!-- == Fk 'instance_fk_instance_def_version' == -->
+<path id='instance_fk_instance_def_version'  onmouseover="hghl(['instance_fk_instance_def_version','lcstate.instance.def_version','lcstate.def_version.id'])" onmouseout="uhghl(['instance_fk_instance_def_version','lcstate.instance.def_version','lcstate.def_version.id'])" transform='translate(10,0)' class='unhighlight' d='M 380,570L 456,570' >
+	<title>&#x1F517;  Foreign Key fk_instance_def_version
+instance ref def_version ( def_version -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 380,570L 456,570' ><title>&#x1F517;  Foreign Key fk_instance_def_version
+instance ref def_version ( def_version -&gt; id )</title></path>
+<text x='389' y='564' transform='rotate(0 389,564)' class='relName'></text>
+<!-- == Fk 'instance_fk_instance_state' == -->
+<path id='instance_fk_instance_state'  onmouseover="hghl(['instance_fk_instance_state','lcstate.instance.current_state','lcstate.state.id'])" onmouseout="uhghl(['instance_fk_instance_state','lcstate.instance.current_state','lcstate.state.id'])" transform='translate(10,0)' class='unhighlight' d='M 380,475L 428,475Q 437,475 437,466L 437,295Q 437,285 447,285L 456,285' >
+	<title>&#x1F517;  Foreign Key fk_instance_state
+instance ref state ( current_state -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#OneMore)' marker-end='url(#Arrow)'    d='M 380,475L 428,475Q 437,475 437,466L 437,295Q 437,285 447,285L 456,285' ><title>&#x1F517;  Foreign Key fk_instance_state
+instance ref state ( current_state -&gt; id )</title></path>
+<text x='389' y='469' transform='rotate(0 389,469)' class='relName'></text>
+<!-- == Fk 'instance_fk_instance_events' == -->
+<path id='instance_fk_instance_events'  onmouseover="hghl(['instance_fk_instance_events','lcstate.instance.last_event','lcstate.events.id'])" onmouseout="uhghl(['instance_fk_instance_events','lcstate.instance.last_event','lcstate.events.id'])" transform='translate(10,0)' class='unhighlight' d='M 380,494L 741,494' >
+	<title>&#x1F517;  Foreign Key fk_instance_events
+instance ref events ( last_event -&gt; id )</title>
+</path>
+<path transform='translate(10,0)' marker-start='url(#ZeroMore)'   class='dotted '  d='M 380,494L 741,494' ><title>&#x1F517;  Foreign Key fk_instance_events
+instance ref events ( last_event -&gt; id )</title></path>
+<text x='389' y='488' transform='rotate(0 389,488)' class='relName'></text>
 <!-- == Table 'transition_data' == -->
-<rect id='depict_lifecycle&#95;state&#46;transition&#95;data' class='entity' style='stroke:#FCFCF9' x='57' y='257' width='133' height='114' rx='4' ry='4' />
+<rect id='depict_lcstate&#46;transition&#95;data' class='entity' style='stroke:#FCFCF9' x='57' y='257' width='133' height='114' rx='4' ry='4' />
 <rect x='57' y='257' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_FFFF00);'/>
 <rect x='57' y='261' width='133' height='29' style='stroke-width:0;fill:url(#tbg_FFFF00);'/>
-<a xlink:href='#lifecycle_state.transition_data'><text id='depict&#45;lifecycle&#95;state&#46;transition&#95;data' x='75' y='279' class='tableHeader' style='fill:#484841;'>transition&#95;data</text><title>Table lifecycle_state.transition_data</title></a>
-  <use x='58' y='300' xlink:href='#nn'/><use x='59' y='299' xlink:href='#pk'><title>&#x1F511;  Pk pk_transition_data ( transition_log ) </title></use><a xlink:href='#lifecycle_state.transition_data.transition_log'><text id='lifecycle&#95;state&#46;transition&#95;data&#46;transition&#95;log' x='80' y='313' onmouseover="hghl(['transition_data_fk_transition_data_transition_log','lifecycle_state.transition_log.id'])" onmouseout="uhghl(['transition_data_fk_transition_data_transition_log','lifecycle_state.transition_log.id'])" class='colPk'>transition&#95;log</text><title>&#10697;  transition_log
+<a xlink:href='#lcstate.transition_data'><text id='depict&#45;lcstate&#46;transition&#95;data' x='75' y='279' class='tableHeader' style='fill:#484841;'>transition&#95;data</text><title>Table lcstate.transition_data</title></a>
+  <use x='58' y='300' xlink:href='#nn'/><use x='59' y='299' xlink:href='#pk'><title>&#x1F511;  Pk pk_transition_data ( transition_log ) </title></use><a xlink:href='#lcstate.transition_data.transition_log'><text id='lcstate&#46;transition&#95;data&#46;transition&#95;log' x='80' y='313' onmouseover="hghl(['transition_data_fk_transition_data_transition_log','lcstate.transition_log.id'])" onmouseout="uhghl(['transition_data_fk_transition_data_transition_log','lcstate.transition_log.id'])" class='colPk'>transition&#95;log</text><title>&#10697;  transition_log
      * bigint
  &#8599; transition_log( id )</title></a>
-<a xlink:href='#lifecycle_state.transition_data.transition_log'><use x='176' y='299' xlink:href='#fk'/><title>&#x1F517;  References transition_log ( transition_log -&gt; id ) </title></a>
-  <a xlink:href='#lifecycle_state.transition_data.actor'><text id='lifecycle&#95;state&#46;transition&#95;data&#46;actor' x='80' y='332'>actor</text><title>&#10697;  actor
+<a xlink:href='#lcstate.transition_data.transition_log'><use x='176' y='299' xlink:href='#fk'/><title>&#x1F517;  References transition_log ( transition_log -&gt; id ) </title></a>
+  <a xlink:href='#lcstate.transition_data.actor'><text id='lcstate&#46;transition&#95;data&#46;actor' x='80' y='332'>actor</text><title>&#10697;  actor
      varchar(255)</title></a>
-<text x='186' y='328' text-anchor='end' class='colType'>t</text>  <a xlink:href='#lifecycle_state.transition_data.metadata'><text id='lifecycle&#95;state&#46;transition&#95;data&#46;metadata' x='80' y='351'>metadata</text><title>&#10697;  metadata
+<text x='186' y='328' text-anchor='end' class='colType'>t</text>  <a xlink:href='#lcstate.transition_data.metadata'><text id='lcstate&#46;transition&#95;data&#46;metadata' x='80' y='351'>metadata</text><title>&#10697;  metadata
      longtext
  ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
       Could be any data that was the result of this transition (which could be later used as a reference or  input for other items)</title></a>
 <text x='186' y='347' text-anchor='end' class='colType'>t</text>
-<!-- == Table 'definition' == -->
-<rect id='depict_lifecycle&#95;state&#46;definition' class='entity' style='stroke:#F9F9FC' x='741' y='618' width='133' height='190' rx='4' ry='4' />
-<rect x='741' y='618' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
-<rect x='741' y='622' width='133' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
-<a xlink:href='#lifecycle_state.definition'><text id='depict&#45;lifecycle&#95;state&#46;definition' x='774' y='640' class='tableHeader' style='fill:#414148;'>definition</text><title>Table lifecycle_state.definition</title></a>
-  <use x='742' y='661' xlink:href='#nn'/><use x='743' y='660' xlink:href='#pk'><title>&#x1F511;  Pk pk_definition ( id ) </title></use><a xlink:href='#lifecycle_state.definition.id'><text id='lifecycle&#95;state&#46;definition&#46;id' x='764' y='674' onmouseover="hghl(['def_version_fk_def_version_definition','lifecycle_state.def_version.parent'])" onmouseout="uhghl(['def_version_fk_def_version_definition','lifecycle_state.def_version.parent'])" class='colPk'>id</text><title>&#10697;  id
+<!-- == Table 'category' == -->
+<rect id='depict_lcstate&#46;category' class='entity' style='stroke:#F9F9FC' x='722' y='86' width='133' height='114' rx='4' ry='4' />
+<rect x='722' y='86' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
+<rect x='722' y='90' width='133' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
+<a xlink:href='#lcstate.category'><text id='depict&#45;lcstate&#46;category' x='758' y='108' class='tableHeader' style='fill:#414148;'>category</text><title>Table lcstate.category</title></a>
+  <use x='723' y='129' xlink:href='#nn'/><use x='724' y='128' xlink:href='#pk'><title>&#x1F511;  Pk pk_tbl ( id ) </title></use><a xlink:href='#lcstate.category.id'><text id='lcstate&#46;category&#46;id' x='745' y='142' onmouseover="hghl(['state_fk_state_category','lcstate.state.category'])" onmouseout="uhghl(['state_fk_state_category','lcstate.state.category'])" class='colPk'>id</text><title>&#10697;  id
      * int
- &#8601; def_version( parent )</title></a>
-<a xlink:href='#lifecycle_state.definition.id'><use x='860' y='660' xlink:href='#ref'/><title>&#x1F517;  Referred by def_version ( parent -&gt; id ) </title></a>
-  <use x='742' y='680' xlink:href='#nn'/><use x='743' y='679' xlink:href='#unq'><title>&#x1F50D;  Unq unq_definition_0 ( guid ) </title></use><a xlink:href='#lifecycle_state.definition.guid'><text id='lifecycle&#95;state&#46;definition&#46;guid' x='764' y='693'>guid</text><title>&#10697;  guid
-     * char(36) default uuid()</title></a>
-<text x='870' y='689' text-anchor='end' class='colType'>c</text>  <use x='742' y='699' xlink:href='#nn'/><a xlink:href='#lifecycle_state.definition.display_name'><text id='lifecycle&#95;state&#46;definition&#46;display&#95;name' x='764' y='712'>display&#95;name</text><title>&#10697;  display_name
-     * varchar(200)</title></a>
-<text x='870' y='708' text-anchor='end' class='colType'>t</text>  <use x='743' y='717' xlink:href='#unq'><title>&#x1F50D;  Unq unq_definition ( env, name ) </title></use><a xlink:href='#lifecycle_state.definition.name'><text id='lifecycle&#95;state&#46;definition&#46;name' x='764' y='731'>name</text><title>&#10697;  name
-     varchar(200)</title></a>
-<text x='870' y='727' text-anchor='end' class='colType'>t</text>  <a xlink:href='#lifecycle_state.definition.description'><text id='lifecycle&#95;state&#46;definition&#46;description' x='764' y='750'>description</text><title>&#10697;  description
-     text</title></a>
-<text x='870' y='746' text-anchor='end' class='colType'>t</text>  <use x='742' y='756' xlink:href='#nn'/><a xlink:href='#lifecycle_state.definition.created'><text id='lifecycle&#95;state&#46;definition&#46;created' x='764' y='769'>created</text><title>&#10697;  created
-     * datetime default utc_timestamp()</title></a>
-  <use x='742' y='775' xlink:href='#nn'/><use x='743' y='774' xlink:href='#unq'><title>&#x1F50D;  Unq unq_definition ( env, name ) </title></use><a xlink:href='#lifecycle_state.definition.env'><text id='lifecycle&#95;state&#46;definition&#46;env' x='764' y='788'>env</text><title>&#10697;  env
-     * int default 0
- ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
-      environment code
-      COMMENT &apos;0=Dev,1=Test,2=UAT,3=Prod&apos;</title></a>
-<text x='870' y='784' text-anchor='end' class='colType'>&#35;</text>
+ &#8601; state( category )</title></a>
+<a xlink:href='#lcstate.category.id'><use x='841' y='128' xlink:href='#ref'/><title>&#x1F517;  Referred by state ( category -&gt; id ) </title></a>
+  <use x='723' y='148' xlink:href='#nn'/><a xlink:href='#lcstate.category.display_name'><text id='lcstate&#46;category&#46;display&#95;name' x='745' y='161'>display&#95;name</text><title>&#10697;  display_name
+     * varchar(120)</title></a>
+<text x='851' y='157' text-anchor='end' class='colType'>t</text>  <use x='724' y='166' xlink:href='#unq'><title>&#x1F50D;  Unq unq_category ( name ) </title></use><a xlink:href='#lcstate.category.name'><text id='lcstate&#46;category&#46;name' x='745' y='180'>name</text><title>&#10697;  name
+     varchar(120)</title></a>
+<text x='851' y='176' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'transition' == -->
+<rect id='depict_lcstate&#46;transition' class='entity' style='stroke:#F9F9FC' x='760' y='219' width='133' height='171' rx='4' ry='4' />
+<rect x='760' y='219' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
+<rect x='760' y='223' width='133' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
+<a xlink:href='#lcstate.transition'><text id='depict&#45;lcstate&#46;transition' x='794' y='241' class='tableHeader' style='fill:#414148;'>transition</text><title>Table lcstate.transition</title></a>
+  <use x='761' y='262' xlink:href='#nn'/><use x='762' y='261' xlink:href='#pk'><title>&#x1F511;  Pk pk_transition ( id ) </title></use><a xlink:href='#lcstate.transition.id'><text id='lcstate&#46;transition&#46;id' x='783' y='275' class='colPk'>id</text><title>&#10697;  id
+     * int</title></a>
+<text x='889' y='271' text-anchor='end' class='colType'>&#35;</text>  <use x='761' y='281' xlink:href='#nn'/><use x='762' y='280' xlink:href='#unq'><title>&#x1F50D;  Unq unq_transition ( def_version, from_state, to_state, event ) &#x1F50D;  fk_transition_state ( from_state ) </title></use><a xlink:href='#lcstate.transition.from_state'><text id='lcstate&#46;transition&#46;from&#95;state' x='783' y='294' onmouseover="hghl(['transition_fk_transition_state','lcstate.state.id'])" onmouseout="uhghl(['transition_fk_transition_state','lcstate.state.id'])">from&#95;state</text><title>&#10697;  from_state
+     * int
+ &#8599; state( id )</title></a>
+<a xlink:href='#lcstate.transition.from_state'><use x='879' y='280' xlink:href='#fk'/><title>&#x1F517;  References state ( from_state -&gt; id ) </title></a>
+  <use x='761' y='300' xlink:href='#nn'/><use x='762' y='299' xlink:href='#unq'><title>&#x1F50D;  Unq unq_transition ( def_version, from_state, to_state, event ) &#x1F50D;  fk_transition_state_0 ( to_state ) </title></use><a xlink:href='#lcstate.transition.to_state'><text id='lcstate&#46;transition&#46;to&#95;state' x='783' y='313' onmouseover="hghl(['transition_fk_transition_state_0','lcstate.state.id'])" onmouseout="uhghl(['transition_fk_transition_state_0','lcstate.state.id'])">to&#95;state</text><title>&#10697;  to_state
+     * int
+ &#8599; state( id )</title></a>
+<a xlink:href='#lcstate.transition.to_state'><use x='879' y='299' xlink:href='#fk'/><title>&#x1F517;  References state ( to_state -&gt; id ) </title></a>
+  <use x='761' y='319' xlink:href='#nn'/><a xlink:href='#lcstate.transition.created'><text id='lcstate&#46;transition&#46;created' x='783' y='332'>created</text><title>&#10697;  created
+     * datetime default CURRENT_TIMESTAMP</title></a>
+  <use x='761' y='338' xlink:href='#nn'/><use x='762' y='337' xlink:href='#unq'><title>&#x1F50D;  Unq unq_transition ( def_version, from_state, to_state, event ) </title></use><a xlink:href='#lcstate.transition.def_version'><text id='lcstate&#46;transition&#46;def&#95;version' x='783' y='351' onmouseover="hghl(['transition_fk_transition_def_version','lcstate.def_version.id'])" onmouseout="uhghl(['transition_fk_transition_def_version','lcstate.def_version.id'])">def&#95;version</text><title>&#10697;  def_version
+     * int
+ &#8599; def_version( id )</title></a>
+<a xlink:href='#lcstate.transition.def_version'><use x='879' y='337' xlink:href='#fk'/><title>&#x1F517;  References def_version ( def_version -&gt; id ) </title></a>
+  <use x='761' y='357' xlink:href='#nn'/><use x='762' y='356' xlink:href='#unq'><title>&#x1F50D;  Unq unq_transition ( def_version, from_state, to_state, event ) &#x1F50D;  fk_transition_events ( event ) </title></use><a xlink:href='#lcstate.transition.event'><text id='lcstate&#46;transition&#46;event' x='783' y='370' onmouseover="hghl(['transition_fk_transition_events','lcstate.events.id'])" onmouseout="uhghl(['transition_fk_transition_events','lcstate.events.id'])">event</text><title>&#10697;  event
+     * int
+ &#8599; events( id )</title></a>
+<a xlink:href='#lcstate.transition.event'><use x='879' y='356' xlink:href='#fk'/><title>&#x1F517;  References events ( event -&gt; id ) </title></a>
+
 <!-- == Table 'def_version' == -->
-<rect id='depict_lifecycle&#95;state&#46;def&#95;version' class='entity' style='stroke:#F9F9FC' x='532' y='542' width='114' height='190' rx='4' ry='4' />
-<rect x='532' y='542' width='114' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
-<rect x='532' y='546' width='114' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
-<a xlink:href='#lifecycle_state.def_version'><text id='depict&#45;lifecycle&#95;state&#46;def&#95;version' x='550' y='564' class='tableHeader' style='fill:#414148;'>def&#95;version</text><title>Table lifecycle_state.def_version</title></a>
-  <use x='533' y='585' xlink:href='#nn'/><use x='534' y='584' xlink:href='#pk'><title>&#x1F511;  Pk pk_def_version ( id ) </title></use><a xlink:href='#lifecycle_state.def_version.id'><text id='lifecycle&#95;state&#46;def&#95;version&#46;id' x='555' y='598' onmouseover="hghl(['events_fk_events_def_version','lifecycle_state.events.def_version','instance_fk_instance_def_version','lifecycle_state.instance.def_version','state_fk_state_def_version','lifecycle_state.state.def_version','transition_fk_transition_def_version','lifecycle_state.transition.def_version'])" onmouseout="uhghl(['events_fk_events_def_version','lifecycle_state.events.def_version','instance_fk_instance_def_version','lifecycle_state.instance.def_version','state_fk_state_def_version','lifecycle_state.state.def_version','transition_fk_transition_def_version','lifecycle_state.transition.def_version'])" class='colPk'>id</text><title>&#10697;  id
+<rect id='depict_lcstate&#46;def&#95;version' class='entity' style='stroke:#F9F9FC' x='475' y='523' width='114' height='190' rx='4' ry='4' />
+<rect x='475' y='523' width='114' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
+<rect x='475' y='527' width='114' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
+<a xlink:href='#lcstate.def_version'><text id='depict&#45;lcstate&#46;def&#95;version' x='493' y='545' class='tableHeader' style='fill:#414148;'>def&#95;version</text><title>Table lcstate.def_version</title></a>
+  <use x='476' y='566' xlink:href='#nn'/><use x='477' y='565' xlink:href='#pk'><title>&#x1F511;  Pk pk_def_version ( id ) </title></use><a xlink:href='#lcstate.def_version.id'><text id='lcstate&#46;def&#95;version&#46;id' x='498' y='579' onmouseover="hghl(['events_fk_events_def_version','lcstate.events.def_version','instance_fk_instance_def_version','lcstate.instance.def_version','state_fk_state_def_version','lcstate.state.def_version','transition_fk_transition_def_version','lcstate.transition.def_version'])" onmouseout="uhghl(['events_fk_events_def_version','lcstate.events.def_version','instance_fk_instance_def_version','lcstate.instance.def_version','state_fk_state_def_version','lcstate.state.def_version','transition_fk_transition_def_version','lcstate.transition.def_version'])" class='colPk'>id</text><title>&#10697;  id
      * int
  &#8601; events( def_version )
  &#8601; instance( def_version )
  &#8601; state( def_version )
  &#8601; transition( def_version )</title></a>
-<a xlink:href='#lifecycle_state.def_version.id'><use x='632' y='584' xlink:href='#ref'/><title>&#x1F517;  Referred by events ( def_version -&gt; id ) 
+<a xlink:href='#lcstate.def_version.id'><use x='575' y='565' xlink:href='#ref'/><title>&#x1F517;  Referred by events ( def_version -&gt; id ) 
 Referred by instance ( def_version -&gt; id ) 
 Referred by state ( def_version -&gt; id ) 
 Referred by transition ( def_version -&gt; id ) </title></a>
-  <use x='533' y='604' xlink:href='#nn'/><use x='534' y='603' xlink:href='#unq'><title>&#x1F50D;  Unq unq_def_version_0 ( guid ) </title></use><a xlink:href='#lifecycle_state.def_version.guid'><text id='lifecycle&#95;state&#46;def&#95;version&#46;guid' x='555' y='617'>guid</text><title>&#10697;  guid
+  <use x='476' y='585' xlink:href='#nn'/><use x='477' y='584' xlink:href='#unq'><title>&#x1F50D;  Unq unq_def_version_0 ( guid ) </title></use><a xlink:href='#lcstate.def_version.guid'><text id='lcstate&#46;def&#95;version&#46;guid' x='498' y='598'>guid</text><title>&#10697;  guid
      * char(36) default uuid()</title></a>
-<text x='642' y='613' text-anchor='end' class='colType'>c</text>  <use x='533' y='623' xlink:href='#nn'/><use x='534' y='622' xlink:href='#unq'><title>&#x1F50D;  Unq unq_def_version ( parent, version ) </title></use><a xlink:href='#lifecycle_state.def_version.version'><text id='lifecycle&#95;state&#46;def&#95;version&#46;version' x='555' y='636'>version</text><title>&#10697;  version
+<text x='585' y='594' text-anchor='end' class='colType'>c</text>  <use x='476' y='604' xlink:href='#nn'/><use x='477' y='603' xlink:href='#unq'><title>&#x1F50D;  Unq unq_def_version ( parent, version ) </title></use><a xlink:href='#lcstate.def_version.version'><text id='lcstate&#46;def&#95;version&#46;version' x='498' y='617'>version</text><title>&#10697;  version
      * int default 1</title></a>
-<text x='642' y='632' text-anchor='end' class='colType'>&#35;</text>  <use x='533' y='642' xlink:href='#nn'/><a xlink:href='#lifecycle_state.def_version.created'><text id='lifecycle&#95;state&#46;def&#95;version&#46;created' x='555' y='655'>created</text><title>&#10697;  created
-     * datetime default utc_timestamp()</title></a>
-  <use x='533' y='661' xlink:href='#nn'/><a xlink:href='#lifecycle_state.def_version.modified'><text id='lifecycle&#95;state&#46;def&#95;version&#46;modified' x='555' y='674'>modified</text><title>&#10697;  modified
-     * datetime default utc_timestamp()</title></a>
-  <use x='533' y='680' xlink:href='#nn'/><use x='534' y='679' xlink:href='#unq'><title>&#x1F50D;  Unq unq_def_version ( parent, version ) &#x1F50D;  fk_def_version_definition ( parent ) </title></use><a xlink:href='#lifecycle_state.def_version.parent'><text id='lifecycle&#95;state&#46;def&#95;version&#46;parent' x='555' y='693' onmouseover="hghl(['def_version_fk_def_version_definition','lifecycle_state.definition.id'])" onmouseout="uhghl(['def_version_fk_def_version_definition','lifecycle_state.definition.id'])">parent</text><title>&#10697;  parent
+<text x='585' y='613' text-anchor='end' class='colType'>&#35;</text>  <use x='476' y='623' xlink:href='#nn'/><a xlink:href='#lcstate.def_version.created'><text id='lcstate&#46;def&#95;version&#46;created' x='498' y='636'>created</text><title>&#10697;  created
+     * datetime default CURRENT_TIMESTAMP</title></a>
+  <use x='476' y='642' xlink:href='#nn'/><a xlink:href='#lcstate.def_version.modified'><text id='lcstate&#46;def&#95;version&#46;modified' x='498' y='655'>modified</text><title>&#10697;  modified
+     * datetime default CURRENT_TIMESTAMP</title></a>
+  <use x='476' y='661' xlink:href='#nn'/><use x='477' y='660' xlink:href='#unq'><title>&#x1F50D;  Unq unq_def_version ( parent, version ) &#x1F50D;  fk_def_version_definition ( parent ) </title></use><a xlink:href='#lcstate.def_version.parent'><text id='lcstate&#46;def&#95;version&#46;parent' x='498' y='674' onmouseover="hghl(['def_version_fk_def_version_definition','lcstate.definition.id'])" onmouseout="uhghl(['def_version_fk_def_version_definition','lcstate.definition.id'])">parent</text><title>&#10697;  parent
      * int
  &#8599; definition( id )</title></a>
-<a xlink:href='#lifecycle_state.def_version.parent'><use x='632' y='679' xlink:href='#fk'/><title>&#x1F517;  References definition ( parent -&gt; id ) </title></a>
-  <use x='533' y='699' xlink:href='#nn'/><a xlink:href='#lifecycle_state.def_version.data'><text id='lifecycle&#95;state&#46;def&#95;version&#46;data' x='555' y='712'>data</text><title>&#10697;  data
+<a xlink:href='#lcstate.def_version.parent'><use x='575' y='660' xlink:href='#fk'/><title>&#x1F517;  References definition ( parent -&gt; id ) </title></a>
+  <use x='476' y='680' xlink:href='#nn'/><a xlink:href='#lcstate.def_version.data'><text id='lcstate&#46;def&#95;version&#46;data' x='498' y='693'>data</text><title>&#10697;  data
      * longtext</title></a>
-<text x='642' y='708' text-anchor='end' class='colType'>t</text>
-<!-- == Table 'category' == -->
-<rect id='depict_lifecycle&#95;state&#46;category' class='entity' style='stroke:#F9F9FC' x='722' y='86' width='133' height='114' rx='4' ry='4' />
-<rect x='722' y='86' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
-<rect x='722' y='90' width='133' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
-<a xlink:href='#lifecycle_state.category'><text id='depict&#45;lifecycle&#95;state&#46;category' x='758' y='108' class='tableHeader' style='fill:#414148;'>category</text><title>Table lifecycle_state.category</title></a>
-  <use x='723' y='129' xlink:href='#nn'/><use x='724' y='128' xlink:href='#pk'><title>&#x1F511;  Pk pk_tbl ( id ) </title></use><a xlink:href='#lifecycle_state.category.id'><text id='lifecycle&#95;state&#46;category&#46;id' x='745' y='142' onmouseover="hghl(['state_fk_state_category','lifecycle_state.state.category'])" onmouseout="uhghl(['state_fk_state_category','lifecycle_state.state.category'])" class='colPk'>id</text><title>&#10697;  id
+<text x='585' y='689' text-anchor='end' class='colType'>t</text>
+<!-- == Table 'events' == -->
+<rect id='depict_lcstate&#46;events' class='entity' style='stroke:#F9F9FC' x='760' y='447' width='133' height='152' rx='4' ry='4' />
+<rect x='760' y='447' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
+<rect x='760' y='451' width='133' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
+<a xlink:href='#lcstate.events'><text id='depict&#45;lcstate&#46;events' x='802' y='469' class='tableHeader' style='fill:#414148;'>events</text><title>Table lcstate.events</title></a>
+  <use x='761' y='490' xlink:href='#nn'/><use x='762' y='489' xlink:href='#pk'><title>&#x1F511;  Pk pk_events ( id ) </title></use><a xlink:href='#lcstate.events.id'><text id='lcstate&#46;events&#46;id' x='783' y='503' onmouseover="hghl(['instance_fk_instance_events','lcstate.instance.last_event','state_fk_state_events','lcstate.state.timeout_event','transition_fk_transition_events','lcstate.transition.event'])" onmouseout="uhghl(['instance_fk_instance_events','lcstate.instance.last_event','state_fk_state_events','lcstate.state.timeout_event','transition_fk_transition_events','lcstate.transition.event'])" class='colPk'>id</text><title>&#10697;  id
      * int
- &#8601; state( category )</title></a>
-<a xlink:href='#lifecycle_state.category.id'><use x='841' y='128' xlink:href='#ref'/><title>&#x1F517;  Referred by state ( category -&gt; id ) </title></a>
-  <use x='723' y='148' xlink:href='#nn'/><a xlink:href='#lifecycle_state.category.display_name'><text id='lifecycle&#95;state&#46;category&#46;display&#95;name' x='745' y='161'>display&#95;name</text><title>&#10697;  display_name
+ &#8601; instance( last_event )
+ &#8601; state( timeout_event )
+ &#8601; transition( event )</title></a>
+<a xlink:href='#lcstate.events.id'><use x='879' y='489' xlink:href='#ref'/><title>&#x1F517;  Referred by instance ( last_event -&gt; id ) 
+Referred by state ( timeout_event -&gt; id ) 
+Referred by transition ( event -&gt; id ) </title></a>
+  <use x='761' y='509' xlink:href='#nn'/><a xlink:href='#lcstate.events.display_name'><text id='lcstate&#46;events&#46;display&#95;name' x='783' y='522'>display&#95;name</text><title>&#10697;  display_name
      * varchar(120)</title></a>
-<text x='851' y='157' text-anchor='end' class='colType'>t</text>  <use x='724' y='166' xlink:href='#unq'><title>&#x1F50D;  Unq unq_category ( name ) </title></use><a xlink:href='#lifecycle_state.category.name'><text id='lifecycle&#95;state&#46;category&#46;name' x='745' y='180'>name</text><title>&#10697;  name
+<text x='889' y='518' text-anchor='end' class='colType'>t</text>  <use x='761' y='528' xlink:href='#nn'/><use x='762' y='527' xlink:href='#unq'><title>&#x1F50D;  Unq unq_events ( def_version, code, name ) &#x1F50D;  Unq unq_events_0 ( def_version, code ) </title></use><a xlink:href='#lcstate.events.code'><text id='lcstate&#46;events&#46;code' x='783' y='541'>code</text><title>&#10697;  code
+     * int</title></a>
+<text x='889' y='537' text-anchor='end' class='colType'>&#35;</text>  <use x='762' y='546' xlink:href='#unq'><title>&#x1F50D;  Unq unq_events ( def_version, code, name ) </title></use><a xlink:href='#lcstate.events.name'><text id='lcstate&#46;events&#46;name' x='783' y='560'>name</text><title>&#10697;  name
      varchar(120)</title></a>
-<text x='851' y='176' text-anchor='end' class='colType'>t</text>
+<text x='889' y='556' text-anchor='end' class='colType'>t</text>  <use x='761' y='566' xlink:href='#nn'/><use x='762' y='565' xlink:href='#unq'><title>&#x1F50D;  Unq unq_events ( def_version, code, name ) &#x1F50D;  Unq unq_events_0 ( def_version, code ) </title></use><a xlink:href='#lcstate.events.def_version'><text id='lcstate&#46;events&#46;def&#95;version' x='783' y='579' onmouseover="hghl(['events_fk_events_def_version','lcstate.def_version.id'])" onmouseout="uhghl(['events_fk_events_def_version','lcstate.def_version.id'])">def&#95;version</text><title>&#10697;  def_version
+     * int
+ &#8599; def_version( id )</title></a>
+<a xlink:href='#lcstate.events.def_version'><use x='879' y='565' xlink:href='#fk'/><title>&#x1F517;  References def_version ( def_version -&gt; id ) </title></a>
+
+<!-- == Table 'definition' == -->
+<rect id='depict_lcstate&#46;definition' class='entity' style='stroke:#F9F9FC' x='627' y='618' width='133' height='190' rx='4' ry='4' />
+<rect x='627' y='618' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
+<rect x='627' y='622' width='133' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
+<a xlink:href='#lcstate.definition'><text id='depict&#45;lcstate&#46;definition' x='660' y='640' class='tableHeader' style='fill:#414148;'>definition</text><title>Table lcstate.definition</title></a>
+  <use x='628' y='661' xlink:href='#nn'/><use x='629' y='660' xlink:href='#pk'><title>&#x1F511;  Pk pk_definition ( id ) </title></use><a xlink:href='#lcstate.definition.id'><text id='lcstate&#46;definition&#46;id' x='650' y='674' onmouseover="hghl(['def_version_fk_def_version_definition','lcstate.def_version.parent'])" onmouseout="uhghl(['def_version_fk_def_version_definition','lcstate.def_version.parent'])" class='colPk'>id</text><title>&#10697;  id
+     * int
+ &#8601; def_version( parent )
+ ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+      it should be a code provided by the user.</title></a>
+<a xlink:href='#lcstate.definition.id'><use x='746' y='660' xlink:href='#ref'/><title>&#x1F517;  Referred by def_version ( parent -&gt; id ) </title></a>
+  <use x='628' y='680' xlink:href='#nn'/><use x='629' y='679' xlink:href='#unq'><title>&#x1F50D;  Unq unq_definition ( env, name ) </title></use><a xlink:href='#lcstate.definition.env'><text id='lcstate&#46;definition&#46;env' x='650' y='693' onmouseover="hghl(['definition_fk_definition_environment','lcstate.environment.id'])" onmouseout="uhghl(['definition_fk_definition_environment','lcstate.environment.id'])">env</text><title>&#10697;  env
+     * int default 0
+ &#8599; environment( id )</title></a>
+<a xlink:href='#lcstate.definition.env'><use x='746' y='679' xlink:href='#fk'/><title>&#x1F517;  References environment ( env -&gt; id ) </title></a>
+  <use x='628' y='699' xlink:href='#nn'/><use x='629' y='698' xlink:href='#unq'><title>&#x1F50D;  Unq unq_definition_0 ( guid ) </title></use><a xlink:href='#lcstate.definition.guid'><text id='lcstate&#46;definition&#46;guid' x='650' y='712'>guid</text><title>&#10697;  guid
+     * char(36) default uuid()</title></a>
+<text x='756' y='708' text-anchor='end' class='colType'>c</text>  <use x='628' y='718' xlink:href='#nn'/><a xlink:href='#lcstate.definition.display_name'><text id='lcstate&#46;definition&#46;display&#95;name' x='650' y='731'>display&#95;name</text><title>&#10697;  display_name
+     * varchar(200)</title></a>
+<text x='756' y='727' text-anchor='end' class='colType'>t</text>  <use x='629' y='736' xlink:href='#unq'><title>&#x1F50D;  Unq unq_definition ( env, name ) </title></use><a xlink:href='#lcstate.definition.name'><text id='lcstate&#46;definition&#46;name' x='650' y='750'>name</text><title>&#10697;  name
+     varchar(200)</title></a>
+<text x='756' y='746' text-anchor='end' class='colType'>t</text>  <a xlink:href='#lcstate.definition.description'><text id='lcstate&#46;definition&#46;description' x='650' y='769'>description</text><title>&#10697;  description
+     text</title></a>
+<text x='756' y='765' text-anchor='end' class='colType'>t</text>  <use x='628' y='775' xlink:href='#nn'/><a xlink:href='#lcstate.definition.created'><text id='lcstate&#46;definition&#46;created' x='650' y='788'>created</text><title>&#10697;  created
+     * datetime default CURRENT_TIMESTAMP</title></a>
+
+<!-- == Table 'environment' == -->
+<rect id='depict_lcstate&#46;environment' class='entity' style='stroke:#F9F9FC' x='798' y='637' width='133' height='133' rx='4' ry='4' />
+<rect x='798' y='637' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
+<rect x='798' y='641' width='133' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
+<a xlink:href='#lcstate.environment'><text id='depict&#45;lcstate&#46;environment' x='822' y='659' class='tableHeader' style='fill:#414148;'>environment</text><title>Table lcstate.environment
+ ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+      environment code
+      //Doesnt&apos; need to be like dev/prod/test.. It can be an work-group environmetn as well..
+      
+      //like preq-app (is one environment), so all preq-app (wherever it runs, local, production etc) will be able to read definitions.
+      
+      //we can even extend it as , preq-app-dev, preq-app-prod etc.</title></a>
+  <use x='799' y='680' xlink:href='#nn'/><use x='800' y='679' xlink:href='#pk'><title>&#x1F511;  Pk pk_environment ( id ) </title></use><a xlink:href='#lcstate.environment.id'><text id='lcstate&#46;environment&#46;id' x='821' y='693' onmouseover="hghl(['definition_fk_definition_environment','lcstate.definition.env'])" onmouseout="uhghl(['definition_fk_definition_environment','lcstate.definition.env'])" class='colPk'>id</text><title>&#10697;  id
+     * int
+ &#8601; definition( env )</title></a>
+<a xlink:href='#lcstate.environment.id'><use x='917' y='679' xlink:href='#ref'/><title>&#x1F517;  Referred by definition ( env -&gt; id ) </title></a>
+  <use x='799' y='699' xlink:href='#nn'/><a xlink:href='#lcstate.environment.display_name'><text id='lcstate&#46;environment&#46;display&#95;name' x='821' y='712'>display&#95;name</text><title>&#10697;  display_name
+     * varchar(120)</title></a>
+<text x='927' y='708' text-anchor='end' class='colType'>t</text>  <use x='800' y='717' xlink:href='#unq'><title>&#x1F50D;  Unq unq_environment_0 ( name ) </title></use><a xlink:href='#lcstate.environment.name'><text id='lcstate&#46;environment&#46;name' x='821' y='731'>name</text><title>&#10697;  name
+     varchar(120)</title></a>
+<text x='927' y='727' text-anchor='end' class='colType'>t</text>  <use x='799' y='737' xlink:href='#nn'/><use x='800' y='736' xlink:href='#unq'><title>&#x1F50D;  Unq unq_environment ( code ) </title></use><a xlink:href='#lcstate.environment.code'><text id='lcstate&#46;environment&#46;code' x='821' y='750'>code</text><title>&#10697;  code
+     * int</title></a>
+<text x='927' y='746' text-anchor='end' class='colType'>&#35;</text>
+<!-- == Table 'transition_log' == -->
+<rect id='depict_lcstate&#46;transition&#95;log' class='entity' style='stroke:#FCFCF9' x='57' y='409' width='133' height='171' rx='4' ry='4' />
+<rect x='57' y='409' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_FFFF00);'/>
+<rect x='57' y='413' width='133' height='29' style='stroke-width:0;fill:url(#tbg_FFFF00);'/>
+<a xlink:href='#lcstate.transition_log'><text id='depict&#45;lcstate&#46;transition&#95;log' x='78' y='431' class='tableHeader' style='fill:#484841;'>transition&#95;log</text><title>Table lcstate.transition_log</title></a>
+  <use x='58' y='452' xlink:href='#nn'/><use x='59' y='451' xlink:href='#pk'><title>&#x1F511;  Pk pk_transition_log ( id ) </title></use><a xlink:href='#lcstate.transition_log.id'><text id='lcstate&#46;transition&#95;log&#46;id' x='80' y='465' onmouseover="hghl(['ack_log_fk_ack_log_transition_log','lcstate.ack_log.transition_log','transition_data_fk_transition_data_transition_log','lcstate.transition_data.transition_log'])" onmouseout="uhghl(['ack_log_fk_ack_log_transition_log','lcstate.ack_log.transition_log','transition_data_fk_transition_data_transition_log','lcstate.transition_data.transition_log'])" class='colPk'>id</text><title>&#10697;  id
+     * bigint
+ &#8601; ack_log( transition_log )
+ &#8601; transition_data( transition_log )</title></a>
+<a xlink:href='#lcstate.transition_log.id'><use x='176' y='451' xlink:href='#ref'/><title>&#x1F517;  Referred by ack_log ( transition_log -&gt; id ) 
+Referred by transition_data ( transition_log -&gt; id ) </title></a>
+  <use x='58' y='471' xlink:href='#nn'/><use x='59' y='470' xlink:href='#idx'><title>&#x1F50D;  fk_transition_log_instance ( instance_id ) </title></use><a xlink:href='#lcstate.transition_log.instance_id'><text id='lcstate&#46;transition&#95;log&#46;instance&#95;id' x='80' y='484' onmouseover="hghl(['transition_log_fk_transition_log_instance','lcstate.instance.id'])" onmouseout="uhghl(['transition_log_fk_transition_log_instance','lcstate.instance.id'])">instance&#95;id</text><title>&#10697;  instance_id
+     * bigint
+ &#8599; instance( id )</title></a>
+<a xlink:href='#lcstate.transition_log.instance_id'><use x='176' y='470' xlink:href='#fk'/><title>&#x1F517;  References instance ( instance_id -&gt; id ) </title></a>
+  <use x='58' y='490' xlink:href='#nn'/><a xlink:href='#lcstate.transition_log.from_state'><text id='lcstate&#46;transition&#95;log&#46;from&#95;state' x='80' y='503'>from&#95;state</text><title>&#10697;  from_state
+     * int</title></a>
+<text x='186' y='499' text-anchor='end' class='colType'>&#35;</text>  <use x='58' y='509' xlink:href='#nn'/><a xlink:href='#lcstate.transition_log.to_state'><text id='lcstate&#46;transition&#95;log&#46;to&#95;state' x='80' y='522'>to&#95;state</text><title>&#10697;  to_state
+     * int</title></a>
+<text x='186' y='518' text-anchor='end' class='colType'>&#35;</text>  <use x='58' y='528' xlink:href='#nn'/><a xlink:href='#lcstate.transition_log.event'><text id='lcstate&#46;transition&#95;log&#46;event' x='80' y='541'>event</text><title>&#10697;  event
+     * int</title></a>
+<text x='186' y='537' text-anchor='end' class='colType'>&#35;</text>  <use x='58' y='547' xlink:href='#nn'/><a xlink:href='#lcstate.transition_log.created'><text id='lcstate&#46;transition&#95;log&#46;created' x='80' y='560'>created</text><title>&#10697;  created
+     * datetime default utc_timestamp()</title></a>
+
 <!-- == Table 'state' == -->
-<rect id='depict_lifecycle&#95;state&#46;state' class='entity' style='stroke:#F9F9FC' x='494' y='219' width='152' height='247' rx='4' ry='4' />
-<rect x='494' y='219' width='152' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
-<rect x='494' y='223' width='152' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
-<a xlink:href='#lifecycle_state.state'><text id='depict&#45;lifecycle&#95;state&#46;state' x='551' y='241' class='tableHeader' style='fill:#414148;'>state</text><title>Table lifecycle_state.state</title></a>
-  <use x='495' y='262' xlink:href='#nn'/><use x='496' y='261' xlink:href='#idx'><title>&#x1F50D;  fk_state_category ( category ) </title></use><a xlink:href='#lifecycle_state.state.category'><text id='lifecycle&#95;state&#46;state&#46;category' x='517' y='275' onmouseover="hghl(['state_fk_state_category','lifecycle_state.category.id'])" onmouseout="uhghl(['state_fk_state_category','lifecycle_state.category.id'])">category</text><title>&#10697;  category
+<rect id='depict_lcstate&#46;state' class='entity' style='stroke:#F9F9FC' x='475' y='219' width='152' height='247' rx='4' ry='4' />
+<rect x='475' y='219' width='152' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
+<rect x='475' y='223' width='152' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
+<a xlink:href='#lcstate.state'><text id='depict&#45;lcstate&#46;state' x='532' y='241' class='tableHeader' style='fill:#414148;'>state</text><title>Table lcstate.state</title></a>
+  <use x='476' y='262' xlink:href='#nn'/><use x='477' y='261' xlink:href='#idx'><title>&#x1F50D;  fk_state_category ( category ) </title></use><a xlink:href='#lcstate.state.category'><text id='lcstate&#46;state&#46;category' x='498' y='275' onmouseover="hghl(['state_fk_state_category','lcstate.category.id'])" onmouseout="uhghl(['state_fk_state_category','lcstate.category.id'])">category</text><title>&#10697;  category
      * int default 0
  &#8599; category( id )</title></a>
-<a xlink:href='#lifecycle_state.state.category'><use x='632' y='261' xlink:href='#fk'/><title>&#x1F517;  References category ( category -&gt; id ) </title></a>
-  <use x='495' y='281' xlink:href='#nn'/><use x='496' y='280' xlink:href='#pk'><title>&#x1F511;  Pk pk_state ( id ) </title></use><a xlink:href='#lifecycle_state.state.id'><text id='lifecycle&#95;state&#46;state&#46;id' x='517' y='294' onmouseover="hghl(['instance_fk_instance_state','lifecycle_state.instance.current_state','transition_fk_transition_state','lifecycle_state.transition.from_state','transition_fk_transition_state_0','lifecycle_state.transition.to_state'])" onmouseout="uhghl(['instance_fk_instance_state','lifecycle_state.instance.current_state','transition_fk_transition_state','lifecycle_state.transition.from_state','transition_fk_transition_state_0','lifecycle_state.transition.to_state'])" class='colPk'>id</text><title>&#10697;  id
+<a xlink:href='#lcstate.state.category'><use x='613' y='261' xlink:href='#fk'/><title>&#x1F517;  References category ( category -&gt; id ) </title></a>
+  <use x='476' y='281' xlink:href='#nn'/><use x='477' y='280' xlink:href='#pk'><title>&#x1F511;  Pk pk_state ( id ) </title></use><a xlink:href='#lcstate.state.id'><text id='lcstate&#46;state&#46;id' x='498' y='294' onmouseover="hghl(['instance_fk_instance_state','lcstate.instance.current_state','transition_fk_transition_state','lcstate.transition.from_state','transition_fk_transition_state_0','lcstate.transition.to_state'])" onmouseout="uhghl(['instance_fk_instance_state','lcstate.instance.current_state','transition_fk_transition_state','lcstate.transition.from_state','transition_fk_transition_state_0','lcstate.transition.to_state'])" class='colPk'>id</text><title>&#10697;  id
      * int
  &#8601; instance( current_state )
  &#8601; transition( from_state )
  &#8601; transition( to_state )</title></a>
-<a xlink:href='#lifecycle_state.state.id'><use x='632' y='280' xlink:href='#ref'/><title>&#x1F517;  Referred by instance ( current_state -&gt; id ) 
+<a xlink:href='#lcstate.state.id'><use x='613' y='280' xlink:href='#ref'/><title>&#x1F517;  Referred by instance ( current_state -&gt; id ) 
 Referred by transition ( from_state -&gt; id ) 
 Referred by transition ( to_state -&gt; id ) </title></a>
-  <use x='495' y='300' xlink:href='#nn'/><a xlink:href='#lifecycle_state.state.display_name'><text id='lifecycle&#95;state&#46;state&#46;display&#95;name' x='517' y='313'>display&#95;name</text><title>&#10697;  display_name
+  <use x='476' y='300' xlink:href='#nn'/><a xlink:href='#lcstate.state.display_name'><text id='lcstate&#46;state&#46;display&#95;name' x='498' y='313'>display&#95;name</text><title>&#10697;  display_name
      * varchar(200)</title></a>
-<text x='642' y='309' text-anchor='end' class='colType'>t</text>  <use x='496' y='318' xlink:href='#unq'><title>&#x1F50D;  Unq unq_state ( def_version, name ) </title></use><a xlink:href='#lifecycle_state.state.name'><text id='lifecycle&#95;state&#46;state&#46;name' x='517' y='332'>name</text><title>&#10697;  name
+<text x='623' y='309' text-anchor='end' class='colType'>t</text>  <use x='477' y='318' xlink:href='#unq'><title>&#x1F50D;  Unq unq_state ( def_version, name ) </title></use><a xlink:href='#lcstate.state.name'><text id='lcstate&#46;state&#46;name' x='498' y='332'>name</text><title>&#10697;  name
      varchar(200)</title></a>
-<text x='642' y='328' text-anchor='end' class='colType'>t</text>  <use x='495' y='338' xlink:href='#nn'/><a xlink:href='#lifecycle_state.state.flags'><text id='lifecycle&#95;state&#46;state&#46;flags' x='517' y='351'>flags</text><title>&#10697;  flags
+<text x='623' y='328' text-anchor='end' class='colType'>t</text>  <use x='476' y='338' xlink:href='#nn'/><a xlink:href='#lcstate.state.flags'><text id='lcstate&#46;state&#46;flags' x='498' y='351'>flags</text><title>&#10697;  flags
      * int default 0
  ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+      none = 0
       is_initial = 1
       is_final = 2
       is_system = 4
       is_error = 8</title></a>
-<text x='642' y='347' text-anchor='end' class='colType'>&#35;</text>  <use x='495' y='357' xlink:href='#nn'/><a xlink:href='#lifecycle_state.state.created'><text id='lifecycle&#95;state&#46;state&#46;created' x='517' y='370'>created</text><title>&#10697;  created
-     * datetime default utc_timestamp()</title></a>
-  <use x='495' y='376' xlink:href='#nn'/><use x='496' y='375' xlink:href='#unq'><title>&#x1F50D;  Unq unq_state ( def_version, name ) </title></use><a xlink:href='#lifecycle_state.state.def_version'><text id='lifecycle&#95;state&#46;state&#46;def&#95;version' x='517' y='389' onmouseover="hghl(['state_fk_state_def_version','lifecycle_state.def_version.id'])" onmouseout="uhghl(['state_fk_state_def_version','lifecycle_state.def_version.id'])">def&#95;version</text><title>&#10697;  def_version
+<text x='623' y='347' text-anchor='end' class='colType'>&#35;</text>  <use x='476' y='357' xlink:href='#nn'/><a xlink:href='#lcstate.state.created'><text id='lcstate&#46;state&#46;created' x='498' y='370'>created</text><title>&#10697;  created
+     * datetime default CURRENT_TIMESTAMP</title></a>
+  <use x='476' y='376' xlink:href='#nn'/><use x='477' y='375' xlink:href='#unq'><title>&#x1F50D;  Unq unq_state ( def_version, name ) </title></use><a xlink:href='#lcstate.state.def_version'><text id='lcstate&#46;state&#46;def&#95;version' x='498' y='389' onmouseover="hghl(['state_fk_state_def_version','lcstate.def_version.id'])" onmouseout="uhghl(['state_fk_state_def_version','lcstate.def_version.id'])">def&#95;version</text><title>&#10697;  def_version
      * int
  &#8599; def_version( id )</title></a>
-<a xlink:href='#lifecycle_state.state.def_version'><use x='632' y='375' xlink:href='#fk'/><title>&#x1F517;  References def_version ( def_version -&gt; id ) </title></a>
-  <a xlink:href='#lifecycle_state.state.timeout_minutes'><text id='lifecycle&#95;state&#46;state&#46;timeout&#95;minutes' x='517' y='408'>timeout&#95;minutes</text><title>&#10697;  timeout_minutes
+<a xlink:href='#lcstate.state.def_version'><use x='613' y='375' xlink:href='#fk'/><title>&#x1F517;  References def_version ( def_version -&gt; id ) </title></a>
+  <a xlink:href='#lcstate.state.timeout_minutes'><text id='lcstate&#46;state&#46;timeout&#95;minutes' x='498' y='408'>timeout&#95;minutes</text><title>&#10697;  timeout_minutes
      int
  ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
       in minutes</title></a>
-<text x='642' y='404' text-anchor='end' class='colType'>&#35;</text>  <use x='495' y='414' xlink:href='#nn'/><a xlink:href='#lifecycle_state.state.timeout_mode'><text id='lifecycle&#95;state&#46;state&#46;timeout&#95;mode' x='517' y='427'>timeout&#95;mode</text><title>&#10697;  timeout_mode
+<text x='623' y='404' text-anchor='end' class='colType'>&#35;</text>  <use x='476' y='414' xlink:href='#nn'/><a xlink:href='#lcstate.state.timeout_mode'><text id='lcstate&#46;state&#46;timeout&#95;mode' x='498' y='427'>timeout&#95;mode</text><title>&#10697;  timeout_mode
      * int default 0
  ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
       0 = Once
       1 = Repeat</title></a>
-<text x='642' y='423' text-anchor='end' class='colType'>&#35;</text>  <use x='496' y='432' xlink:href='#idx'><title>&#x1F50D;  fk_state_events ( timeout_event ) </title></use><a xlink:href='#lifecycle_state.state.timeout_event'><text id='lifecycle&#95;state&#46;state&#46;timeout&#95;event' x='517' y='446' onmouseover="hghl(['state_fk_state_events','lifecycle_state.events.id'])" onmouseout="uhghl(['state_fk_state_events','lifecycle_state.events.id'])">timeout&#95;event</text><title>&#10697;  timeout_event
+<text x='623' y='423' text-anchor='end' class='colType'>&#35;</text>  <use x='477' y='432' xlink:href='#idx'><title>&#x1F50D;  fk_state_events ( timeout_event ) </title></use><a xlink:href='#lcstate.state.timeout_event'><text id='lcstate&#46;state&#46;timeout&#95;event' x='498' y='446' onmouseover="hghl(['state_fk_state_events','lcstate.events.id'])" onmouseout="uhghl(['state_fk_state_events','lcstate.events.id'])">timeout&#95;event</text><title>&#10697;  timeout_event
      int
  &#8599; events( id )</title></a>
-<a xlink:href='#lifecycle_state.state.timeout_event'><use x='632' y='432' xlink:href='#fk'/><title>&#x1F517;  References events ( timeout_event -&gt; id ) </title></a>
+<a xlink:href='#lcstate.state.timeout_event'><use x='613' y='432' xlink:href='#fk'/><title>&#x1F517;  References events ( timeout_event -&gt; id ) </title></a>
 
+<!-- == Table 'ack_log' == -->
+<rect id='depict_lcstate&#46;ack&#95;log' class='entity' style='stroke:#FCFCF9' x='247' y='181' width='133' height='228' rx='4' ry='4' />
+<rect x='247' y='181' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_FFFF00);'/>
+<rect x='247' y='185' width='133' height='29' style='stroke-width:0;fill:url(#tbg_FFFF00);'/>
+<a xlink:href='#lcstate.ack_log'><text id='depict&#45;lcstate&#46;ack&#95;log' x='286' y='203' class='tableHeader' style='fill:#484841;'>ack&#95;log</text><title>Table lcstate.ack_log</title></a>
+  <use x='248' y='224' xlink:href='#nn'/><use x='249' y='223' xlink:href='#pk'><title>&#x1F511;  Pk pk_ack_log ( id ) </title></use><a xlink:href='#lcstate.ack_log.id'><text id='lcstate&#46;ack&#95;log&#46;id' x='270' y='237' class='colPk'>id</text><title>&#10697;  id
+     * bigint</title></a>
+<text x='376' y='233' text-anchor='end' class='colType'>&#35;</text>  <use x='248' y='243' xlink:href='#nn'/><a xlink:href='#lcstate.ack_log.ack_status'><text id='lcstate&#46;ack&#95;log&#46;ack&#95;status' x='270' y='256'>ack&#95;status</text><title>&#10697;  ack_status
+     * int default 1
+ ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+      Flag:
+      1 = Pending  //We have sent to the application.. We dont&apos; know what happened.
+      2 = Delivered // Application has received and may have probably stored it in a database.
+      3 = Processed (Idempotent) //Action has been taken by the client on the received information. 
+      4 = Failed</title></a>
+<text x='376' y='252' text-anchor='end' class='colType'>&#35;</text>  <use x='248' y='262' xlink:href='#nn'/><a xlink:href='#lcstate.ack_log.last_retry'><text id='lcstate&#46;ack&#95;log&#46;last&#95;retry' x='270' y='275'>last&#95;retry</text><title>&#10697;  last_retry
+     * datetime default CURRENT_TIMESTAMP</title></a>
+  <use x='248' y='281' xlink:href='#nn'/><a xlink:href='#lcstate.ack_log.retry_count'><text id='lcstate&#46;ack&#95;log&#46;retry&#95;count' x='270' y='294'>retry&#95;count</text><title>&#10697;  retry_count
+     * int default 0</title></a>
+<text x='376' y='290' text-anchor='end' class='colType'>&#35;</text>  <use x='248' y='300' xlink:href='#nn'/><a xlink:href='#lcstate.ack_log.created'><text id='lcstate&#46;ack&#95;log&#46;created' x='270' y='313'>created</text><title>&#10697;  created
+     * datetime default CURRENT_TIMESTAMP</title></a>
+  <use x='248' y='319' xlink:href='#nn'/><a xlink:href='#lcstate.ack_log.modified'><text id='lcstate&#46;ack&#95;log&#46;modified' x='270' y='332'>modified</text><title>&#10697;  modified
+     * datetime default CURRENT_TIMESTAMP</title></a>
+  <use x='248' y='338' xlink:href='#nn'/><use x='249' y='337' xlink:href='#unq'><title>&#x1F50D;  Unq unq_ack_log_0 ( message_id ) </title></use><a xlink:href='#lcstate.ack_log.message_id'><text id='lcstate&#46;ack&#95;log&#46;message&#95;id' x='270' y='351'>message&#95;id</text><title>&#10697;  message_id
+     * char(36) default uuid()
+ ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+      Each consumer can have its own message id. When a transition happens, we can easily track what each consumer is doing with that transition.</title></a>
+<text x='376' y='347' text-anchor='end' class='colType'>c</text>  <use x='248' y='357' xlink:href='#nn'/><use x='249' y='356' xlink:href='#unq'><title>&#x1F50D;  fk_ack_log_transition_log ( transition_log ) &#x1F50D;  Unq unq_ack_log ( consumer, transition_log ) </title></use><a xlink:href='#lcstate.ack_log.transition_log'><text id='lcstate&#46;ack&#95;log&#46;transition&#95;log' x='270' y='370' onmouseover="hghl(['ack_log_fk_ack_log_transition_log','lcstate.transition_log.id'])" onmouseout="uhghl(['ack_log_fk_ack_log_transition_log','lcstate.transition_log.id'])">transition&#95;log</text><title>&#10697;  transition_log
+     * bigint
+ &#8599; transition_log( id )</title></a>
+<a xlink:href='#lcstate.ack_log.transition_log'><use x='366' y='356' xlink:href='#fk'/><title>&#x1F517;  References transition_log ( transition_log -&gt; id ) </title></a>
+  <use x='248' y='376' xlink:href='#nn'/><use x='249' y='375' xlink:href='#unq'><title>&#x1F50D;  Unq unq_ack_log ( consumer, transition_log ) </title></use><a xlink:href='#lcstate.ack_log.consumer'><text id='lcstate&#46;ack&#95;log&#46;consumer' x='270' y='389'>consumer</text><title>&#10697;  consumer
+     * int default 0
+ ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+      consumer of this acknowledgement</title></a>
+<text x='376' y='385' text-anchor='end' class='colType'>&#35;</text>
 <!-- == Table 'instance' == -->
-<rect id='depict_lifecycle&#95;state&#46;instance' class='entity' style='stroke:#FCFCF9' x='247' y='428' width='133' height='228' rx='4' ry='4' />
+<rect id='depict_lcstate&#46;instance' class='entity' style='stroke:#FCFCF9' x='247' y='428' width='133' height='228' rx='4' ry='4' />
 <rect x='247' y='428' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_FFFF00);'/>
 <rect x='247' y='432' width='133' height='29' style='stroke-width:0;fill:url(#tbg_FFFF00);'/>
-<a xlink:href='#lifecycle_state.instance'><text id='depict&#45;lifecycle&#95;state&#46;instance' x='284' y='450' class='tableHeader' style='fill:#484841;'>instance</text><title>Table lifecycle_state.instance</title></a>
-  <use x='248' y='471' xlink:href='#nn'/><use x='249' y='470' xlink:href='#idx'><title>&#x1F50D;  fk_instance_state ( current_state ) </title></use><a xlink:href='#lifecycle_state.instance.current_state'><text id='lifecycle&#95;state&#46;instance&#46;current&#95;state' x='270' y='484' onmouseover="hghl(['instance_fk_instance_state','lifecycle_state.state.id'])" onmouseout="uhghl(['instance_fk_instance_state','lifecycle_state.state.id'])">current&#95;state</text><title>&#10697;  current_state
+<a xlink:href='#lcstate.instance'><text id='depict&#45;lcstate&#46;instance' x='284' y='450' class='tableHeader' style='fill:#484841;'>instance</text><title>Table lcstate.instance</title></a>
+  <use x='248' y='471' xlink:href='#nn'/><use x='249' y='470' xlink:href='#idx'><title>&#x1F50D;  fk_instance_state ( current_state ) </title></use><a xlink:href='#lcstate.instance.current_state'><text id='lcstate&#46;instance&#46;current&#95;state' x='270' y='484' onmouseover="hghl(['instance_fk_instance_state','lcstate.state.id'])" onmouseout="uhghl(['instance_fk_instance_state','lcstate.state.id'])">current&#95;state</text><title>&#10697;  current_state
      * int
  &#8599; state( id )</title></a>
-<a xlink:href='#lifecycle_state.instance.current_state'><use x='366' y='470' xlink:href='#fk'/><title>&#x1F517;  References state ( current_state -&gt; id ) </title></a>
-  <use x='248' y='490' xlink:href='#nn'/><use x='249' y='489' xlink:href='#idx'><title>&#x1F50D;  fk_instance_events ( last_event ) </title></use><a xlink:href='#lifecycle_state.instance.last_event'><text id='lifecycle&#95;state&#46;instance&#46;last&#95;event' x='270' y='503' onmouseover="hghl(['instance_fk_instance_events','lifecycle_state.events.id'])" onmouseout="uhghl(['instance_fk_instance_events','lifecycle_state.events.id'])">last&#95;event</text><title>&#10697;  last_event
-     * int
+<a xlink:href='#lcstate.instance.current_state'><use x='366' y='470' xlink:href='#fk'/><title>&#x1F517;  References state ( current_state -&gt; id ) </title></a>
+  <use x='249' y='489' xlink:href='#idx'><title>&#x1F50D;  fk_instance_events ( last_event ) </title></use><a xlink:href='#lcstate.instance.last_event'><text id='lcstate&#46;instance&#46;last&#95;event' x='270' y='503' onmouseover="hghl(['instance_fk_instance_events','lcstate.events.id'])" onmouseout="uhghl(['instance_fk_instance_events','lcstate.events.id'])">last&#95;event</text><title>&#10697;  last_event
+     int
  &#8599; events( id )</title></a>
-<a xlink:href='#lifecycle_state.instance.last_event'><use x='366' y='489' xlink:href='#fk'/><title>&#x1F517;  References events ( last_event -&gt; id ) </title></a>
-  <use x='248' y='509' xlink:href='#nn'/><use x='249' y='508' xlink:href='#unq'><title>&#x1F50D;  Unq unq_instance ( guid ) </title></use><a xlink:href='#lifecycle_state.instance.guid'><text id='lifecycle&#95;state&#46;instance&#46;guid' x='270' y='522'>guid</text><title>&#10697;  guid
+<a xlink:href='#lcstate.instance.last_event'><use x='366' y='489' xlink:href='#fk'/><title>&#x1F517;  References events ( last_event -&gt; id ) </title></a>
+  <use x='248' y='509' xlink:href='#nn'/><use x='249' y='508' xlink:href='#unq'><title>&#x1F50D;  Unq unq_instance ( guid ) </title></use><a xlink:href='#lcstate.instance.guid'><text id='lcstate&#46;instance&#46;guid' x='270' y='522'>guid</text><title>&#10697;  guid
      * char(36) default uuid()</title></a>
-<text x='376' y='518' text-anchor='end' class='colType'>c</text>  <use x='248' y='528' xlink:href='#nn'/><use x='249' y='527' xlink:href='#pk'><title>&#x1F511;  Pk pk_instance ( id ) </title></use><a xlink:href='#lifecycle_state.instance.id'><text id='lifecycle&#95;state&#46;instance&#46;id' x='270' y='541' onmouseover="hghl(['transition_log_fk_transition_log_instance','lifecycle_state.transition_log.instance_id'])" onmouseout="uhghl(['transition_log_fk_transition_log_instance','lifecycle_state.transition_log.instance_id'])" class='colPk'>id</text><title>&#10697;  id
+<text x='376' y='518' text-anchor='end' class='colType'>c</text>  <use x='248' y='528' xlink:href='#nn'/><use x='249' y='527' xlink:href='#pk'><title>&#x1F511;  Pk pk_instance ( id ) </title></use><a xlink:href='#lcstate.instance.id'><text id='lcstate&#46;instance&#46;id' x='270' y='541' onmouseover="hghl(['transition_log_fk_transition_log_instance','lcstate.transition_log.instance_id'])" onmouseout="uhghl(['transition_log_fk_transition_log_instance','lcstate.transition_log.instance_id'])" class='colPk'>id</text><title>&#10697;  id
      * bigint
  &#8601; transition_log( instance_id )</title></a>
-<a xlink:href='#lifecycle_state.instance.id'><use x='366' y='527' xlink:href='#ref'/><title>&#x1F517;  Referred by transition_log ( instance_id -&gt; id ) </title></a>
-  <use x='248' y='547' xlink:href='#nn'/><a xlink:href='#lifecycle_state.instance.flags'><text id='lifecycle&#95;state&#46;instance&#46;flags' x='270' y='560'>flags</text><title>&#10697;  flags
+<a xlink:href='#lcstate.instance.id'><use x='366' y='527' xlink:href='#ref'/><title>&#x1F517;  Referred by transition_log ( instance_id -&gt; id ) </title></a>
+  <use x='248' y='547' xlink:href='#nn'/><a xlink:href='#lcstate.instance.flags'><text id='lcstate&#46;instance&#46;flags' x='270' y='560'>flags</text><title>&#10697;  flags
      * int default 0
  ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
       active =1,
@@ -659,68 +742,18 @@ Referred by transition ( to_state -&gt; id ) </title></a>
       completed = 4,
       failed = 8, 
       archive = 16</title></a>
-<text x='376' y='556' text-anchor='end' class='colType'>&#35;</text>  <use x='248' y='566' xlink:href='#nn'/><use x='249' y='565' xlink:href='#unq'><title>&#x1F50D;  fk_instance_def_version ( def_version ) &#x1F50D;  Unq unq_instance_0 ( def_version, external_ref ) </title></use><a xlink:href='#lifecycle_state.instance.def_version'><text id='lifecycle&#95;state&#46;instance&#46;def&#95;version' x='270' y='579' onmouseover="hghl(['instance_fk_instance_def_version','lifecycle_state.def_version.id'])" onmouseout="uhghl(['instance_fk_instance_def_version','lifecycle_state.def_version.id'])">def&#95;version</text><title>&#10697;  def_version
+<text x='376' y='556' text-anchor='end' class='colType'>&#35;</text>  <use x='248' y='566' xlink:href='#nn'/><use x='249' y='565' xlink:href='#unq'><title>&#x1F50D;  fk_instance_def_version ( def_version ) &#x1F50D;  Unq unq_instance_0 ( def_version, external_ref ) </title></use><a xlink:href='#lcstate.instance.def_version'><text id='lcstate&#46;instance&#46;def&#95;version' x='270' y='579' onmouseover="hghl(['instance_fk_instance_def_version','lcstate.def_version.id'])" onmouseout="uhghl(['instance_fk_instance_def_version','lcstate.def_version.id'])">def&#95;version</text><title>&#10697;  def_version
      * int
  &#8599; def_version( id )</title></a>
-<a xlink:href='#lifecycle_state.instance.def_version'><use x='366' y='565' xlink:href='#fk'/><title>&#x1F517;  References def_version ( def_version -&gt; id ) </title></a>
-  <use x='249' y='584' xlink:href='#unq'><title>&#x1F50D;  Unq unq_instance_0 ( def_version, external_ref ) &#x1F50D;  idx_instance ( external_ref ) </title></use><a xlink:href='#lifecycle_state.instance.external_ref'><text id='lifecycle&#95;state&#46;instance&#46;external&#95;ref' x='270' y='598'>external&#95;ref</text><title>&#10697;  external_ref
+<a xlink:href='#lcstate.instance.def_version'><use x='366' y='565' xlink:href='#fk'/><title>&#x1F517;  References def_version ( def_version -&gt; id ) </title></a>
+  <use x='249' y='584' xlink:href='#unq'><title>&#x1F50D;  Unq unq_instance_0 ( def_version, external_ref ) &#x1F50D;  idx_instance ( external_ref ) </title></use><a xlink:href='#lcstate.instance.external_ref'><text id='lcstate&#46;instance&#46;external&#95;ref' x='270' y='598'>external&#95;ref</text><title>&#10697;  external_ref
      char(36)
  ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
       like external workflow id or submission id or transmittal id.. Expected value is a GUID</title></a>
-<text x='376' y='594' text-anchor='end' class='colType'>c</text>  <use x='248' y='604' xlink:href='#nn'/><a xlink:href='#lifecycle_state.instance.created'><text id='lifecycle&#95;state&#46;instance&#46;created' x='270' y='617'>created</text><title>&#10697;  created
-     * datetime default utc_timestamp()</title></a>
-  <use x='248' y='623' xlink:href='#nn'/><a xlink:href='#lifecycle_state.instance.modified'><text id='lifecycle&#95;state&#46;instance&#46;modified' x='270' y='636'>modified</text><title>&#10697;  modified
-     * datetime default utc_timestamp()</title></a>
-
-<!-- == Table 'transition' == -->
-<rect id='depict_lifecycle&#95;state&#46;transition' class='entity' style='stroke:#F9F9FC' x='760' y='219' width='133' height='171' rx='4' ry='4' />
-<rect x='760' y='219' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
-<rect x='760' y='223' width='133' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
-<a xlink:href='#lifecycle_state.transition'><text id='depict&#45;lifecycle&#95;state&#46;transition' x='794' y='241' class='tableHeader' style='fill:#414148;'>transition</text><title>Table lifecycle_state.transition</title></a>
-  <use x='761' y='262' xlink:href='#nn'/><use x='762' y='261' xlink:href='#pk'><title>&#x1F511;  Pk pk_transition ( id ) </title></use><a xlink:href='#lifecycle_state.transition.id'><text id='lifecycle&#95;state&#46;transition&#46;id' x='783' y='275' class='colPk'>id</text><title>&#10697;  id
-     * int</title></a>
-<text x='889' y='271' text-anchor='end' class='colType'>&#35;</text>  <use x='761' y='281' xlink:href='#nn'/><use x='762' y='280' xlink:href='#unq'><title>&#x1F50D;  Unq unq_transition ( def_version, from_state, to_state, event ) &#x1F50D;  fk_transition_state ( from_state ) </title></use><a xlink:href='#lifecycle_state.transition.from_state'><text id='lifecycle&#95;state&#46;transition&#46;from&#95;state' x='783' y='294' onmouseover="hghl(['transition_fk_transition_state','lifecycle_state.state.id'])" onmouseout="uhghl(['transition_fk_transition_state','lifecycle_state.state.id'])">from&#95;state</text><title>&#10697;  from_state
-     * int
- &#8599; state( id )</title></a>
-<a xlink:href='#lifecycle_state.transition.from_state'><use x='879' y='280' xlink:href='#fk'/><title>&#x1F517;  References state ( from_state -&gt; id ) </title></a>
-  <use x='761' y='300' xlink:href='#nn'/><use x='762' y='299' xlink:href='#unq'><title>&#x1F50D;  Unq unq_transition ( def_version, from_state, to_state, event ) &#x1F50D;  fk_transition_state_0 ( to_state ) </title></use><a xlink:href='#lifecycle_state.transition.to_state'><text id='lifecycle&#95;state&#46;transition&#46;to&#95;state' x='783' y='313' onmouseover="hghl(['transition_fk_transition_state_0','lifecycle_state.state.id'])" onmouseout="uhghl(['transition_fk_transition_state_0','lifecycle_state.state.id'])">to&#95;state</text><title>&#10697;  to_state
-     * int
- &#8599; state( id )</title></a>
-<a xlink:href='#lifecycle_state.transition.to_state'><use x='879' y='299' xlink:href='#fk'/><title>&#x1F517;  References state ( to_state -&gt; id ) </title></a>
-  <a xlink:href='#lifecycle_state.transition.created'><text id='lifecycle&#95;state&#46;transition&#46;created' x='783' y='332'>created</text><title>&#10697;  created
-     datetime default utc_timestamp()</title></a>
-  <use x='761' y='338' xlink:href='#nn'/><use x='762' y='337' xlink:href='#unq'><title>&#x1F50D;  Unq unq_transition ( def_version, from_state, to_state, event ) </title></use><a xlink:href='#lifecycle_state.transition.def_version'><text id='lifecycle&#95;state&#46;transition&#46;def&#95;version' x='783' y='351' onmouseover="hghl(['transition_fk_transition_def_version','lifecycle_state.def_version.id'])" onmouseout="uhghl(['transition_fk_transition_def_version','lifecycle_state.def_version.id'])">def&#95;version</text><title>&#10697;  def_version
-     * int
- &#8599; def_version( id )</title></a>
-<a xlink:href='#lifecycle_state.transition.def_version'><use x='879' y='337' xlink:href='#fk'/><title>&#x1F517;  References def_version ( def_version -&gt; id ) </title></a>
-  <use x='761' y='357' xlink:href='#nn'/><use x='762' y='356' xlink:href='#unq'><title>&#x1F50D;  Unq unq_transition ( def_version, from_state, to_state, event ) &#x1F50D;  fk_transition_events ( event ) </title></use><a xlink:href='#lifecycle_state.transition.event'><text id='lifecycle&#95;state&#46;transition&#46;event' x='783' y='370' onmouseover="hghl(['transition_fk_transition_events','lifecycle_state.events.id'])" onmouseout="uhghl(['transition_fk_transition_events','lifecycle_state.events.id'])">event</text><title>&#10697;  event
-     * int
- &#8599; events( id )</title></a>
-<a xlink:href='#lifecycle_state.transition.event'><use x='879' y='356' xlink:href='#fk'/><title>&#x1F517;  References events ( event -&gt; id ) </title></a>
-
-<!-- == Table 'events' == -->
-<rect id='depict_lifecycle&#95;state&#46;events' class='entity' style='stroke:#F9F9FC' x='760' y='447' width='133' height='152' rx='4' ry='4' />
-<rect x='760' y='447' width='133' height='8' rx='4' ry='4' style='stroke-width:0;fill:url(#ttl_0000FF);'/>
-<rect x='760' y='451' width='133' height='29' style='stroke-width:0;fill:url(#tbg_0000FF);'/>
-<a xlink:href='#lifecycle_state.events'><text id='depict&#45;lifecycle&#95;state&#46;events' x='802' y='469' class='tableHeader' style='fill:#414148;'>events</text><title>Table lifecycle_state.events</title></a>
-  <use x='761' y='490' xlink:href='#nn'/><use x='762' y='489' xlink:href='#pk'><title>&#x1F511;  Pk pk_events ( id ) </title></use><a xlink:href='#lifecycle_state.events.id'><text id='lifecycle&#95;state&#46;events&#46;id' x='783' y='503' onmouseover="hghl(['instance_fk_instance_events','lifecycle_state.instance.last_event','state_fk_state_events','lifecycle_state.state.timeout_event','transition_fk_transition_events','lifecycle_state.transition.event'])" onmouseout="uhghl(['instance_fk_instance_events','lifecycle_state.instance.last_event','state_fk_state_events','lifecycle_state.state.timeout_event','transition_fk_transition_events','lifecycle_state.transition.event'])" class='colPk'>id</text><title>&#10697;  id
-     * int
- &#8601; instance( last_event )
- &#8601; state( timeout_event )
- &#8601; transition( event )</title></a>
-<a xlink:href='#lifecycle_state.events.id'><use x='879' y='489' xlink:href='#ref'/><title>&#x1F517;  Referred by instance ( last_event -&gt; id ) 
-Referred by state ( timeout_event -&gt; id ) 
-Referred by transition ( event -&gt; id ) </title></a>
-  <use x='761' y='509' xlink:href='#nn'/><a xlink:href='#lifecycle_state.events.display_name'><text id='lifecycle&#95;state&#46;events&#46;display&#95;name' x='783' y='522'>display&#95;name</text><title>&#10697;  display_name
-     * varchar(120)</title></a>
-<text x='889' y='518' text-anchor='end' class='colType'>t</text>  <use x='761' y='528' xlink:href='#nn'/><use x='762' y='527' xlink:href='#unq'><title>&#x1F50D;  Unq unq_events ( def_version, code, name ) &#x1F50D;  Unq unq_events_0 ( def_version, code ) </title></use><a xlink:href='#lifecycle_state.events.code'><text id='lifecycle&#95;state&#46;events&#46;code' x='783' y='541'>code</text><title>&#10697;  code
-     * int</title></a>
-<text x='889' y='537' text-anchor='end' class='colType'>&#35;</text>  <use x='762' y='546' xlink:href='#unq'><title>&#x1F50D;  Unq unq_events ( def_version, code, name ) </title></use><a xlink:href='#lifecycle_state.events.name'><text id='lifecycle&#95;state&#46;events&#46;name' x='783' y='560'>name</text><title>&#10697;  name
-     varchar(120)</title></a>
-<text x='889' y='556' text-anchor='end' class='colType'>t</text>  <use x='761' y='566' xlink:href='#nn'/><use x='762' y='565' xlink:href='#unq'><title>&#x1F50D;  Unq unq_events ( def_version, code, name ) &#x1F50D;  Unq unq_events_0 ( def_version, code ) </title></use><a xlink:href='#lifecycle_state.events.def_version'><text id='lifecycle&#95;state&#46;events&#46;def&#95;version' x='783' y='579' onmouseover="hghl(['events_fk_events_def_version','lifecycle_state.def_version.id'])" onmouseout="uhghl(['events_fk_events_def_version','lifecycle_state.def_version.id'])">def&#95;version</text><title>&#10697;  def_version
-     * int
- &#8599; def_version( id )</title></a>
-<a xlink:href='#lifecycle_state.events.def_version'><use x='879' y='565' xlink:href='#fk'/><title>&#x1F517;  References def_version ( def_version -&gt; id ) </title></a>
+<text x='376' y='594' text-anchor='end' class='colType'>c</text>  <use x='248' y='604' xlink:href='#nn'/><a xlink:href='#lcstate.instance.created'><text id='lcstate&#46;instance&#46;created' x='270' y='617'>created</text><title>&#10697;  created
+     * datetime default CURRENT_TIMESTAMP</title></a>
+  <use x='248' y='623' xlink:href='#nn'/><a xlink:href='#lcstate.instance.modified'><text id='lcstate&#46;instance&#46;modified' x='270' y='636'>modified</text><title>&#10697;  modified
+     * datetime default CURRENT_TIMESTAMP</title></a>
 
 </g></svg></div>
 <script type='text/javascript'>
@@ -818,10 +851,10 @@ function searchSVG( searchValue) {
 <div class='container pt-2'>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state' style='cursor:pointer;'><h5 class='card-title text-center'>Schema lifecycle_state</h5></div></div>
+<div class='card custom-card'><div class='card-body'><a name='lcstate' style='cursor:pointer;'><h5 class='card-title text-center'>Schema lcstate</h5></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.ack_log'  onclick="window.scrollTo(60, 190);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.ack_log').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table ack_log</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.ack_log'  onclick="window.scrollTo(60, 190);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.ack_log').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table ack_log</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:20%'>Column Name</th><th style='width:23%'>Definition</th><th style='width:52%'>Description</th></tr>
@@ -829,55 +862,55 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
-		<td><a name='lifecycle_state.ack_log.id'>id</a></td>
+		<td><a name='lcstate.ack_log.id'>id</a></td>
 		<td class='dataType'> BIGINT AUTO_INCREMENT </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.ack_log.ack_status'>ack&#95;status</a></td>
+		<td><a name='lcstate.ack_log.ack_status'>ack&#95;status</a></td>
 		<td class='dataType'> INT  DEFAULT 1 </td>
-		<td> Flag&#58;<br>1 &#61; Pending<br>2 &#61; Delivered<br>3 &#61; Processed &#40;Idempotent&#41;<br>4 &#61; Failed </td>
+		<td> Flag&#58;<br>1 &#61; Pending  &#47;&#47;We have sent to the application&#46;&#46; We dont&#39; know what happened&#46;<br>2 &#61; Delivered &#47;&#47; Application has received and may have probably stored it in a database&#46;<br>3 &#61; Processed &#40;Idempotent&#41; &#47;&#47;Action has been taken by the client on the received information&#46; <br>4 &#61; Failed </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.ack_log.last_retry'>last&#95;retry</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><a name='lcstate.ack_log.last_retry'>last&#95;retry</a></td>
+		<td class='dataType'> DATETIME  DEFAULT CURRENT_TIMESTAMP </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.ack_log.retry_count'>retry&#95;count</a></td>
+		<td><a name='lcstate.ack_log.retry_count'>retry&#95;count</a></td>
 		<td class='dataType'> INT  DEFAULT 0 </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.ack_log.created'>created</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><a name='lcstate.ack_log.created'>created</a></td>
+		<td class='dataType'> DATETIME  DEFAULT CURRENT_TIMESTAMP </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.ack_log.modified'>modified</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><a name='lcstate.ack_log.modified'>modified</a></td>
+		<td class='dataType'> DATETIME ON UPDATE CURRENT&#95;TIMESTAMP DEFAULT CURRENT_TIMESTAMP </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.ack_log.message_id'>message&#95;id</a></td>
+		<td><a name='lcstate.ack_log.message_id'>message&#95;id</a></td>
 		<td class='dataType'> CHAR&#40;36&#41;  DEFAULT uuid() </td>
 		<td> Each consumer can have its own message id&#46; When a transition happens&#44; we can easily track what each consumer is doing with that transition&#46; </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.ack_log.transition_log'>transition&#95;log</a></td>
+		<td><a name='lcstate.ack_log.transition_log'>transition&#95;log</a></td>
 		<td class='dataType'> BIGINT  </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.ack_log.consumer'>consumer</a></td>
+		<td><a name='lcstate.ack_log.consumer'>consumer</a></td>
 		<td class='dataType'> INT  DEFAULT 0 </td>
 		<td> consumer of this acknowledgement </td>
 	</tr>
@@ -901,7 +934,7 @@ function searchSVG( searchValue) {
 <tr><th colspan='4'>Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_ack_log_transition_log</td>
-		<td > transition&#95;log &#8599; <a href='#lifecycle&#95;state&#46;transition&#95;log'  onclick="window.scrollTo(60, 418);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition_log').classList.add('palpable'); return false;">&#10063; transition&#95;log</a>(id) </td>
+		<td > transition&#95;log &#8599; <a href='#lcstate&#46;transition&#95;log'  onclick="window.scrollTo(60, 418);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition_log').classList.add('palpable'); return false;">&#10063; transition&#95;log</a>(id) </td>
 		<td>  </td>
 	</tr>
 <tr><th colspan='4'>Options</th></tr>
@@ -910,7 +943,7 @@ function searchSVG( searchValue) {
 </table></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.category'  onclick="window.scrollTo(522, 95);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.category').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table category</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.category'  onclick="window.scrollTo(522, 95);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.category').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table category</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:40%'>Column Name</th><th>Data Type</th></tr>
@@ -918,18 +951,18 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
-		<td><a name='lifecycle_state.category.id'>id</a></td>
+		<td><a name='lcstate.category.id'>id</a></td>
 		<td class='dataType'> INT AUTO_INCREMENT </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.category.display_name'>display&#95;name</a></td>
+		<td><a name='lcstate.category.display_name'>display&#95;name</a></td>
 		<td class='dataType'> VARCHAR&#40;120&#41;  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.category.name'>name</a></td>
-		<td class='dataType'> VARCHAR&#40;120&#41; GENERATED  ALWAYS AS (lcase(`display_name`)) </td>
+		<td><a name='lcstate.category.name'>name</a></td>
+		<td class='dataType'> VARCHAR&#40;120&#41; GENERATED  ALWAYS AS (lower(trim(display_name))) PERSISTENT </td>
 	</tr>
 <tr><th colspan='3'>Indexes</th></tr>
 	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;tbl</td>
@@ -941,7 +974,7 @@ function searchSVG( searchValue) {
 <tr><th colspan='3'>Referring Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_state_category</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;state'  onclick="window.scrollTo(294, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.state').classList.add('palpable'); return false;">&#10063; state</a>(category) </td>
+		<td > id &#8601; <a href='#lcstate&#46;state'  onclick="window.scrollTo(275, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.state').classList.add('palpable'); return false;">&#10063; state</a>(category) </td>
 	</tr>
 <tr><th colspan='3'>Options</th></tr>
 <tr><td colspan='3'>engine&#61;InnoDB</td></tr>
@@ -949,7 +982,7 @@ function searchSVG( searchValue) {
 </table></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.def_version'  onclick="window.scrollTo(332, 551);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.def_version').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table def_version</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.def_version'  onclick="window.scrollTo(275, 532);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.def_version').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table def_version</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:40%'>Column Name</th><th>Data Type</th></tr>
@@ -957,37 +990,37 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
-		<td><a name='lifecycle_state.def_version.id'>id</a></td>
+		<td><a name='lcstate.def_version.id'>id</a></td>
 		<td class='dataType'> INT AUTO_INCREMENT </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.def_version.guid'>guid</a></td>
+		<td><a name='lcstate.def_version.guid'>guid</a></td>
 		<td class='dataType'> CHAR&#40;36&#41;  DEFAULT uuid() </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.def_version.version'>version</a></td>
+		<td><a name='lcstate.def_version.version'>version</a></td>
 		<td class='dataType'> INT  DEFAULT 1 </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.def_version.created'>created</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><a name='lcstate.def_version.created'>created</a></td>
+		<td class='dataType'> DATETIME  DEFAULT CURRENT_TIMESTAMP </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.def_version.modified'>modified</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><a name='lcstate.def_version.modified'>modified</a></td>
+		<td class='dataType'> DATETIME ON UPDATE CURRENT&#95;TIMESTAMP DEFAULT CURRENT_TIMESTAMP </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.def_version.parent'>parent</a></td>
+		<td><a name='lcstate.def_version.parent'>parent</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.def_version.data'>data</a></td>
+		<td><a name='lcstate.def_version.data'>data</a></td>
 		<td class='dataType'> LONGTEXT  </td>
 	</tr>
 <tr><th colspan='3'>Indexes</th></tr>
@@ -1006,24 +1039,24 @@ function searchSVG( searchValue) {
 <tr><th colspan='3'>Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_def_version_definition</td>
-		<td > parent &#8599; <a href='#lifecycle&#95;state&#46;definition'  onclick="window.scrollTo(541, 627);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.definition').classList.add('palpable'); return false;">&#10063; definition</a>(id) </td>
+		<td > parent &#8599; <a href='#lcstate&#46;definition'  onclick="window.scrollTo(427, 627);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.definition').classList.add('palpable'); return false;">&#10063; definition</a>(id) </td>
 	</tr>
 <tr><th colspan='3'>Referring Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_events_def_version</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.events').classList.add('palpable'); return false;">&#10063; events</a>(def&#95;version) </td>
+		<td > id &#8601; <a href='#lcstate&#46;events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.events').classList.add('palpable'); return false;">&#10063; events</a>(def&#95;version) </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_instance_def_version</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.instance').classList.add('palpable'); return false;">&#10063; instance</a>(def&#95;version) </td>
+		<td > id &#8601; <a href='#lcstate&#46;instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.instance').classList.add('palpable'); return false;">&#10063; instance</a>(def&#95;version) </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_state_def_version</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;state'  onclick="window.scrollTo(294, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.state').classList.add('palpable'); return false;">&#10063; state</a>(def&#95;version) </td>
+		<td > id &#8601; <a href='#lcstate&#46;state'  onclick="window.scrollTo(275, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.state').classList.add('palpable'); return false;">&#10063; state</a>(def&#95;version) </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_transition_def_version</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition').classList.add('palpable'); return false;">&#10063; transition</a>(def&#95;version) </td>
+		<td > id &#8601; <a href='#lcstate&#46;transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition').classList.add('palpable'); return false;">&#10063; transition</a>(def&#95;version) </td>
 	</tr>
 <tr><th colspan='3'>Constraints</th></tr>
 	<tr>
@@ -1036,7 +1069,7 @@ function searchSVG( searchValue) {
 </table></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.definition'  onclick="window.scrollTo(541, 627);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.definition').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table definition</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.definition'  onclick="window.scrollTo(427, 627);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.definition').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table definition</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:20%'>Column Name</th><th style='width:23%'>Definition</th><th style='width:52%'>Description</th></tr>
@@ -1044,45 +1077,45 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
-		<td><a name='lifecycle_state.definition.id'>id</a></td>
+		<td><a name='lcstate.definition.id'>id</a></td>
 		<td class='dataType'> INT AUTO_INCREMENT </td>
+		<td> it should be a code provided by the user&#46; </td>
+	</tr>
+	<tr>
+		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='lcstate.definition.env'>env</a></td>
+		<td class='dataType'> INT  DEFAULT 0 </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.definition.guid'>guid</a></td>
+		<td><a name='lcstate.definition.guid'>guid</a></td>
 		<td class='dataType'> CHAR&#40;36&#41;  DEFAULT uuid() </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.definition.display_name'>display&#95;name</a></td>
+		<td><a name='lcstate.definition.display_name'>display&#95;name</a></td>
 		<td class='dataType'> VARCHAR&#40;200&#41;  </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.definition.name'>name</a></td>
-		<td class='dataType'> VARCHAR&#40;200&#41; GENERATED  ALWAYS AS (lcase(`display_name`)) </td>
+		<td><a name='lcstate.definition.name'>name</a></td>
+		<td class='dataType'> VARCHAR&#40;200&#41; GENERATED  ALWAYS AS (lower(trim(display_name))) PERSISTENT </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
-		<td><a name='lifecycle_state.definition.description'>description</a></td>
+		<td><a name='lcstate.definition.description'>description</a></td>
 		<td class='dataType'> TEXT  </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.definition.created'>created</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><a name='lcstate.definition.created'>created</a></td>
+		<td class='dataType'> DATETIME  DEFAULT CURRENT_TIMESTAMP </td>
 		<td>  </td>
-	</tr>
-	<tr>
-		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.definition.env'>env</a></td>
-		<td class='dataType'> INT  DEFAULT 0 </td>
-		<td> environment code<br>COMMENT &#39;0&#61;Dev&#44;1&#61;Test&#44;2&#61;UAT&#44;3&#61;Prod&#39; </td>
 	</tr>
 <tr><th colspan='4'>Indexes</th></tr>
 	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;definition</td>
@@ -1097,10 +1130,16 @@ function searchSVG( searchValue) {
 		<td>Unique Key ON guid</td>
 		<td>  </td>
 	</tr>
+<tr><th colspan='4'>Foreign Key</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_definition_environment</td>
+		<td > env &#8599; <a href='#lcstate&#46;environment'  onclick="window.scrollTo(598, 646);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.environment').classList.add('palpable'); return false;">&#10063; environment</a>(id) </td>
+		<td>  </td>
+	</tr>
 <tr><th colspan='4'>Referring Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_def_version_definition</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;def&#95;version'  onclick="window.scrollTo(332, 551);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(parent) </td>
+		<td > id &#8601; <a href='#lcstate&#46;def&#95;version'  onclick="window.scrollTo(275, 532);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(parent) </td>
 		<td>  </td>
 	</tr>
 <tr><th colspan='4'>Options</th></tr>
@@ -1109,7 +1148,63 @@ function searchSVG( searchValue) {
 </table></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.events').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table events</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.environment'  onclick="window.scrollTo(598, 646);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.environment').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table environment</h5></a>
+<p class="text-muted">environment code<br>&#47;&#47;Doesnt&#39; need to be like dev&#47;prod&#47;test&#46;&#46; It can be an work&#45;group environmetn as well&#46;&#46;<br><br>&#47;&#47;like preq&#45;app &#40;is one environment&#41;&#44; so all preq&#45;app &#40;wherever it runs&#44; local&#44; production etc&#41; will be able to read definitions&#46;<br><br>&#47;&#47;we can even extend it as &#44; preq&#45;app&#45;dev&#44; preq&#45;app&#45;prod etc&#46;</p>
+<table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
+<thead>
+<tr><th style='width:5%'>Idx</th><th style='width:20%'>Column Name</th><th style='width:23%'>Definition</th><th style='width:52%'>Description</th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='lcstate.environment.id'>id</a></td>
+		<td class='dataType'> INT AUTO_INCREMENT </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><span class='text-danger'>*</span></td>
+		<td><a name='lcstate.environment.display_name'>display&#95;name</a></td>
+		<td class='dataType'> VARCHAR&#40;120&#41;  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='lcstate.environment.name'>name</a></td>
+		<td class='dataType'> VARCHAR&#40;120&#41; GENERATED  ALWAYS AS (lower(trim(display_name))) PERSISTENT </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='lcstate.environment.code'>code</a></td>
+		<td class='dataType'> INT  </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>pk&#95;environment</td>
+		<td>Primary Key ON id</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>unq&#95;environment</td>
+		<td>Unique Key ON code</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>unq&#95;environment&#95;0</td>
+		<td>Unique Key ON name</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Referring Foreign Key</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_definition_environment</td>
+		<td > id &#8601; <a href='#lcstate&#46;definition'  onclick="window.scrollTo(427, 627);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.definition').classList.add('palpable'); return false;">&#10063; definition</a>(env) </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Options</th></tr>
+<tr><td colspan='4'>engine&#61;InnoDB</td></tr>
+</tbody>
+</table></div></div>
+
+<br><br>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.events').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table events</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:40%'>Column Name</th><th>Data Type</th></tr>
@@ -1117,27 +1212,27 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
-		<td><a name='lifecycle_state.events.id'>id</a></td>
+		<td><a name='lcstate.events.id'>id</a></td>
 		<td class='dataType'> INT AUTO_INCREMENT </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.events.display_name'>display&#95;name</a></td>
+		<td><a name='lcstate.events.display_name'>display&#95;name</a></td>
 		<td class='dataType'> VARCHAR&#40;120&#41;  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.events.code'>code</a></td>
+		<td><a name='lcstate.events.code'>code</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.events.name'>name</a></td>
-		<td class='dataType'> VARCHAR&#40;120&#41; GENERATED  ALWAYS AS (lcase(`display_name`)) </td>
+		<td><a name='lcstate.events.name'>name</a></td>
+		<td class='dataType'> VARCHAR&#40;120&#41; GENERATED  ALWAYS AS (lower(trim(display_name))) PERSISTENT </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.events.def_version'>def&#95;version</a></td>
+		<td><a name='lcstate.events.def_version'>def&#95;version</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 <tr><th colspan='3'>Indexes</th></tr>
@@ -1153,20 +1248,20 @@ function searchSVG( searchValue) {
 <tr><th colspan='3'>Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_events_def_version</td>
-		<td > def&#95;version &#8599; <a href='#lifecycle&#95;state&#46;def&#95;version'  onclick="window.scrollTo(332, 551);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(id) </td>
+		<td > def&#95;version &#8599; <a href='#lcstate&#46;def&#95;version'  onclick="window.scrollTo(275, 532);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(id) </td>
 	</tr>
 <tr><th colspan='3'>Referring Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_instance_events</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.instance').classList.add('palpable'); return false;">&#10063; instance</a>(last&#95;event) </td>
+		<td > id &#8601; <a href='#lcstate&#46;instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.instance').classList.add('palpable'); return false;">&#10063; instance</a>(last&#95;event) </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_state_events</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;state'  onclick="window.scrollTo(294, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.state').classList.add('palpable'); return false;">&#10063; state</a>(timeout&#95;event) </td>
+		<td > id &#8601; <a href='#lcstate&#46;state'  onclick="window.scrollTo(275, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.state').classList.add('palpable'); return false;">&#10063; state</a>(timeout&#95;event) </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_transition_events</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition').classList.add('palpable'); return false;">&#10063; transition</a>(event) </td>
+		<td > id &#8601; <a href='#lcstate&#46;transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition').classList.add('palpable'); return false;">&#10063; transition</a>(event) </td>
 	</tr>
 <tr><th colspan='3'>Options</th></tr>
 <tr><td colspan='3'>engine&#61;InnoDB</td></tr>
@@ -1174,7 +1269,7 @@ function searchSVG( searchValue) {
 </table></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.instance').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table instance</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.instance').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table instance</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:20%'>Column Name</th><th style='width:23%'>Definition</th><th style='width:52%'>Description</th></tr>
@@ -1182,56 +1277,56 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.instance.current_state'>current&#95;state</a></td>
+		<td><a name='lcstate.instance.current_state'>current&#95;state</a></td>
 		<td class='dataType'> INT  </td>
 		<td>  </td>
 	</tr>
 	<tr>
-		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.instance.last_event'>last&#95;event</a></td>
+		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='lcstate.instance.last_event'>last&#95;event</a></td>
 		<td class='dataType'> INT  </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.instance.guid'>guid</a></td>
+		<td><a name='lcstate.instance.guid'>guid</a></td>
 		<td class='dataType'> CHAR&#40;36&#41;  DEFAULT uuid() </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
-		<td><a name='lifecycle_state.instance.id'>id</a></td>
+		<td><a name='lcstate.instance.id'>id</a></td>
 		<td class='dataType'> BIGINT AUTO_INCREMENT </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.instance.flags'>flags</a></td>
+		<td><a name='lcstate.instance.flags'>flags</a></td>
 		<td class='dataType'> INT UNSIGNED  DEFAULT 0 </td>
 		<td> active &#61;1&#44;<br>suspended &#61;2 &#44;<br>completed &#61; 4&#44;<br>failed &#61; 8&#44; <br>archive &#61; 16 </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.instance.def_version'>def&#95;version</a></td>
+		<td><a name='lcstate.instance.def_version'>def&#95;version</a></td>
 		<td class='dataType'> INT  </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.instance.external_ref'>external&#95;ref</a></td>
+		<td><a name='lcstate.instance.external_ref'>external&#95;ref</a></td>
 		<td class='dataType'> CHAR&#40;36&#41;  </td>
 		<td> like external workflow id or submission id or transmittal id&#46;&#46; Expected value is a GUID </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.instance.created'>created</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><a name='lcstate.instance.created'>created</a></td>
+		<td class='dataType'> DATETIME  DEFAULT CURRENT_TIMESTAMP </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.instance.modified'>modified</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><a name='lcstate.instance.modified'>modified</a></td>
+		<td class='dataType'> DATETIME ON UPDATE CURRENT&#95;TIMESTAMP DEFAULT CURRENT_TIMESTAMP </td>
 		<td>  </td>
 	</tr>
 <tr><th colspan='4'>Indexes</th></tr>
@@ -1266,23 +1361,23 @@ function searchSVG( searchValue) {
 <tr><th colspan='4'>Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_instance_def_version</td>
-		<td > def&#95;version &#8599; <a href='#lifecycle&#95;state&#46;def&#95;version'  onclick="window.scrollTo(332, 551);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(id) </td>
+		<td > def&#95;version &#8599; <a href='#lcstate&#46;def&#95;version'  onclick="window.scrollTo(275, 532);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(id) </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_instance_state</td>
-		<td > current&#95;state &#8599; <a href='#lifecycle&#95;state&#46;state'  onclick="window.scrollTo(294, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.state').classList.add('palpable'); return false;">&#10063; state</a>(id) </td>
+		<td > current&#95;state &#8599; <a href='#lcstate&#46;state'  onclick="window.scrollTo(275, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.state').classList.add('palpable'); return false;">&#10063; state</a>(id) </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_instance_events</td>
-		<td > last&#95;event &#8599; <a href='#lifecycle&#95;state&#46;events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.events').classList.add('palpable'); return false;">&#10063; events</a>(id) </td>
+		<td > last&#95;event &#8599; <a href='#lcstate&#46;events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.events').classList.add('palpable'); return false;">&#10063; events</a>(id) </td>
 		<td>  </td>
 	</tr>
 <tr><th colspan='4'>Referring Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_transition_log_instance</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;transition&#95;log'  onclick="window.scrollTo(60, 418);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition_log').classList.add('palpable'); return false;">&#10063; transition&#95;log</a>(instance&#95;id) </td>
+		<td > id &#8601; <a href='#lcstate&#46;transition&#95;log'  onclick="window.scrollTo(60, 418);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition_log').classList.add('palpable'); return false;">&#10063; transition&#95;log</a>(instance&#95;id) </td>
 		<td>  </td>
 	</tr>
 <tr><th colspan='4'>Options</th></tr>
@@ -1291,7 +1386,7 @@ function searchSVG( searchValue) {
 </table></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.state'  onclick="window.scrollTo(294, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.state').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table state</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.state'  onclick="window.scrollTo(275, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.state').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table state</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:20%'>Column Name</th><th style='width:23%'>Definition</th><th style='width:52%'>Description</th></tr>
@@ -1299,61 +1394,61 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.state.category'>category</a></td>
+		<td><a name='lcstate.state.category'>category</a></td>
 		<td class='dataType'> INT  DEFAULT 0 </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
-		<td><a name='lifecycle_state.state.id'>id</a></td>
+		<td><a name='lcstate.state.id'>id</a></td>
 		<td class='dataType'> INT AUTO_INCREMENT </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.state.display_name'>display&#95;name</a></td>
+		<td><a name='lcstate.state.display_name'>display&#95;name</a></td>
 		<td class='dataType'> VARCHAR&#40;200&#41;  </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
-		<td><a name='lifecycle_state.state.name'>name</a></td>
-		<td class='dataType'> VARCHAR&#40;200&#41; GENERATED  ALWAYS AS (lcase(`display_name`)) </td>
+		<td><a name='lcstate.state.name'>name</a></td>
+		<td class='dataType'> VARCHAR&#40;200&#41; GENERATED  ALWAYS AS (lower(trim(display_name))) PERSISTENT </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.state.flags'>flags</a></td>
+		<td><a name='lcstate.state.flags'>flags</a></td>
 		<td class='dataType'> INT UNSIGNED  DEFAULT 0 </td>
-		<td> is&#95;initial &#61; 1<br>is&#95;final &#61; 2<br>is&#95;system &#61; 4<br>is&#95;error &#61; 8 </td>
+		<td> none &#61; 0<br>is&#95;initial &#61; 1<br>is&#95;final &#61; 2<br>is&#95;system &#61; 4<br>is&#95;error &#61; 8 </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.state.created'>created</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><a name='lcstate.state.created'>created</a></td>
+		<td class='dataType'> DATETIME  DEFAULT CURRENT_TIMESTAMP </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.state.def_version'>def&#95;version</a></td>
+		<td><a name='lcstate.state.def_version'>def&#95;version</a></td>
 		<td class='dataType'> INT  </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
-		<td><a name='lifecycle_state.state.timeout_minutes'>timeout&#95;minutes</a></td>
+		<td><a name='lcstate.state.timeout_minutes'>timeout&#95;minutes</a></td>
 		<td class='dataType'> INT  </td>
 		<td> in minutes </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.state.timeout_mode'>timeout&#95;mode</a></td>
+		<td><a name='lcstate.state.timeout_mode'>timeout&#95;mode</a></td>
 		<td class='dataType'> INT  DEFAULT 0 </td>
 		<td> 0 &#61; Once<br>1 &#61; Repeat </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.state.timeout_event'>timeout&#95;event</a></td>
+		<td><a name='lcstate.state.timeout_event'>timeout&#95;event</a></td>
 		<td class='dataType'> INT  </td>
 		<td>  </td>
 	</tr>
@@ -1377,33 +1472,33 @@ function searchSVG( searchValue) {
 <tr><th colspan='4'>Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_state_def_version</td>
-		<td > def&#95;version &#8599; <a href='#lifecycle&#95;state&#46;def&#95;version'  onclick="window.scrollTo(332, 551);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(id) </td>
+		<td > def&#95;version &#8599; <a href='#lcstate&#46;def&#95;version'  onclick="window.scrollTo(275, 532);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(id) </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_state_category</td>
-		<td > category &#8599; <a href='#lifecycle&#95;state&#46;category'  onclick="window.scrollTo(522, 95);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.category').classList.add('palpable'); return false;">&#10063; category</a>(id) </td>
+		<td > category &#8599; <a href='#lcstate&#46;category'  onclick="window.scrollTo(522, 95);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.category').classList.add('palpable'); return false;">&#10063; category</a>(id) </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_state_events</td>
-		<td > timeout&#95;event &#8599; <a href='#lifecycle&#95;state&#46;events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.events').classList.add('palpable'); return false;">&#10063; events</a>(id) </td>
+		<td > timeout&#95;event &#8599; <a href='#lcstate&#46;events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.events').classList.add('palpable'); return false;">&#10063; events</a>(id) </td>
 		<td>  </td>
 	</tr>
 <tr><th colspan='4'>Referring Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_instance_state</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.instance').classList.add('palpable'); return false;">&#10063; instance</a>(current&#95;state) </td>
+		<td > id &#8601; <a href='#lcstate&#46;instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.instance').classList.add('palpable'); return false;">&#10063; instance</a>(current&#95;state) </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_transition_state</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition').classList.add('palpable'); return false;">&#10063; transition</a>(from&#95;state) </td>
+		<td > id &#8601; <a href='#lcstate&#46;transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition').classList.add('palpable'); return false;">&#10063; transition</a>(from&#95;state) </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_transition_state_0</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition').classList.add('palpable'); return false;">&#10063; transition</a>(to&#95;state) </td>
+		<td > id &#8601; <a href='#lcstate&#46;transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition').classList.add('palpable'); return false;">&#10063; transition</a>(to&#95;state) </td>
 		<td>  </td>
 	</tr>
 <tr><th colspan='4'>Options</th></tr>
@@ -1412,7 +1507,7 @@ function searchSVG( searchValue) {
 </table></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table transition</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.transition'  onclick="window.scrollTo(560, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table transition</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:40%'>Column Name</th><th>Data Type</th></tr>
@@ -1420,32 +1515,32 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
-		<td><a name='lifecycle_state.transition.id'>id</a></td>
+		<td><a name='lcstate.transition.id'>id</a></td>
 		<td class='dataType'> INT AUTO_INCREMENT </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.transition.from_state'>from&#95;state</a></td>
+		<td><a name='lcstate.transition.from_state'>from&#95;state</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.transition.to_state'>to&#95;state</a></td>
+		<td><a name='lcstate.transition.to_state'>to&#95;state</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 	<tr>
-		<td>&nbsp;</td>
-		<td><a name='lifecycle_state.transition.created'>created</a></td>
-		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
+		<td><span class='text-danger'>*</span></td>
+		<td><a name='lcstate.transition.created'>created</a></td>
+		<td class='dataType'> DATETIME  DEFAULT CURRENT_TIMESTAMP </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.transition.def_version'>def&#95;version</a></td>
+		<td><a name='lcstate.transition.def_version'>def&#95;version</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#unq'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.transition.event'>event</a></td>
+		<td><a name='lcstate.transition.event'>event</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 <tr><th colspan='3'>Indexes</th></tr>
@@ -1467,19 +1562,19 @@ function searchSVG( searchValue) {
 <tr><th colspan='3'>Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_transition_state</td>
-		<td > from&#95;state &#8599; <a href='#lifecycle&#95;state&#46;state'  onclick="window.scrollTo(294, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.state').classList.add('palpable'); return false;">&#10063; state</a>(id) </td>
+		<td > from&#95;state &#8599; <a href='#lcstate&#46;state'  onclick="window.scrollTo(275, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.state').classList.add('palpable'); return false;">&#10063; state</a>(id) </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_transition_state_0</td>
-		<td > to&#95;state &#8599; <a href='#lifecycle&#95;state&#46;state'  onclick="window.scrollTo(294, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.state').classList.add('palpable'); return false;">&#10063; state</a>(id) </td>
+		<td > to&#95;state &#8599; <a href='#lcstate&#46;state'  onclick="window.scrollTo(275, 228);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.state').classList.add('palpable'); return false;">&#10063; state</a>(id) </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_transition_def_version</td>
-		<td > def&#95;version &#8599; <a href='#lifecycle&#95;state&#46;def&#95;version'  onclick="window.scrollTo(332, 551);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(id) </td>
+		<td > def&#95;version &#8599; <a href='#lcstate&#46;def&#95;version'  onclick="window.scrollTo(275, 532);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.def_version').classList.add('palpable'); return false;">&#10063; def&#95;version</a>(id) </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_transition_events</td>
-		<td > event &#8599; <a href='#lifecycle&#95;state&#46;events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.events').classList.add('palpable'); return false;">&#10063; events</a>(id) </td>
+		<td > event &#8599; <a href='#lcstate&#46;events'  onclick="window.scrollTo(560, 456);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.events').classList.add('palpable'); return false;">&#10063; events</a>(id) </td>
 	</tr>
 <tr><th colspan='3'>Options</th></tr>
 <tr><td colspan='3'>engine&#61;InnoDB</td></tr>
@@ -1487,7 +1582,7 @@ function searchSVG( searchValue) {
 </table></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.transition_data'  onclick="window.scrollTo(60, 266);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition_data').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table transition_data</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.transition_data'  onclick="window.scrollTo(60, 266);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition_data').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table transition_data</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:20%'>Column Name</th><th style='width:23%'>Definition</th><th style='width:52%'>Description</th></tr>
@@ -1495,19 +1590,19 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.transition_data.transition_log'>transition&#95;log</a></td>
+		<td><a name='lcstate.transition_data.transition_log'>transition&#95;log</a></td>
 		<td class='dataType'> BIGINT  </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
-		<td><a name='lifecycle_state.transition_data.actor'>actor</a></td>
+		<td><a name='lcstate.transition_data.actor'>actor</a></td>
 		<td class='dataType'> VARCHAR&#40;255&#41;  </td>
 		<td>  </td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
-		<td><a name='lifecycle_state.transition_data.metadata'>metadata</a></td>
+		<td><a name='lcstate.transition_data.metadata'>metadata</a></td>
 		<td class='dataType'> LONGTEXT  </td>
 		<td> Could be any data that was the result of this transition &#40;which could be later used as a reference or  input for other items&#41; </td>
 	</tr>
@@ -1519,7 +1614,7 @@ function searchSVG( searchValue) {
 <tr><th colspan='4'>Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_transition_data_transition_log</td>
-		<td > transition&#95;log &#8599; <a href='#lifecycle&#95;state&#46;transition&#95;log'  onclick="window.scrollTo(60, 418);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition_log').classList.add('palpable'); return false;">&#10063; transition&#95;log</a>(id) </td>
+		<td > transition&#95;log &#8599; <a href='#lcstate&#46;transition&#95;log'  onclick="window.scrollTo(60, 418);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition_log').classList.add('palpable'); return false;">&#10063; transition&#95;log</a>(id) </td>
 		<td>  </td>
 	</tr>
 <tr><th colspan='4'>Options</th></tr>
@@ -1528,7 +1623,7 @@ function searchSVG( searchValue) {
 </table></div></div>
 
 <br><br>
-<div class='card custom-card'><div class='card-body'><a name='lifecycle_state.transition_log'  onclick="window.scrollTo(60, 418);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition_log').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table transition_log</h5></a>
+<div class='card custom-card'><div class='card-body'><a name='lcstate.transition_log'  onclick="window.scrollTo(60, 418);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition_log').classList.add('palpable'); return false;" style='cursor:pointer;'><h5 class='card-title text-center'>Table transition_log</h5></a>
 <table class='table table-sm small' style='table-layout: fixed; word-wrap: break-word;'>
 <thead>
 <tr><th style='width:5%'>Idx</th><th style='width:40%'>Column Name</th><th>Data Type</th></tr>
@@ -1536,32 +1631,32 @@ function searchSVG( searchValue) {
 <tbody>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
-		<td><a name='lifecycle_state.transition_log.id'>id</a></td>
+		<td><a name='lcstate.transition_log.id'>id</a></td>
 		<td class='dataType'> BIGINT AUTO_INCREMENT </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span><svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
-		<td><a name='lifecycle_state.transition_log.instance_id'>instance&#95;id</a></td>
+		<td><a name='lcstate.transition_log.instance_id'>instance&#95;id</a></td>
 		<td class='dataType'> BIGINT  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.transition_log.from_state'>from&#95;state</a></td>
+		<td><a name='lcstate.transition_log.from_state'>from&#95;state</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.transition_log.to_state'>to&#95;state</a></td>
+		<td><a name='lcstate.transition_log.to_state'>to&#95;state</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.transition_log.event'>event</a></td>
+		<td><a name='lcstate.transition_log.event'>event</a></td>
 		<td class='dataType'> INT  </td>
 	</tr>
 	<tr>
 		<td><span class='text-danger'>*</span></td>
-		<td><a name='lifecycle_state.transition_log.created'>created</a></td>
+		<td><a name='lcstate.transition_log.created'>created</a></td>
 		<td class='dataType'> DATETIME  DEFAULT utc_timestamp() </td>
 	</tr>
 <tr><th colspan='3'>Indexes</th></tr>
@@ -1574,16 +1669,16 @@ function searchSVG( searchValue) {
 <tr><th colspan='3'>Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_transition_log_instance</td>
-		<td > instance&#95;id &#8599; <a href='#lifecycle&#95;state&#46;instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.instance').classList.add('palpable'); return false;">&#10063; instance</a>(id) </td>
+		<td > instance&#95;id &#8599; <a href='#lcstate&#46;instance'  onclick="window.scrollTo(60, 437);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.instance').classList.add('palpable'); return false;">&#10063; instance</a>(id) </td>
 	</tr>
 <tr><th colspan='3'>Referring Foreign Key</th></tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_ack_log_transition_log</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;ack&#95;log'  onclick="window.scrollTo(60, 190);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.ack_log').classList.add('palpable'); return false;">&#10063; ack&#95;log</a>(transition&#95;log) </td>
+		<td > id &#8601; <a href='#lcstate&#46;ack&#95;log'  onclick="window.scrollTo(60, 190);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.ack_log').classList.add('palpable'); return false;">&#10063; ack&#95;log</a>(transition&#95;log) </td>
 	</tr>
 	<tr>
 		<td><svg width='14' height='14'><use xlink:href='#ref'/></svg></td><td>fk_transition_data_transition_log</td>
-		<td > id &#8601; <a href='#lifecycle&#95;state&#46;transition&#95;data'  onclick="window.scrollTo(60, 266);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lifecycle_state.transition_data').classList.add('palpable'); return false;">&#10063; transition&#95;data</a>(transition&#95;log) </td>
+		<td > id &#8601; <a href='#lcstate&#46;transition&#95;data'  onclick="window.scrollTo(60, 266);var nodes = document.getElementsByClassName('palpable');for (var i = 0; i < nodes.length; i++) { nodes[i].classList.remove('palpable');}; document.getElementById('depict_lcstate.transition_data').classList.add('palpable'); return false;">&#10063; transition&#95;data</a>(transition&#95;log) </td>
 	</tr>
 <tr><th colspan='3'>Options</th></tr>
 <tr><td colspan='3'>engine&#61;InnoDB</td></tr>
