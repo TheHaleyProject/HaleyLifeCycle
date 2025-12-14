@@ -36,7 +36,7 @@ Func<AckWorkItem, Task> ackHandler = async work => {
     await Task.Delay(100);
 };
 
-var monitor = new LifeCycleStateMonitor(sm, repo, monitorOptions, ackHandler);
+//var monitor = new LifeCycleStateMonitor(sm, repo, monitorOptions, ackHandler);
 
 sm.TransitionRaised += async occurred => {
     Console.WriteLine($"[TRN] ext={occurred.ExternalRef} {occurred.FromStateId}->{occurred.ToStateId} event={occurred.EventCode} {occurred.EventName}");
@@ -80,7 +80,7 @@ var instanceKey = LifeCycleKeys.Instance(defVersionId, externalRef);
 await sm.InitializeAsync(instanceKey, LifeCycleInstanceFlag.Active);
 
 // Start monitor AFTER listener is attached
-monitor.Start();
+//monitor.Start();
 Console.WriteLine("Monitor started.");
 
 // Trigger vendor registration path:
@@ -105,5 +105,5 @@ while (true) {
     var localRes = await sm.TriggerAsync(instanceKey, code, actor: "console", comment: $"Manual trigger {code}");
 }
 
-monitor.Dispose();
+//monitor.Dispose();
 Console.WriteLine("Done.");
