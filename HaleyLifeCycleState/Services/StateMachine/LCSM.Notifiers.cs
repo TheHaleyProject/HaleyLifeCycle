@@ -16,7 +16,7 @@ namespace Haley.Services {
                 _ = Task.Run(async () => {
                     try {
                         if (d is Func<TransitionOccurred, Task> asyncHandler)
-                            await asyncHandler(occurred);
+                            await asyncHandler(occurred).ConfigureAwait(false);
                         else
                             d.DynamicInvoke(occurred);
                     } catch (Exception ex) {
@@ -40,7 +40,7 @@ namespace Haley.Services {
                 _ = Task.Run(async () => {
                     try {
                         if (d is Func<StateMachineError, Task> asyncHandler)
-                            await asyncHandler(err);
+                            await asyncHandler(err).ConfigureAwait(false);
                         else
                             d.DynamicInvoke(err);
                     } catch {
@@ -50,7 +50,7 @@ namespace Haley.Services {
             }
         }
 
-        private void NotifyTimeout(TimeoutNotification timeoutObj) {
+        internal void NotifyTimeout(TimeoutNotification timeoutObj) {
             var handler = TimeoutRaised;
             if (handler == null) return;
 
@@ -63,7 +63,7 @@ namespace Haley.Services {
                             d.DynamicInvoke(timeoutObj);
                     } catch (Exception ex) {
                         NotifyError(new StateMachineError {
-                            Operation = "TransitionRaised",
+                            Operation = "TimeoutRaised",
                             Data = timeoutObj,
                             Exception = ex,
                             TimeStamp = DateTime.UtcNow,
