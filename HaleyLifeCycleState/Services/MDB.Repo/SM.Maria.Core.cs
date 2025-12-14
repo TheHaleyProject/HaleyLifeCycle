@@ -19,7 +19,7 @@ namespace Haley.Services {
                     (DISPLAY_NAME, displayName),
                     (FLAGS, (int)flags),
                     (CATEGORY, category),
-                    (TIMEOUT, AssertNull(timeoutMinutes)),
+                    (TIMEOUT_MINUTES, AssertNull(timeoutMinutes)),
                     (TIMEOUT_MODE, timeoutMode),
                     (TIMEOUT_EVENT, AssertNull(timeoutEventId))
                 );
@@ -33,7 +33,7 @@ namespace Haley.Services {
                 (DISPLAY_NAME, displayName),
                 (FLAGS, (int)flags),
                 (CATEGORY, category),
-                (TIMEOUT, AssertNull(timeoutMinutes)),
+                (TIMEOUT_MINUTES, AssertNull(timeoutMinutes)),
                 (TIMEOUT_MODE, timeoutMode),
                 (TIMEOUT_EVENT, timeoutEventId)
             );

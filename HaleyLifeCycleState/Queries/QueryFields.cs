@@ -22,7 +22,7 @@ namespace Haley.Internal {
         public const string TO_STATE = "@TO_STATE";
         public const string EVENT = "@EVENT";
         public const string FLAGS = "@FLAGS";
-        public const string TIMEOUT = "@TIMEOUT";
+        public const string TIMEOUT_MINUTES = "@TIMEOUT_MINUTES";
         public const string TIMEOUT_MODE = "@TIMEOUT_MODE";
         public const string TIMEOUT_EVENT = "@TIMEOUT_EVENT";
         public const string CURRENT_STATE = "@CURRENT_STATE";
@@ -40,7 +40,6 @@ namespace Haley.Internal {
         public const string MODIFIED = "@MODIFIED";
         public const string RETENTION_DAYS = "@RETENTION_DAYS";
         public const string MAX_BATCH = "@MAX_BATCH";
-        public const string TIMEOUT_MINUTES = "@TIMEOUT_MINUTES";
         public const string SKIP = "@SKIP";
         public const string LIMIT = "@LIMIT";
     }

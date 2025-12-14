@@ -1,14 +1,14 @@
 {
   "definition": {
     "name": "VendorRegStates",
-    "version": 2,
+    "version": 5,
     "description": "Lifecycle definition for new vendor registration, validation, and vendor ID generation."
   },
   "states": [
     { "name": "RegistrationStarted", "isinitial": true, "category": "system" },
     { "name": "Submitted", "category": "business" },
     { "name": "DuplicateCheck", "category": "system" },
-    { "name": "PendingValidation", "category": "business", "timeout": "P7D" },
+    { "name": "PendingValidation", "category": "business", "timeout": "PT30S" },
     { "name": "CompanyValidation", "category": "business" },
     { "name": "Rejected", "isfinal": true, "category": "error" },
     { "name": "Registered", "isfinal": true, "category": "system" }

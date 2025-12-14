@@ -10,6 +10,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
+Console.WriteLine("App Started");
 
 var constring = $"server=127.0.0.1;port=4307;user=root;password=admin@456$;database=testlcs;Allow User Variables=true;";
 //var response = await LifeCycleInitializer.InitializeAsync(new AdapterGateway(), "lcstate");
@@ -79,7 +80,7 @@ var instanceKey = LifeCycleKeys.Instance(defVersionId, externalRef);
 await sm.InitializeAsync(instanceKey, LifeCycleInstanceFlag.Active);
 
 // Start monitor AFTER listener is attached
-//monitor.Start();
+monitor.Start();
 Console.WriteLine("Monitor started.");
 
 // Trigger vendor registration path:
@@ -88,8 +89,9 @@ var result = await sm.TriggerAsync(instanceKey, 1000, actor: "console", comment:
 result = await sm.TriggerAsync(instanceKey, 1001, actor: "console", comment: "CheckDuplicate");  // Submitted -> DuplicateCheck
 result = await sm.TriggerAsync(instanceKey, 1001, actor: "console", comment: "CheckDuplicate");  // Submitted -> DuplicateCheck
 result = await sm.TriggerAsync(instanceKey, 1003, actor: "console", comment: "NotRegistered");   // DuplicateCheck -> PendingValidation
-result = await sm.TriggerAsync(instanceKey, 1005, actor: "console", comment: "ValidateCompany"); // PendingValidation -> CompanyValidation
-result = await sm.TriggerAsync(instanceKey, 1007, actor: "console", comment: "ValidCompany");    // CompanyValidation -> Registered
+await Task.Delay(1000000);
+//result = await sm.TriggerAsync(instanceKey, 1005, actor: "console", comment: "ValidateCompany"); // PendingValidation -> CompanyValidation
+//result = await sm.TriggerAsync(instanceKey, 1007, actor: "console", comment: "ValidCompany");    // CompanyValidation -> Registered
 
 // -------------------------
 // 7) Interactive loop
