@@ -41,7 +41,7 @@
 
   <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
 
-  <Choose>
+  <!--<Choose>
     <When Condition="Exists($(HaleyEvents))">
       <ItemGroup>
         <ProjectReference Include="$(HaleyEvents)\HaleyEvents.csproj">
@@ -54,7 +54,7 @@
         <PackageReference Include="Haley.Events" Version="$(HaleyEventsVersion)" />
       </ItemGroup>
     </Otherwise>
-  </Choose>
+  </Choose>-->
   
   <Choose>
     <When Condition="Exists($(HaleyHelpersDB))">
