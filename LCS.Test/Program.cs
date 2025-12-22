@@ -19,8 +19,8 @@ var response = await LifeCycleInitializer.InitializeAsyncWithConString(agw, cons
 if (!response.Status) throw new ArgumentException("Unable to initialize the database for the lifecycle state machine");
 
 var logger = LogStore.GetOrAddFileLogger("lcstatelogger", "Lifecycle state logger");
-IStateMachineRepo repo = new LifeCycleStateMariaDB(agw, key: response.Result, logger: logger);
-IStateMachineRuntime sm = new LifeCycleStateMachine(repo);
+ILifeCycleStore repo = new LifeCycleStoreMaria(agw, key: response.Result, logger: logger);
+ILifeCycleProcessor sm = new LifeCycleProcessor(repo);
 var monitorOptions = new LifeCycleMonitorOptions {
     PollIntervalSeconds = 10,       // demo: fast ticks
     AckRetryAfterMinutes = 0,      // demo: pick immediately

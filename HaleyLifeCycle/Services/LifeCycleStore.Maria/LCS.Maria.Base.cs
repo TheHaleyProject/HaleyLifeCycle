@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMariaDB {
+    public partial class LifeCycleStoreMaria {
 
         // Base (Environment, Category, Definition, DefVersion)
         public async Task<IFeedback<Dictionary<string, object>>> UpsertEnvironment(string displayName, int code) {

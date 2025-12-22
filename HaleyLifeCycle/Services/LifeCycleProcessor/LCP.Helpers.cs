@@ -7,7 +7,7 @@ using System.Text.Json;
 using Haley.Utils;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMachine {
+    public partial class LifeCycleProcessor {
 
         private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
 

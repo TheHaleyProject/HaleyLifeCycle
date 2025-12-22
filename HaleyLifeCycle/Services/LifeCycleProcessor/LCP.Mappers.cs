@@ -7,7 +7,7 @@ using System.Text.Json;
 using Haley.Utils;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMachine {
+    public partial class LifeCycleProcessor {
 
         //Haley Library has a Mapper class but we are implementing our own here for BETTER PERFORMANCE because the Haley mappers are based on Reflection.
         private static LifeCycleState MapState(IDictionary<string, object> row) => new() {

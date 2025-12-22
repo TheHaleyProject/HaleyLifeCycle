@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMariaDB {
+    public partial class LifeCycleStoreMaria {
 
         public async Task<IFeedback<Dictionary<string, object>>> InsertAck(long transitionLogId, int consumer, int ackStatus = 1, string? messageId = null) {
             if (!string.IsNullOrWhiteSpace(messageId)) {

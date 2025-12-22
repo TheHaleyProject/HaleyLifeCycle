@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMachine {
+    public partial class LifeCycleProcessor {
 
         void NotifyTransition(TransitionOccurred occurred) {
             var handler = TransitionRaised;
@@ -20,7 +20,7 @@ namespace Haley.Services {
                         else
                             d.DynamicInvoke(occurred);
                     } catch (Exception ex) {
-                        NotifyError(new StateMachineError {
+                        NotifyError(new LifeCycleError {
                             Operation = "TransitionRaised",
                             Data = occurred,
                             Exception = ex,
@@ -32,14 +32,14 @@ namespace Haley.Services {
             }
         }
 
-        void NotifyError(StateMachineError err) {
+        void NotifyError(LifeCycleError err) {
             var handler = ErrorRaised;
             if (handler == null) return;
 
             foreach (var d in handler.GetInvocationList()) {
                 _ = Task.Run(async () => {
                     try {
-                        if (d is Func<StateMachineError, Task> asyncHandler)
+                        if (d is Func<LifeCycleError, Task> asyncHandler)
                             await asyncHandler(err).ConfigureAwait(false);
                         else
                             d.DynamicInvoke(err);
@@ -62,7 +62,7 @@ namespace Haley.Services {
                         else
                             d.DynamicInvoke(timeoutObj);
                     } catch (Exception ex) {
-                        NotifyError(new StateMachineError {
+                        NotifyError(new LifeCycleError {
                             Operation = "TimeoutRaised",
                             Data = timeoutObj,
                             Exception = ex,
@@ -74,7 +74,7 @@ namespace Haley.Services {
             }
         }
 
-        internal void SendNotice(StateMachineNotice notice) {
+        internal void SendNotice(LifeCycleNotice notice) {
             var handler = NoticeRaised;
             if (handler == null) return;
 
@@ -82,7 +82,7 @@ namespace Haley.Services {
                 _ = Task.Run(async () =>
                 {
                     try {
-                        if (d is Func<StateMachineNotice, Task> asyncHandler)
+                        if (d is Func<LifeCycleNotice, Task> asyncHandler)
                             await asyncHandler(notice).ConfigureAwait(false);
                         else
                             d.DynamicInvoke(notice);

@@ -5,7 +5,7 @@ using Haley.Utils;
 using System.Threading.Tasks;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMachine {
+    public partial class LifeCycleProcessor {
 
         public async Task<bool> IsInitialStateAsync(int definitionVersion, int stateId) {
             if (definitionVersion <= 0) throw new ArgumentOutOfRangeException(nameof(definitionVersion));

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMariaDB {
+    public partial class LifeCycleStoreMaria {
         private  (string sql, (string, object)[] args) BuildExists(LifeCycleEntity entity, LifeCycleKey key) {
             switch (entity) {
                 case LifeCycleEntity.Environment:

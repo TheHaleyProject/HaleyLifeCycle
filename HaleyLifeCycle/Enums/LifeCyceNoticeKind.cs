@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Haley.Enums {
-    public enum StateMachineNoticeKind {
+    public enum LifeCyceNoticeKind {
         None = 0,
         DuplicateRequest = 1,          // same RequestId / idempotency key already processed
         NoOpAlreadyInState = 2,        // event valid, but results in no state change

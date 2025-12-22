@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMachine {
+    public partial class LifeCycleProcessor {
 
         public Task<IFeedback<Dictionary<string, object>>> InsertAck(long transitionLogId, int consumer, LifeCycleAckStatus ackStatus = LifeCycleAckStatus.Pending, string? messageId = null) {
             try {
                 return Repository.InsertAck(transitionLogId, consumer, (int)ackStatus, messageId);
             } catch (Exception ex) {
-                NotifyError(new StateMachineError {
+                NotifyError(new LifeCycleError {
                     Operation = "Insert Acknowledgement",
                     Data = transitionLogId,
                     Exception = ex,
@@ -27,7 +27,7 @@ namespace Haley.Services {
             try {
                 return Repository.MarkAck(messageId, (int)status);
             } catch (Exception ex) {
-                NotifyError(new StateMachineError {
+                NotifyError(new LifeCycleError {
                     Operation = "Mark Acknowledgement",
                     Data = status,
                     Exception = ex,

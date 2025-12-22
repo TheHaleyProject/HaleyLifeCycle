@@ -4,14 +4,14 @@ using System;
 using System.Threading.Tasks;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMachine : IStateMachineRuntime {
-        public IStateMachineRepo Repository { get; }
+    public partial class LifeCycleProcessor : ILifeCycleProcessor {
+        public ILifeCycleStore Repository { get; }
         public event Func<TransitionOccurred, Task>? TransitionRaised;
-        public event Func<StateMachineError, Task>? ErrorRaised;
+        public event Func<LifeCycleError, Task>? ErrorRaised;
         public event Func<TimeoutNotification, Task>? TimeoutRaised;
-        public event Func<StateMachineNotice, Task>? NoticeRaised;
+        public event Func<LifeCycleNotice, Task>? NoticeRaised;
 
-        public LifeCycleStateMachine(IStateMachineRepo repository) {
+        public LifeCycleProcessor(ILifeCycleStore repository) {
             Repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
     }

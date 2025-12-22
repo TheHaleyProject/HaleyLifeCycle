@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMariaDB {
+    public partial class LifeCycleStoreMaria {
 
         public async Task<IFeedback<bool>> Exists(LifeCycleEntity entity, LifeCycleKey key) {
             var result = new Feedback<bool>().SetResult(false);

@@ -5,13 +5,13 @@ using Haley.Enums;
 using Haley.Models;
 
 namespace Haley.Abstractions {
-    public interface IStateMachineRuntime {
+    public interface ILifeCycleProcessor {
         event Func<TransitionOccurred, Task>? TransitionRaised;
-        event Func<StateMachineError, Task>? ErrorRaised;
+        event Func<LifeCycleError, Task>? ErrorRaised;
         event Func<TimeoutNotification, Task>? TimeoutRaised;
-        event Func<StateMachineNotice, Task>? NoticeRaised;
-        Task<IFeedback<StateMachineNotice>> TriggerAsync(LifeCycleKey instanceKey, int eventCode, string? actor = null, string? comment = null, object? context = null);
-        Task<IFeedback<StateMachineNotice>> TriggerAsync(LifeCycleKey instanceKey, string eventName, string? actor = null, string? comment = null, object? context = null);
+        event Func<LifeCycleNotice, Task>? NoticeRaised;
+        Task<IFeedback<LifeCycleNotice>> TriggerAsync(LifeCycleKey instanceKey, int eventCode, string? actor = null, string? comment = null, object? context = null);
+        Task<IFeedback<LifeCycleNotice>> TriggerAsync(LifeCycleKey instanceKey, string eventName, string? actor = null, string? comment = null, object? context = null);
 
 
         // Instance lifecycle

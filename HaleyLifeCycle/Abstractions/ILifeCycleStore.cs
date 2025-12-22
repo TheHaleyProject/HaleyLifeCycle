@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Haley.Abstractions {
 
-    public interface IStateMachineRepo {
+    public interface ILifeCycleStore {
         (IAdapterGateway agw, string adapterKey) AdapterGatewayInfo { get; }
         #region Primitives
         Task<IFeedback<bool>> Exists(LifeCycleEntity entity, LifeCycleKey key);

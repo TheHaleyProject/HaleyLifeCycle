@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMachine {
+    public partial class LifeCycleProcessor {
 
         public async Task<IFeedback<DefinitionLoadResult>> ImportDefinitionFromFileAsync(string filePath,string environmentName = "default", int envCode = 0) {
             if (string.IsNullOrWhiteSpace(filePath)) throw new ArgumentNullException(nameof(filePath));

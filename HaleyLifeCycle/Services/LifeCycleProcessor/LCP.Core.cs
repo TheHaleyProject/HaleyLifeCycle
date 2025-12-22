@@ -9,7 +9,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMachine {
+    public partial class LifeCycleProcessor {
 
         public async Task<LifeCycleInstance?> GetInstanceWithTransitionAsync(LifeCycleKey key) {
             if (key.Type != LifeCycleKeyType.Parent) {
@@ -43,7 +43,7 @@ namespace Haley.Services {
                 EnsureSuccess(insFb, "Instance_Upsert");
                 return true;
             } catch (Exception ex) {
-                NotifyError(new StateMachineError() {
+                NotifyError(new LifeCycleError() {
                     Exception = ex,
                     Reference = instanceKey,
                     Operation = "InitializeAsync"

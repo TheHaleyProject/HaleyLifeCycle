@@ -9,10 +9,10 @@ using System.Diagnostics.Tracing;
 using System.Threading.Tasks;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMachine {
-        public async Task<IFeedback<StateMachineNotice>> TriggerAsync(LifeCycleKey instanceKey, int eventCode, string? actor = null, string? comment = null, object? context = null) {
+    public partial class LifeCycleProcessor {
+        public async Task<IFeedback<LifeCycleNotice>> TriggerAsync(LifeCycleKey instanceKey, int eventCode, string? actor = null, string? comment = null, object? context = null) {
             try {
-                var fbResult = new Feedback<StateMachineNotice>();
+                var fbResult = new Feedback<LifeCycleNotice>();
                 var instance = await GetInstanceWithTransitionAsync(instanceKey);
                 if (instance == null) throw new InvalidOperationException("Instance not found.");
                 var agwInfo = Repository.AdapterGatewayInfo;
@@ -20,7 +20,7 @@ namespace Haley.Services {
                 var evFb = await Repository.Get(LifeCycleEntity.Event, new LifeCycleKey(LifeCycleKeyType.Composite, input.definitionVersion, eventCode));
 
                 if (!evFb.Status || evFb.Result == null || evFb.Result.Count == 0) {
-                    return fbResult.SetResult(new StateMachineNotice() {
+                    return fbResult.SetResult(new LifeCycleNotice() {
                         Reference = instanceKey,
                         Data = instance,
                         CorrelationId = instance.Id,
@@ -38,7 +38,7 @@ namespace Haley.Services {
                 var trFb = await Repository.GetTransition(instance.CurrentState, evResult.Id, input.definitionVersion);
                 if (!trFb.Status || trFb.Result == null || trFb.Result.Count == 0) {
                     var latestTransitionFb = await Repository.GetLatestTransitionLog(instance.Id);
-                    return fbResult.SetResult(new StateMachineNotice() {
+                    return fbResult.SetResult(new LifeCycleNotice() {
                         Reference = instanceKey,
                         Data = latestTransitionFb.Result as object ?? "Latest Transition Log not found",
                         CorrelationId = instance.Id,
@@ -78,24 +78,24 @@ namespace Haley.Services {
                     Created = DateTime.UtcNow
                 };
                 NotifyTransition(occurred);
-                return fbResult.SetStatus(true).SetResult(new StateMachineNotice() {
+                return fbResult.SetStatus(true).SetResult(new LifeCycleNotice() {
                     Reference = instanceKey,
                     Data = new { eventCode, actor },
                     CorrelationId = instance.Id,
                     Operation = "TriggerAsync"
                 });
             } catch (Exception ex) {
-                NotifyError(new StateMachineError() {
+                NotifyError(new LifeCycleError() {
                     Exception = ex,
                     Reference = instanceKey,
                     Data = new { eventCode, actor},
                     Operation = "TriggerAsync"
                 });
-                return await Task.FromException<IFeedback<StateMachineNotice>>(ex);
+                return await Task.FromException<IFeedback<LifeCycleNotice>>(ex);
             }
         }
 
-        public async Task<IFeedback<StateMachineNotice>> TriggerAsync(LifeCycleKey instanceKey, string eventName, string? actor = null, string? comment = null, object? context = null) {
+        public async Task<IFeedback<LifeCycleNotice>> TriggerAsync(LifeCycleKey instanceKey, string eventName, string? actor = null, string? comment = null, object? context = null) {
             if (string.IsNullOrWhiteSpace(eventName)) throw new ArgumentNullException(nameof(eventName));
             var agwInfo = Repository.AdapterGatewayInfo;
             var input = instanceKey.ParseInstanceKey(agwInfo.agw, agwInfo.adapterKey);
@@ -108,13 +108,13 @@ namespace Haley.Services {
                 if (code <= 0) throw new ArgumentException("Invalid event code retrieved. Code needs to be a valid positive number");
                 return await TriggerAsync(instanceKey, code, actor, comment, context);
             } catch (Exception ex) {
-                NotifyError(new StateMachineError() {
+                NotifyError(new LifeCycleError() {
                     Exception = ex,
                     Reference = instanceKey,
                     Data = new { eventName, actor },
                     Operation = "TriggerAsync"
                 });
-                return await Task.FromException<IFeedback<StateMachineNotice>>(ex);
+                return await Task.FromException<IFeedback<LifeCycleNotice>>(ex);
             }
         }
     }

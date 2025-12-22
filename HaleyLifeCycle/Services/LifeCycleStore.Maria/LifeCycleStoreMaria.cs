@@ -13,14 +13,14 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMariaDB : IStateMachineRepo {
+    public partial class LifeCycleStoreMaria : ILifeCycleStore {
         readonly IAdapterGateway _agw;
         readonly ILogger _logger;
         readonly string _key;
         readonly ConcurrentDictionary<string, (ITransactionHandler handler, DateTime created)> _handlers = new(); //In case we decide to use any transactions inside, we can track them here and then later, after all transaction operations are completed, we can finally commit them in one place. We use the string (preferably a GUID) as the key to identify the transaction.
         public (IAdapterGateway agw, string adapterKey) AdapterGatewayInfo => (_agw, _key);
         static object AssertNull(object? v) => v ?? DBNull.Value;
-        public LifeCycleStateMariaDB(IAdapterGateway agw, string key, ILogger logger) {
+        public LifeCycleStoreMaria(IAdapterGateway agw, string key, ILogger logger) {
             _agw = agw;
             _key = key;
             _logger = logger;

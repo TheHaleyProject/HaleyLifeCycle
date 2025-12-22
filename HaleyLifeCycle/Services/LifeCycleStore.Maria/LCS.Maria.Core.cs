@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using static Haley.Internal.QueryFields;
 
 namespace Haley.Services {
-    public partial class LifeCycleStateMariaDB {
+    public partial class LifeCycleStoreMaria {
 
         public async Task<IFeedback<Dictionary<string, object>>> UpsertState(string displayName, int defVersion, LifeCycleStateFlag flags, int category = 0, int? timeoutMinutes = null, int timeoutMode = 0, int ?timeoutEventId = null) {
             var existing = await _agw.ReadSingleAsync(_key, QRY_STATE.GET_BY_NAME, (DEF_VERSION, defVersion), (NAME, displayName));
