@@ -8,7 +8,7 @@
     <HaleyExtensions>$(HaleyProject)\HaleyExtensions\HaleyExtensions</HaleyExtensions>  
     <HaleyHelpersDB>$(HaleyProject)\HaleyHelpers.DB\HaleyHelpersDB</HaleyHelpersDB>
     <HaleyRest>$(HaleyProject)\HaleyRest\HaleyRest</HaleyRest>  
-    <HaleyLifeCycleState>$(HaleyProject)\HaleyLifeCycle.State\HaleyLifeCycleState</HaleyLifeCycleState>    
+    <HaleyLifeCycle>$(HaleyProject)\HaleyLifeCycle\HaleyLifeCycle</HaleyLifeCycle>    
  </PropertyGroup>
 </Project>
 
