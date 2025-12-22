@@ -11,8 +11,8 @@ using Haley.Utils;
 namespace Haley.Services {
     // Monitor is readonly. It must never call TriggerAsync/MarkAck/RetryAck/etc. Its job is: detect + notify.
     public sealed class LifeCycleStateMonitor : IDisposable {
-        private readonly ILifeCycleStateMachine _sm;
-        private readonly ILifeCycleStateRepository _repo;
+        private readonly IStateMachineRuntime _sm;
+        private readonly IStateMachineRepo _repo;
         private readonly LifeCycleMonitorOptions _options;
 		private readonly Func<AckMonitorNotice, Task> _ackNoticeHandler;
 		private readonly Func<AckMonitorNotice, Task>? _failedAckNoticeHandler;
@@ -33,8 +33,8 @@ namespace Haley.Services {
         public bool IsStarted => _timer != null;
 
 		public LifeCycleStateMonitor(
-			ILifeCycleStateMachine sm,
-			ILifeCycleStateRepository repo,
+			IStateMachineRuntime sm,
+			IStateMachineRepo repo,
 			LifeCycleMonitorOptions? options,
 			Func<AckMonitorNotice, Task> ackNoticeHandler,
 			Func<AckMonitorNotice, Task>? failedAckNoticeHandler = null,
