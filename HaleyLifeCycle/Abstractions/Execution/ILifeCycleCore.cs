@@ -5,7 +5,7 @@ using Haley.Enums;
 using Haley.Models;
 
 namespace Haley.Abstractions {
-    public interface ILifeCycleProcessor {
+    public interface ILifeCycleCore {
         event Func<TransitionOccurred, Task>? TransitionRaised;
         event Func<LifeCycleError, Task>? ErrorRaised;
         event Func<TimeoutNotification, Task>? TimeoutRaised;
